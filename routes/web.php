@@ -22,5 +22,6 @@ Route::get('parametres', 'HomeController@index');
 Route::get('messagerie', 'HomeController@index');
 Route::get('cgu', 'HomeController@index');
 Route::get('about-us', 'HomeController@index');
+Route::get('mix-maniferst.json', 'HomeController@index');
 
 Auth::routes();
