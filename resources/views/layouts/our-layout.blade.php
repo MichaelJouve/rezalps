@@ -24,10 +24,10 @@
             </div>
 
             <div class="col header-top" id="block_btn_droit">
-                <img src="img/notif.png" alt="Notifications" height="30px">
-                <img src="img/message.png" alt="Messages" height="40px">
-                <a href="page_flux.php"><img src="img/accueil.png" alt="Accueil" height="30px"></a>
-                <a href="page_profil_publications.php"><img class="img-contact" src="img/michael-photo.jpg" width="50"
+                <img src="{{ URL::asset('img/notif.png') }}" alt="Notifications" height="30px">
+                <img src="{{ URL::asset('img/message.png') }}" alt="Messages" height="40px">
+                <a href="page_flux.php"><img src="{{ URL::asset('img/accueil.png') }}" alt="Accueil" height="30px"></a>
+                <a href="page_profil_publications.php"><img class="img-contact" src="{{ URL::asset('img/michael-photo.jpg') }}" width="50"
                                                             height="40" alt="photo-profil-michael"></a>
             </div>
         </div>
