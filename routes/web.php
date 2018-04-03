@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('inscription', 'HomeController@index')->name('home');
 Route::get('welcome2', 'HomeController@index');
 Route::get('flux', 'HomeController@index');
 Route::get('publications', 'HomeController@index');
