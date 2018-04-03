@@ -24,7 +24,7 @@
     <!--   zones qui afficheront les données enregistrées des publications  -->
     <div class="card-deck">
         <div class="card">   <!-- PUBLICATION 1 -->
-            <img class="card-img-top" src="{{ asset('img/rezalps_img.png') }}" alt="Logo Rezalps Application">
+            <img class="card-img-top" src="{{ URL::asset('img/rezalps_img.png') }}" alt="Logo Rezalps Application">
             <div class="card-body">
                 <p class="card-text">Le site Rezalps a enfin ouvert !</p>
             </div>

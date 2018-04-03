@@ -6,7 +6,7 @@
     <title>Publications REZALPS</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link href="{{ asset('css/pages-rezalps.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/app.css') }}" rel="stylesheet">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="REZALPS reseau social dédié au metier de developpeur informatique">
@@ -20,7 +20,7 @@
 
         <div class=" row header-top">
             <div class="col">
-                <img src="img/logo-texte-cote-web.png" id="logo_header" class="rounded float-left" alt="logo-rezalps">
+                <img src="{{ URL::asset('img/logo-texte-cote-web.png') }}" id="logo_header" class="rounded float-left" alt="logo-rezalps">
             </div>
 
             <div class="col header-top" id="block_btn_droit">
