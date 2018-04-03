@@ -14,7 +14,7 @@
 Route::get('inscription', 'HomeController@index')->name('home');
 Route::get('welcome2', 'HomeController@index');
 Route::get('flux', 'HomeController@index');
-Route::get('publications', 'HomeController@index');
+Route::get('publications', 'HomeController@publications');
 Route::get('cv', 'HomeController@index');
 Route::get('medias', 'HomeController@index');
 Route::get('reseau', 'HomeController@index');

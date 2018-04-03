@@ -67,3 +67,5 @@
         </div>
     </div>
 </header>
+@yield('publier')
+@yield('historique-publications')
