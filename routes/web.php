@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('home1');
-});
+
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('welcome2', 'HomeController@index');
+Route::get('flux', 'HomeController@index');
+Route::get('publications', 'HomeController@index');
+Route::get('cv', 'HomeController@index');
+Route::get('medias', 'HomeController@index');
+Route::get('reseau', 'HomeController@index');
+Route::get('parametres', 'HomeController@index');
+Route::get('messagerie', 'HomeController@index');
+Route::get('cgu', 'HomeController@index');
+Route::get('about-us', 'HomeController@index');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
