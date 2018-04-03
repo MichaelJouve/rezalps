@@ -15,4 +15,14 @@ class HomeController extends Controller
     {
         return view('index');
     }
+
+    public function cv()
+    {
+        return view('cv');
+    }
+
+    public function inscription()
+    {
+        return view('inscription');
+    }
 }
