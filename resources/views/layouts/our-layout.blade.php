@@ -69,3 +69,4 @@
 </header>
 @yield('publier')
 @yield('historique-publications')
+
