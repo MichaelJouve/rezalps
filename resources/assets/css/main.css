@@ -117,13 +117,13 @@ main, .body {
     height: 34px;
     border: 0px;
     padding: 0px;
-    background:url(images/like-off.png);
+    background:url(../images/like-off.png);
     background-repeat: no-repeat;
 }
 
 
 .button-like:hover {
-    background:url(images/like-on.png);
+    background:url(../images/like-on.png);
 }
 
 .button-dislike {         /*ATTENDRE PLUS TARD POUR GERER L'ANIMATION DES BOUTONS*/
@@ -131,12 +131,12 @@ main, .body {
     height: 34px;
     border: 0px;
     padding: 0px;
-    background:url(images/dislike-off.png);
+    background:url(../images/dislike-off.png);
     background-repeat: no-repeat;
 }
 
 .button-dislike:hover {
-    background:url(images/dislike-on.png);
+    background:url(../images/dislike-on.png);
 }
 
 .card-img-top {

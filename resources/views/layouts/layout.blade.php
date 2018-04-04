@@ -62,7 +62,4 @@
     </div>
 
 </header>
-
-<section>
     @yield('container-fluid')
-</section>
