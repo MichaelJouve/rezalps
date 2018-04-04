@@ -15,8 +15,20 @@ class HomeController extends Controller
     {
         return view('index');
     }
+<<<<<<< HEAD
     public function publications()
     {
         return view('publications');
+=======
+
+    public function cv()
+    {
+        return view('cv');
+    }
+
+    public function inscription()
+    {
+        return view('inscription');
+>>>>>>> develop
     }
 }

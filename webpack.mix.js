@@ -12,6 +12,6 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-mix.styles(['node_modules/bootstrap/dist/css/bootstrap.min.css','resources/assets/css/pages-rezalps.css'], 'public/css/app.css');
-
+mix.styles(['node_modules/bootstrap/dist/css/bootstrap.min.css',
+       'resources/assets/css/pages_rezalps.css'], 'public/css/all.css');
 mix.copyDirectory('resources/assets/img', 'public/img');

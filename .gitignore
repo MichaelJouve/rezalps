@@ -1,5 +1,8 @@
 /node_modules
 /public/hot
+/public/css
+/public/img
+/public/js
 /public/storage
 /public/css
 /public/img
