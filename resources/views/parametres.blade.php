@@ -1,37 +1,30 @@
-@extends('layouts.layout')
 @extends('layouts.layout-profil')
 
 @section('content')
 <main>
-<nav id="main-nav-profil"> <!-- Nav profil -->
-    <div class="row">
-        <div class="col">
-            <h4 class="text-center" id="parametres_title">Vos paramètres</h4>
-        </div>
-    </div>
-</nav>
+
 
 <div class="container">
     <section id="main-profil">
         <div class="row justify-centent-between">
             <div class="offset-1 col-2 mt-3 mb-3">
-                <a href="page_profil_parametres.php#form_photo" class="form-entete" namebis="#form_photo">
+                <a href="parametres.blade.php#form_photo" class="form-entete" namebis="#form_photo">
                     <img id="photo_entete" src="img/michael-photo.jpg" width="160" height="160" alt="photo-profil-michael">
                 </a>
             </div>
             <div class="col-6 mt-5">
-                <a href="page_profil_parametres.php#form_name" class="form-entete lien_modif_params" namebis="#form_name">
+                <a href="parametres.blade.php#form_name" class="form-entete lien_modif_params" namebis="#form_name">
                     <p class="text-center">Michaël JOUVE</p>
                 </a>
             </div>
             <div class="col-3 mt-5">
-                <a href="page_profil_parametres.php#form_city" class="form-entete lien_modif_params" namebis="#form_city">
+                <a href="parametres.blade.php#form_city" class="form-entete lien_modif_params" namebis="#form_city">
                     <p>Valence</p>
                 </a>
-                <a href="page_profil_parametres.php#form_mail" class="form-entete lien_modif_params" namebis="#form_mail">
+                <a href="parametres.blade.php#form_mail" class="form-entete lien_modif_params" namebis="#form_mail">
                     <p>jouvemichael@gmail.com</p>
                 </a>
-                <a href="page_profil_parametres.php#form_tel" class="form-entete lien_modif_params" namebis="#form_tel">
+                <a href="parametres.blade.php#form_tel" class="form-entete lien_modif_params" namebis="#form_tel">
                     <p>06 07 08 09 01</p>
                 </a>
             </div>
@@ -50,7 +43,7 @@
                                         <p class="text-center">Photo de Profil</p>
                                     </div>
                                     <div class="col-6">
-                                        <a href="page_profil_parametres.php#form_photo" class="form-button alignement_droite lien_modif_params" id="change_photo" namebis="#form_photo">Modifier</a>
+                                        <a href="parametres.blade.php#form_photo" class="form-button alignement_droite lien_modif_params" id="change_photo" namebis="#form_photo">Modifier</a>
                                     </div>
                                     <div class="offset-3 col-6 offset-3">
                                         <form method="post" action="" name="photo" class="form_parametre" id="form_photo">
@@ -70,7 +63,7 @@
                                             <p class="text-center">Nom Prénom :          JOUVE Michaël</p>
                                         </div>
                                         <div class="col-6">
-                                            <a href="page_profil_parametres.php#form_name" class=" form-button alignement_droite lien_modif_params" namebis="#form_name">Modifier</a>
+                                            <a href="parametres.blade.php#form_name" class=" form-button alignement_droite lien_modif_params" namebis="#form_name">Modifier</a>
                                         </div>
                                         <div class="offset-3 col-6 offset-3">
                                             <form method="" action="" name="" class="form_parametre" id="form_name">
@@ -91,7 +84,7 @@
                                             <p class="text-center">Votre Ville :         Valence</p>
                                         </div>
                                         <div class="col-6">
-                                            <a href="page_profil_parametres.php#form_city" class="form-button alignement_droite lien_modif_params" namebis="#form_city">Modifier</a>
+                                            <a href="parametres.blade.php#form_city" class="form-button alignement_droite lien_modif_params" namebis="#form_city">Modifier</a>
                                         </div>
                                         <div class="offset-3 col-6 offset-3">
                                             <form method="" action="" name="" class="form_parametre" id="form_city">
@@ -110,7 +103,7 @@
                                             <p class="text-center">Votre date de naissance :</p>
                                         </div>
                                         <div class="col-6">
-                                            <a href="page_profil_parametres.php#form_date" class="form-button alignement_droite lien_modif_params" namebis="#form_date">Modifier</a>
+                                            <a href="parametres.blade.php#form_date" class="form-button alignement_droite lien_modif_params" namebis="#form_date">Modifier</a>
                                         </div>
                                         <div class="offset-3 col-6 offset-3">
                                             <form method="" action="" name="" class="form_parametre" id="form_date">
@@ -129,7 +122,7 @@
                                             <p class="text-center">Adresse email :         jouvemichaël@gmail.com</p>
                                         </div>
                                         <div class="col-6">
-                                            <a href="page_profil_parametres.php#form_mail" class="form-button alignement_droite lien_modif_params" namebis="#form_mail">Modifier</a>
+                                            <a href="parametres.blade.php#form_mail" class="form-button alignement_droite lien_modif_params" namebis="#form_mail">Modifier</a>
                                         </div>
                                         <div class="offset-3 col-6 offset-3">
                                             <form method="" action="" name="" class="form_parametre" id="form_mail">
@@ -148,7 +141,7 @@
                                             <p class="text-center">Numéro de Téléphone :      06 07 08 09 01</p>
                                         </div>
                                         <div class="col-6">
-                                            <a href="page_profil_parametres.php#form_tel" class="form-button alignement_droite lien_modif_params" namebis="#form_tel">Modifier</a>
+                                            <a href="parametres.blade.php#form_tel" class="form-button alignement_droite lien_modif_params" namebis="#form_tel">Modifier</a>
                                         </div>
                                         <div class="offset-3 col-6 offset-3">
                                             <form method="" action="" name="" class="form_parametre" id="form_tel">
@@ -167,7 +160,7 @@
                                             <p class="text-center">Mot de Passe :        **********</p>
                                         </div>
                                         <div class="col-6">
-                                            <a href="page_profil_parametres.php#form_password" class="form-button alignement_droite lien_modif_params" namebis="#form_password">Modifier</a>
+                                            <a href="parametres.blade.php#form_password" class="form-button alignement_droite lien_modif_params" namebis="#form_password">Modifier</a>
                                         </div>
                                         <div class="offset-3 col-6 offset-3">
                                             <form method="" action="" name="" class="form_parametre" id="form_password">
@@ -188,7 +181,7 @@
                                             <p class="text-center">Visibilité de votre CV</p>
                                         </div>
                                         <div class="col-6">
-                                            <a href="page_profil_parametres.php#form_cv" class="form-button alignement_droite lien_modif_params">Modifier</a>
+                                            <a href="parametres.blade.php#form_cv" class="form-button alignement_droite lien_modif_params">Modifier</a>
                                         </div>
                                         <div class="offset-3 col-6 offset-3">
                                             <form method="" action="" name="" class="form_parametre" id="form_cv">
@@ -210,7 +203,7 @@
                                             <p class="text-center">Suppression de votre compte</p>
                                         </div>
                                         <div class="col-6">
-                                            <a href="page_profil_parametres.php#" class="alignement_droite" namebis="#>Modifier</a>
+                                            <a href="parametres.blade.php#" class="alignement_droite" namebis="#>Modifier</a>
 												</div>
 											</div>
 										</div>
