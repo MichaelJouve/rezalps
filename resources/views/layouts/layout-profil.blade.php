@@ -1,4 +1,5 @@
 @extends('layouts.layout-user')
+@section('sous-header')
 
 <main>
     <nav id="main-nav-profil"> <!-- Nav profil -->
@@ -49,6 +50,5 @@
         </section>
     </div>
 </main>
-
-@yield('profil')
+@endsection
 

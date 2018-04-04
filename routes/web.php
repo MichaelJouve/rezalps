@@ -14,13 +14,13 @@
 Route::get('inscription', 'HomeController@inscription')->name('home');
 Route::get('welcome2', 'HomeController@index')->name('welcome');
 Route::get('flux', 'HomeController@index')->name('flux');
-Route::get('publications', 'HomeController@index');
+Route::get('publications', 'HomeController@publications');
 Route::get('cv', 'HomeController@cv');
-Route::get('medias', 'HomeController@index');
-Route::get('reseau', 'HomeController@index');
-Route::get('parametres', 'HomeController@index');
-Route::get('messagerie', 'HomeController@index');
-Route::get('cgu', 'HomeController@index');
-Route::get('about-us', 'HomeController@index');
+Route::get('medias', 'HomeController@medias');
+Route::get('reseau', 'HomeController@reseau');
+Route::get('parametres', 'HomeController@parametres');
+Route::get('messagerie', 'HomeController@messagerie');
+Route::get('cgu', 'HomeController@cgu');
+Route::get('about-us', 'HomeController@about-us');
 
 Auth::routes();

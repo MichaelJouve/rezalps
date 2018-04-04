@@ -1,5 +1,4 @@
-@extends('layouts.layout-user')
-
+@extends('layouts.layout-profil')
 @section('content')
     <main>
         <section id="content" class="container">
@@ -54,9 +53,8 @@
                     </div>
                 </div>
             </div>
-            </div>
-            </div>
+
         </section>
-        </div>
+
     </main>
-    @endsection
+ @endsection
