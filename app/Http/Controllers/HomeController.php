@@ -36,4 +36,8 @@ class HomeController extends Controller
     {
         return view('medias');
     }
+    public function reseau()
+    {
+        return view('reseau');
+    }
 }
