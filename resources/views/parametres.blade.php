@@ -2,37 +2,6 @@
 @section('content')
     <main>
         <div class="container">
-            <section id="main-profil">
-                <div class="row justify-centent-between">
-                    <div class="offset-1 col-2 mt-3 mb-3">
-                        <a href="{{ URL::route('parametres') }}" class="form-entete" namebis="#form_photo">
-                            <img id="photo_entete" src="img/michael-photo.jpg" width="160" height="160"
-                                 alt="photo-profil-michael">
-                        </a>
-                    </div>
-                    <div class="col-6 mt-5">
-                        <a href="{{ URL::route('parametres') }}" class="form-entete lien_modif_params"
-                           namebis="#form_name">
-                            <p class="text-center">Michaël JOUVE</p>
-                        </a>
-                    </div>
-                    <div class="col-3 mt-5">
-                        <a href="parametres.blade.php#form_city" class="form-entete lien_modif_params"
-                           namebis="#form_city">
-                            <p>Valence</p>
-                        </a>
-                        <a href="parametres.blade.php#form_mail" class="form-entete lien_modif_params"
-                           namebis="#form_mail">
-                            <p>jouvemichael@gmail.com</p>
-                        </a>
-                        <a href="parametres.blade.php#form_tel" class="form-entete lien_modif_params"
-                           namebis="#form_tel">
-                            <p>06 07 08 09 01</p>
-                        </a>
-                    </div>
-                </div>
-            </section>
-
             <div id="content">
                 <div class="row">
                     <div class=" row col-12">
@@ -45,7 +14,7 @@
                                                 <p class="text-center">Photo de Profil</p>
                                             </div>
                                             <div class="col-6">
-                                                <a href="parametres.blade.php#form_photo"
+                                                <a href="{{ URL::route('parametres') }}"
                                                    class="form-button alignement_droite lien_modif_params"
                                                    id="change_photo" namebis="#form_photo">Modifier</a>
                                             </div>
@@ -68,7 +37,7 @@
                                                     <p class="text-center">Nom Prénom : JOUVE Michaël</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="parametres.blade.php#form_name"
+                                                    <a href="{{ URL::route('parametres') }}"
                                                        class=" form-button alignement_droite lien_modif_params"
                                                        namebis="#form_name">Modifier</a>
                                                 </div>
@@ -98,7 +67,7 @@
                                                     <p class="text-center">Votre Ville : Valence</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="parametres.blade.php#form_city"
+                                                    <a href="{{ URL::route('parametres') }}"
                                                        class="form-button alignement_droite lien_modif_params"
                                                        namebis="#form_city">Modifier</a>
                                                 </div>
@@ -123,7 +92,7 @@
                                                     <p class="text-center">Votre date de naissance :</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="parametres.blade.php#form_date"
+                                                    <a href="{{ URL::route('parametres') }}"
                                                        class="form-button alignement_droite lien_modif_params"
                                                        namebis="#form_date">Modifier</a>
                                                 </div>
@@ -149,7 +118,7 @@
                                                     <p class="text-center">Adresse email : jouvemichaël@gmail.com</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="parametres.blade.php#form_mail"
+                                                    <a href="{{ URL::route('parametres') }}"
                                                        class="form-button alignement_droite lien_modif_params"
                                                        namebis="#form_mail">Modifier</a>
                                                 </div>
@@ -175,7 +144,7 @@
                                                     <p class="text-center">Numéro de Téléphone : 06 07 08 09 01</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="parametres.blade.php#form_tel"
+                                                    <a href="{{ URL::route('parametres') }}"
                                                        class="form-button alignement_droite lien_modif_params"
                                                        namebis="#form_tel">Modifier</a>
                                                 </div>
@@ -201,7 +170,7 @@
                                                     <p class="text-center">Mot de Passe : **********</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="parametres.blade.php#form_password"
+                                                    <a href="{{ URL::route('parametres') }}"
                                                        class="form-button alignement_droite lien_modif_params"
                                                        namebis="#form_password">Modifier</a>
                                                 </div>
@@ -230,7 +199,7 @@
                                                     <p class="text-center">Visibilité de votre CV</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="parametres.blade.php#form_cv"
+                                                    <a href="{{ URL::route('parametres') }}"
                                                        class="form-button alignement_droite lien_modif_params">Modifier</a>
                                                 </div>
                                                 <div class="offset-3 col-6 offset-3">
