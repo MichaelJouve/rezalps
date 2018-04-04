@@ -32,4 +32,8 @@ class HomeController extends Controller
     {
         return view('flux');
     }
+    public function medias()
+    {
+        return view('medias');
+    }
 }
