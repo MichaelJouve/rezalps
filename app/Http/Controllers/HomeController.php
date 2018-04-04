@@ -15,7 +15,6 @@ class HomeController extends Controller
     {
         return view('inscription');
     }
-
     public function cv()
     {
         return view('cv');
