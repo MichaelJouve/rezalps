@@ -56,6 +56,7 @@
 
 <div class="container">
     @yield('content')
+
 </div>
 
 
@@ -64,4 +65,5 @@
 </footer>
 
 </body>
+<script href="{{URL::asset('js/all.js')}}"></script>
 </html>
