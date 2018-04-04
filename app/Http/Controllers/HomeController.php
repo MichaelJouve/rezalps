@@ -39,5 +39,8 @@ class HomeController extends Controller
     {
         return view('reseau');
     }
-
+    public function parametres()
+    {
+        return view('parametres');
+    }
 }
