@@ -7,16 +7,16 @@
             <div class="col">
                 <ul class="nav nav-pills nav-fill">
                     <li class="nav-item">
-                        <a class="nav-link" href="page_profil_publications.php" title="Publications">Publications</a>
+                        <a class="nav-link" href="{{ URL::route('publications') }}" title="Publications">Publications</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="page_profil_cv.php" title="CV">CV</a>
+                        <a class="nav-link" href="{{ URL::route('cv') }}" title="CV">CV</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="page_profil_media.php" title="Medias">Medias</a>
+                        <a class="nav-link" href="{{ URL::route('medias') }}" title="Medias">Medias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="page_profil_reseau.php" title="Réseau">Réseau</a>
+                        <a class="nav-link" href="{{ URL::route('reseau') }}" title="Réseau">Réseau</a>
                     </li>
                 </ul>
             </div>
