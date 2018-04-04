@@ -24,4 +24,12 @@ class HomeController extends Controller
     {
         return view('inscription');
     }
+    public function publications()
+    {
+        return view('publications');
+    }
+    public function flux()
+    {
+        return view('flux');
+    }
 }
