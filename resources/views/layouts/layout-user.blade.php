@@ -53,7 +53,7 @@
     </div>
 </header>
 
-
+@yield('content')
 
 <div class="container">
 

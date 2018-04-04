@@ -1,1 +1,1 @@
-@extends('layouts.layoutConnected')
+@extends('layouts.layout-user')
