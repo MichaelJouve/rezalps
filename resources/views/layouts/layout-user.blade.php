@@ -52,11 +52,10 @@
 
     </div>
 </header>
-
-@yield('content')
+@yield('sous-header')
 
 <div class="container">
-
+    @yield('content')
 </div>
 
 
