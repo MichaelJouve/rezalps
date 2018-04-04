@@ -50,5 +50,10 @@
         </section>
     </div>
 </main>
+
+<div class="container">
+    @yield('content')
+</div>
 @endsection
+
 

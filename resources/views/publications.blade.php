@@ -1,6 +1,6 @@
 @extends('layouts.layout-profil')
 
-@section('publications')
+@section('content')
     <div class="container publications">  <!-- Composition de l'onglet publications de la page profil -->
         <div class="row">
             <div class="profil-informations col-lg-3 col-12"> <!-- Colonne "MES INFOS" -->

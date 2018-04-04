@@ -56,7 +56,6 @@
 
 <div class="container">
     @yield('content')
-    @yield('publications')
 </div>
 
 
