@@ -12,9 +12,9 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function flux()
+    public function home()
     {
-        return view('flux');
+        return view('home1');
     }
 
     public function publications()
