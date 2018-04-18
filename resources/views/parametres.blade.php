@@ -223,7 +223,7 @@
                                                     <p class="text-center">Suppression de votre compte</p>
                                                 </div>
                                                 <div class="col-6">
-                                                    <a href="parametres.blade.php#" class="alignement_droite" namebis="#>Modifier</a>
+                                                    <a href="parametres.blade.php#" class="alignement_droite" namebis="#">Modifier</a>
 												</div>
 											</div>
 										</div>
@@ -236,4 +236,4 @@
 			</div>
 		</div>
 	</main>
-@endsection
+ @endsection
