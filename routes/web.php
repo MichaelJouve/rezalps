@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController@registration')->name('registration');
 
-Route::get('flux', 'PostController@flux')->name('flux')->middleware('auth');
+Route::get('accueil', 'PostController@accueil')->name('accueil')->middleware('auth');
 
 Route::get('user/{id}/publications', 'UserController@publications')->name('publications')->middleware('auth');
 Route::get('user/{id}/cv', 'UserController@cv')->name('cv')->middleware('auth');
