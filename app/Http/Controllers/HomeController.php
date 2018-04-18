@@ -11,9 +11,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function inscription()
+    public function registration()
     {
-        return view('inscription');
+        return view('registration');
     }
 
 

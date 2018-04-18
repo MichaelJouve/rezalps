@@ -9,7 +9,7 @@ class UserController extends Controller
 {
 
 
-    public function reseau()
+    public function network()
     {
         return view('reseau');
     }
