@@ -20,4 +20,9 @@ class HomeController extends Controller
     {
         return view('legal_notice');
     }
+
+    public function cgu()
+    {
+        return view('cgu');
+    }
 }
