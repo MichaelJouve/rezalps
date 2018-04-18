@@ -11,11 +11,11 @@ class UserController extends Controller
 
     public function network()
     {
-        return view('reseau');
+        return view('network');
     }
-    public function parametre()
+    public function settings()
     {
-        return view('parametres');
+        return view('settings');
     }
 
     public function cv($id)
