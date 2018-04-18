@@ -31,7 +31,8 @@ Route::get('user/publications', 'PostController@publications')->name('publicatio
 
 Route::get('user/medias', 'MediaController@medias')->name('medias')->middleware('auth');
 
-Route::get('cgu', 'HomeController@cgu')->name('cgu')->middleware('auth');
+Route::get('cgu', 'HomeController@cgu')->name('cgu');
 Route::get('about-us', 'HomeController@about-us')->name('about-us');
+Route::get('legal_notice', 'HomeController@legal_notice')->name('legal_notice');
 
 Auth::routes();
