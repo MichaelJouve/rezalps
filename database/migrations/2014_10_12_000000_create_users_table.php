@@ -18,8 +18,17 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
+            $table->string('city');
+            $table->date('birthdate');
+            $table->string('phone_number');
+            $table->boolean('entreprise');
+            $table->string('siret');
+            $table->mediumText('description');
+            $table->string('pitch_video');
+            $table->string('cv');
+            $table->string('avatar');
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamps(); //created and update by it self
         });
     }
 

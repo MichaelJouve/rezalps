@@ -17,4 +17,5 @@ mix.styles(['node_modules/bootstrap/dist/css/bootstrap.min.css',
             'node_modules/font-awesome.min.css/font-awesome.min.css'], 'public/css/all.css');
 mix.copyDirectory('resources/assets/img', 'public/img');
 mix.scripts(['resources/assets/js/jquery-comments.js',
-             'node_modules/jquery/dist/jquery.min.js'],'public/js/all.js');
+             'node_modules/jquery/dist/jquery.min.js', 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'],
+    'public/js/all.js');
