@@ -11,23 +11,27 @@
 |
 */
 
-Route::get('/', 'HomeController@inscription')->name('inscription');
-Route::get('messagerie', 'MessageController@mail')->name('messagerie')->middleware('auth');
-Route::get('home', 'PostController@home')->name('home1')->middleware('auth');
-Route::get('user/{id}/publications', 'UserController@show')->name('cv')->middleware('auth');
-Route::get('user/{id}/cv', 'UserController@cv')->name('cv')->middleware('auth');
-Route::get('user/{id}/media', 'UserController@cv')->name('cv')->middleware('auth');
-Route::get('user/{id}/reseau', 'UserController@cv')->name('cv')->middleware('auth');
+Route::get('/', 'HomeController@registration')->name('registration');
 
-Route::get('reseau', 'UserController@reseau')->name('reseau')->middleware('auth');
-Route::get('cv', 'UserController@cv')->name('cv')->middleware('auth')->middleware('auth');
-Route::get('parametres', 'UserController@parametres')->name('parametres')->middleware('auth');
+Route::get('flux', 'PostController@flux')->name('flux');
 
-Route::get('publications', 'PostController@publications')->name('publications')->middleware('auth');
+Route::get('user/{id}', 'UserController@cv')->name('cv');
+Route::get('user/{id}/', 'UserController@cv')->name('cv');
+Route::get('user/{id}', 'UserController@cv')->name('cv');
+Route::get('user/{id}', 'UserController@cv')->name('cv');
+Route::get('user/{id}', 'UserController@cv')->name('cv');
+Route::get('user/cv', 'UserController@cv')->name('cv');
+Route::get('user/reseau', 'UserController@reseau')->name('reseau');
+Route::get('user/parametres', 'UserController@parametres')->name('parametres');
 
-Route::get('medias', 'MediaController@medias')->name('medias')->middleware('auth');
+Route::get('messagerie', 'MailController@mail')->name('messagerie');
 
-Route::get('cgu', 'HomeController@cgu')->name('cgu')->middleware('auth');
+
+Route::get('user/publications', 'PostController@publications')->name('publications');
+
+Route::get('user/medias', 'MediaController@medias')->name('medias');
+
+Route::get('cgu', 'HomeController@cgu')->name('cgu');
 Route::get('about-us', 'HomeController@about-us')->name('about-us');
 
 Auth::routes();

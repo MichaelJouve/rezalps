@@ -2,34 +2,20 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class MailController extends Controller
 {
-
-
-    public function network()
-    {
-        return view('network');
-    }
-    public function settings()
-    {
-        return view('settings');
-    }
-
-    public function cv($id)
-    {
-        $user = User::findOrFail($id);
-
-        return view('cv', ['user' => $user]);
-    }
-
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    public function mail()
+    {
+        return view('messaging');
+    }
+
     public function index()
     {
         //
