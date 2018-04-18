@@ -28,7 +28,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="page_profil_publications.php">Profil</a>
                         <a class="dropdown-item" href="page_profil_parametres.php">Paramètres</a>
-                        <a class="dropdown-item" href="index.php">Déconnection</a>
+                        <a class="dropdown-item" href="{{'/'}}">Déconnection</a>
                     </div>
                 </div>
             </div>
@@ -56,6 +56,7 @@
 
 <div class="container">
     @yield('content')
+
 </div>
 
 
@@ -64,4 +65,5 @@
 </footer>
 
 </body>
+<script href="{{URL::asset('js/all.js')}}"></script>
 </html>

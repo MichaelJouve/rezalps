@@ -12,15 +12,18 @@
 */
 
 Route::get('/', 'HomeController@inscription')->name('inscription');
-Route::get('welcome2', 'HomeController@welcome2')->name('welcome2');
-Route::get('flux', 'HomeController@flux')->name('flux');
-Route::get('publications', 'HomeController@publications')->name('publications');
-Route::get('cv', 'HomeController@cv')->name('cv');
-Route::get('medias', 'HomeController@medias')->name('medias');
-Route::get('reseau', 'HomeController@reseau')->name('reseau');
-Route::get('parametres', 'HomeController@parametres')->name('parametres');
-Route::get('messagerie', 'HomeController@messagerie')->name('messagerie');
-Route::get('cgu', 'HomeController@cgu')->name('cgu');
+Route::get('welcome', 'HomeController@welcome')->name('welcome');
+Route::get('cv', 'UserController@cv')->name('cv');
+Route::get('reseau', 'UserController@reseau')->name('reseau');
+Route::get('parametres', 'UserController@parametres')->name('parametres');
+Route::get('cgu', 'HomeController@cgu')->name('cgu')->middleware('auth');
 Route::get('about-us', 'HomeController@about-us')->name('about-us');
+
+Route::get('messagerie', 'MailController@mail')->name('messagerie');
+
+Route::get('flux', 'PostController@flux')->name('flux');
+Route::get('publications', 'PostController@publications')->name('publications');
+
+Route::get('medias', 'MediaController@medias')->name('medias');
 
 Auth::routes();

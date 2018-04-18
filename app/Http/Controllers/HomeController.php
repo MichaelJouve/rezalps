@@ -15,30 +15,3 @@ class HomeController extends Controller
     {
         return view('inscription');
     }
-
-    public function cv()
-    {
-        return view('cv');
-    }
-
-    public function publications()
-    {
-        return view('publications');
-    }
-
-    public function flux()
-    {
-        return view('flux');
-    }
-
-    public function medias()
-    {
-        return view('medias');
-    }
-
-    public function reseau()
-    {
-        return view('reseau');
-    }
-
-}
