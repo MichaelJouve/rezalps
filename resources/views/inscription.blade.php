@@ -3,21 +3,20 @@
 <head>
     <title>Connexion REZALPS</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/pages_rezalps.css">
+    <link rel="stylesheet" type="text/css" href="css/all.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="REZALPS reseau social dédié au metier de developpeur informatique">
-    <meta >
+    <meta>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 </head>
 
 <body class="body">
 
 <header id="header_inscription">
-    <div class="container" >
+    <div class="container">
         <div class="row">
             <div class="col text-center text-sm-left">
-                <img id="logo_header" src="img/logo-text-cote-web.png"  alt="logo-rezalps">
+                <img id="logo_header" src="img/logo-text-cote-web.png" alt="logo-rezalps">
             </div>
             <!-- DIV POUR MOBILE, REMPLACE LE SLIDER -->
             <div class="container" id="mobile_slider">
@@ -36,26 +35,63 @@
             </div>
             <div class="container" id="connexion_mobile">
                 <div class="row justify-content-center">
-                    <form class="form_connexion" id="form_connexion" method="post" action="">
-                        <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
-                        <input type="password" class="form-control" placeholder="Mot de passe" aria-label="Username" aria-describedby="basic-addon1">
-                        <div class="row justify-content-center" id="connexion_bouton_mobile">
-                            <a href="page_profil_publications.php"><button type="button" id="bouton_connexion_top" class="btn btn-secondary">Connexion</button></a>
-                        </div>
+                    <form class="form_connexion" id="form_connexion" method="post" action="{{ route('login') }}">
+                        <input id="email" type="email"
+                               class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
+                               value="{{ old('email') }}" required autofocus>
+
+                        @if ($errors->has('email'))
+                            <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                        @endif
+                            <input id="password" type="password"
+                                   class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                   name="password" required>
+
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                        @endif
+                                <div class="row justify-content-center" id="connexion_bouton_mobile">
+                                    <button type="button" id="bouton_connexion_top"
+                                            class="btn btn-secondary">{{ __('Connexion') }}</button>
+                                </div>
                     </form>
                 </div>
             </div>
             <!-- FIN DIV POUR MOBILE -->
             <div class="row bouton_inscription d-none d-sm-block">
                 <div class="input-group mb-3 header_accueil">
-                    <form class="form_connexion" id="form_connexion" method="post" action="">
+                    <form class="form_connexion" id="form_connexion" method="post" action="{{ route('login') }}">
+                        @csrf
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1">
-                            <input type="password" class="form-control" placeholder="Mots de passe" aria-label="Username" aria-describedby="basic-addon1">
-                            <a href="page_profil_publications.php"><button type="button" id="bouton_connexion_top" class="btn btn-secondary">Connexion</button></a>
+                            <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                   placeholder="Email" name="email" value="{{ old('email') }}" required autofocus>
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                            @endif
+                            <input id="password" type="password"
+                                   class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                   placeholder="Mot de passe" name="password" required>
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                            @endif
+
+                            <button type="button" id="bouton_connexion_top"
+                                    class="btn btn-secondary">{{ __('Connexion') }}</button>
+
                         </div>
                     </form>
-                    <a href="#form1"><button type="button" class="btn btn-primary" id="bouton_inscription_top" >S'inscrire</button></a>
+                    <a href="{{ route('register') }}">
+                        <button type="button" class="btn btn-primary"
+                                id="bouton_inscription_top">{{ __('Inscription') }}</button>
+                    </a>
                 </div>
             </div>
         </div>
@@ -64,7 +100,7 @@
 </header>
 
 <section>
-    <div class="container-fluid" >
+    <div class="container-fluid">
 
         <div class="row d-none d-md-block d-lg-block">
             <div class="col-12 fullsize">
@@ -74,19 +110,27 @@
                         <div class="carousel-item active" id="carousel_img0">
                             <div class="col-xl-3 col-lg-5 col-md-11 text">
                                 <h5>Le 1er réseau social "Métier"</h5>
-                                <p>Rezalps est le premier réseau social centré autour du métier de développeur informatique.Que vous soyez novice, développeur aguéri ou une entreprise, venez profiter de l’expertise de la communauté afin d’échanger autour d’une passion commune ! </p>
+                                <p>Rezalps est le premier réseau social centré autour du métier de développeur
+                                    informatique.Que vous soyez novice, développeur aguéri ou une entreprise, venez
+                                    profiter de l’expertise de la communauté afin d’échanger autour d’une passion
+                                    commune ! </p>
                             </div>
                         </div>
                         <div class="carousel-item" id="carousel_img1">
                             <div class="col-xl-3 col-lg-5 col-md-11 text">
                                 <h5>Créateur de liens</h5>
-                                <p>Likez, commentez et partagez l'actualité de vos contacts et agrandissez votre réseau en ayant des interactions avec d'autres personnes. Une question ? Un problème ?Une découverte à partager? Une chose à faire... Pensez Rezalps! </p>
+                                <p>Likez, commentez et partagez l'actualité de vos contacts et agrandissez votre réseau
+                                    en ayant des interactions avec d'autres personnes. Une question ? Un problème ?Une
+                                    découverte à partager? Une chose à faire... Pensez Rezalps! </p>
                             </div>
                         </div>
                         <div class="carousel-item" id="carousel_img2">
                             <div class="col-xl-3 col-lg-5 col-md-11 text">
                                 <h5>Objectif : recrutement</h5>
-                                <p>La demande dans le secteur du développement étant forte, Rezalps se veut être une solution pour vous mettre en contact avec la personne qui conviendra parfaitement à ce que vous cherchez. Partagez vos offres d’emplois et explorez les profils des différents candidats en quelques clics !</p>
+                                <p>La demande dans le secteur du développement étant forte, Rezalps se veut être une
+                                    solution pour vous mettre en contact avec la personne qui conviendra parfaitement à
+                                    ce que vous cherchez. Partagez vos offres d’emplois et explorez les profils des
+                                    différents candidats en quelques clics !</p>
                             </div>
                         </div>
 
@@ -103,87 +147,92 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">{{ __('Connexion') }}</div>
 
-            <div class="col-lg-3 form-group">
+                        <div class="card-body">
+                            <form method="POST" action="{{ route('login') }}">
+                                @csrf
 
-                <div class="row justify-content-around">
-                    <button class="btn btn-light col-4" id="form1" >Personnel</button>
-                    <button class="btn btn-light col-4" id="form2" >Entreprise</button>
+                                <div class="form-group row">
+                                    <label for="email"
+                                           class="col-sm-4 col-form-label text-md-right">{{ __('Adresse E-Mail') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="email" type="email"
+                                               class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
+                                               name="email" value="{{ old('email') }}" required autofocus>
+
+                                        @if ($errors->has('email'))
+                                            <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="password"
+                                           class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
+
+                                    <div class="col-md-6">
+                                        <input id="password" type="password"
+                                               class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}"
+                                               name="password" required>
+
+                                        @if ($errors->has('password'))
+                                            <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                        @endif
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <div class="col-md-6 offset-md-4">
+                                        <div class="checkbox">
+                                            <label>
+                                                <input type="checkbox"
+                                                       name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Se souvenir de moi') }}
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-8 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Connexion') }}
+                                        </button>
+
+                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                            {{ __('Mot de passe oublié ?') }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
-
-                <form class="my_form" id="my_form1" method="post" action="http://localhost/michael/rezalps_php_test/php/traitement_donnee.php"> <!-- method gère le mode d'envoi et action le fichier qui va gérer les données reçu. -->
-                    <label for="name"></label>
-                    <input type="name" class="form-control" aria-describedby="écrire votre nom" placeholder="NOM Prénom" name="name" id="name">
-
-                    <label for="email-co"></label>
-                    <input type="email" class="form-control" aria-describedby="écrire votre email" placeholder="Email" name="email_connexion" id="email-co">
-
-                    <label for="mdp"></label>
-                    <input type="password" class="form-control" placeholder="Mot de passe" name="mp_connexion" id="mdp">
-
-                    <label for="ville"></label>
-                    <input type="text" class="form-control" name="ville" placeholder="Ville" id="ville">
-
-                    <div class="row justify-content-center cgu_style">
-                        <input  type="checkbox" name="cgu" id="cgu">
-                        <p>J'accepte les CGU.</p>
-                    </div>
-
-                    <div class="row justify-content-center">
-                        <button type="submit" class="btn btn-light">Inscription</button>
-                    </div>
-
-                </form>
-
-                <form class="my_form" id="my_form2" method="post" action="http://localhost/michael/rezalps_php_test/php/traitement_donnee.php"> <!-- method gère le mode d'envoi et action le fichier qui va gérer les données reçu. -->
-                    <label for="entreprise"></label>
-                    <input type="name" class="form-control" aria-describedby="écrire le nom de votre société" placeholder="Nom Entreprise" name="name" id="entreprise">
-
-                    <label for="email-co"></label>
-                    <input type="email" class="form-control" aria-describedby="écrire votre email" placeholder="Email" name="email_connexion" id="email-co">
-
-                    <label for="mdp"></label>
-                    <input type="password" class="form-control" placeholder="Mot de passe" name="mp_connexion" id="mdp">
-
-                    <label for="ville"></label>
-                    <input type="text" class="form-control" name="ville" placeholder="Ville" id="ville">
-
-                    <label for="siret"></label>
-                    <input type="text" class="form-control" name="siret" placeholder="SIRET" id="siret">
-
-                    <div class="row justify-content-center cgu_style">
-                        <input  type="checkbox" name="cgu" id="cgu">
-                        <p>J'accepte les CGU.</p>
-                    </div>
-
-                    <div class="row justify-content-center">
-                        <button type="submit" class="btn btn-light">Inscription</button>
-                    </div>
-
-                </form>
-
             </div>
         </div>
+    </div>
     </div>
 
 </section>
 
 
-
 <footer>
     <p id="SAS" class="row justify-content-center">&copy; EPIK S.A.S</p>
 </footer>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="js/all.js"></script>
 
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
-<script src="js/jquery_validate.js" ></script>
-<script src="js/script_accueil.js" ></script>
-<script src="js/script_validations.js" ></script>
 </body>
 </html>
