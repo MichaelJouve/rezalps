@@ -16,9 +16,13 @@ class HomeController extends Controller
         return view('registration');
     }
 
+    public function legal_notice()
+    {
+        return view('legal_notice');
+    }
 
-
-
-
-
+    public function cgu()
+    {
+        return view('cgu');
+    }
 }
