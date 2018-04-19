@@ -83,8 +83,8 @@
                                     </span>
                             @endif
 
-                            <a href="{{ route('login') }}" id="bouton_connexion_top"
-                               class="btn btn-secondary">Connexion</a>
+                            <bouton type="submit" id="bouton_connexion_top"
+                               class="btn btn-secondary">Connexion</bouton>
 
                         </div>
                     </form>

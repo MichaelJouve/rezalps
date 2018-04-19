@@ -14,12 +14,12 @@
 Route::get('/', 'HomeController@registration')->name('registration');
 
 Route::get('flux', 'PostController@flux')->name('flux');
-
-Route::get('user/{id}', 'UserController@cv')->name('cv');
-Route::get('user/{id}/', 'UserController@cv')->name('cv');
-Route::get('user/{id}', 'UserController@cv')->name('cv');
-Route::get('user/{id}', 'UserController@cv')->name('cv');
-Route::get('user/{id}', 'UserController@cv')->name('cv');
+Route::post('add_post', 'PostController@create')->name('new_post');
+Route::get('user/{id}', 'UserController@cv')->name('');
+Route::get('user/{id}/', 'UserController@cv')->name('');
+Route::get('user/{id}', 'UserController@cv')->name('');
+Route::get('user/{id}', 'UserController@cv')->name('');
+Route::get('user/{id}', 'UserController@cv')->name('');
 Route::get('user/cv', 'UserController@cv')->name('cv');
 Route::get('user/reseau', 'UserController@reseau')->name('reseau');
 Route::get('user/parametres', 'UserController@parametres')->name('parametres');
