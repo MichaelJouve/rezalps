@@ -55,8 +55,8 @@
                                     </span>
                         @endif
                                 <div class="row justify-content-center" id="connexion_bouton_mobile">
-                                    <button type="button" id="bouton_connexion_top"
-                                            class="btn btn-secondary">{{ __('Connexion') }}</button>
+                                    <a href="{{ route('login') }}" id="bouton_connexion_top"
+                                            class="btn btn-secondary">{{ __('failed') }}</a>
                                 </div>
                     </form>
                 </div>
@@ -83,8 +83,8 @@
                                     </span>
                             @endif
 
-                            <button type="button" id="bouton_connexion_top"
-                                    class="btn btn-secondary">{{ __('Connexion') }}</button>
+                            <a href="{{ route('login') }}" id="bouton_connexion_top"
+                               class="btn btn-secondary">Connexion</a>
 
                         </div>
                     </form>
