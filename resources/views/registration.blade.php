@@ -83,10 +83,10 @@
                                     </span>
                             @endif
 
-                            <bouton type="submit" id="bouton_connexion_top"
-                               class="btn btn-secondary">Connexion</bouton>
 
                         </div>
+                            <button type="submit" id="bouton_connexion_top"
+                               class="btn btn-secondary">Connexion</button>
                     </form>
                     <a href="{{ route('register') }}">
                         <button type="button" class="btn btn-primary"
