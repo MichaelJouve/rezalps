@@ -16,17 +16,18 @@
                                             <div class="col-6">
                                                 <a href="{{ URL::route('settings') }}"
                                                    class="form-button alignement_droite lien_modif_params"
-                                                   id="change_photo" namebis="#form_photo">Modifier</a>
+                                                   id="change_photo">Modifier</a>
                                             </div>
                                             <div class="offset-3 col-6 offset-3">
-                                                <form method="post" action="" name="" class="" id="">
+                                                <form method="post" action="{{route('update-setting')}}" id="form">
+                                                    @csrf
                                                     <div class="upload-btn-wrapper">
                                                         <button class="btn">Photos</button>
                                                         <input type="file" name="myfile"/>
                                                     </div>
                                                     <div class="input-group">
                                                         <label for="name"></label>
-                                                        <input type="name" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                aria-describedby="Votre nom" placeholder="Nom"
                                                                name="name" id="name" value="{{ $user->name }}">
                                                     </div>

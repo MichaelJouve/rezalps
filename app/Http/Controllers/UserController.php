@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -47,9 +48,19 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'name' => 'required|min:3|max:250',
+            'email' => 'required|email',
+            'phone_number' => '',
+            'birthdate' => 'nullable|date',
+            'city' => 'required|max:250',
+            'password' => 'required|min:3|max:12'
+        ]);
+
+        $Users = User::create($validateData);
+        return view('settings', ['User' => $Users]);
     }
 
     /**
