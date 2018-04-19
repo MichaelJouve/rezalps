@@ -17,6 +17,7 @@ class UserController extends Controller
     {
         return view('network');
     }
+
     public function settings()
     {
         $user = Auth::user();
