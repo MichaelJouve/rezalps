@@ -20,8 +20,10 @@
                 <div class="card-deck"> <!-- PUBLICATION 0 -->
                     <div class="card">
                         <div class="card-body">
-                            <form action="">
-                                <textarea name="" id="" cols="100" rows="3" placeholder="Publier ..."></textarea>
+                            <form action="{{route('add-post')}}" method="POST">
+                                @csrf
+                                <input type="text" name="title">
+                                <textarea name="publication" cols="100" rows="3" placeholder="Publier ..."></textarea>
                                 <div class="upload-btn-wrapper">
                                     <button class="btn">Pièce jointe</button>
                                     <input type="file" name="myfile"/>
@@ -35,12 +37,15 @@
                 </div>
 
                 <!--   zones qui afficheront les données enregistrées des publications  -->
+                @foreach($posts as $post)
                 <div class="card-deck">
                     <div class="card">   <!-- PUBLICATION 1 -->
-                        <img class="card-img-top" src="img/rezalps_img.png" alt="Logo Rezalps Application">
+                        <img class="card-img-top" src="img/rezalps_img.png" alt="Logo Rezalps Application">+
                         <div class="card-body">
-                            <p class="card-text">Le site Rezalps a enfin ouvert !</p>
+                            <p class="card-text">{{ $post->title }}</p>
+                            <p class="card-text">{{ $post->publication }}</p>
                         </div>
+                        @endforeach
                         <div class="card-footer">
                             <small class="text-muted">
                                 <button class="button-like"></button>
