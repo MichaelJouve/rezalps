@@ -10,13 +10,13 @@
                         <a class="nav-link" href="{{ URL::route('publications') }}" title="Publications">Publications</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ URL::route('cv') }}" title="CV">CV</a>
+                        <a class="nav-link" href="{{ URL::route('user.cv') }}" title="CV">CV</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ URL::route('medias') }}" title="Medias">Medias</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ URL::route('reseau') }}" title="Réseau">Réseau</a>
+                        <a class="nav-link" href="{{ URL::route('network') }}" title="Réseau">Réseau</a>
                     </li>
                 </ul>
             </div>
