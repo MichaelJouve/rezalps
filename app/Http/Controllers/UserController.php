@@ -2,24 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-
-
-    public function reseau()
+    function __construct()
     {
-        return view('reseau');
-    }
-    public function parametre()
-    {
-        return view('parametres');
+        $this->middleware('auth');
     }
 
-    public function cv()
+    public function network()
     {
-        return view('cv');
+        return view('network');
+    }
+    public function settings()
+    {
+        return view('settings');
+    }
+
+    public function cv($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('cv', ['user' => $user]);
     }
 
     /**

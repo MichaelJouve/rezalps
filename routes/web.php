@@ -11,19 +11,27 @@
 |
 */
 
-Route::get('/', 'HomeController@inscription')->name('inscription');
-Route::get('welcome', 'HomeController@welcome')->name('welcome');
-Route::get('cv', 'UserController@cv')->name('cv');
-Route::get('reseau', 'UserController@reseau')->name('reseau');
-Route::get('parametres', 'UserController@parametres')->name('parametres');
-Route::get('cgu', 'HomeController@cgu')->name('cgu')->middleware('auth');
-Route::get('about-us', 'HomeController@about-us')->name('about-us');
+Route::get('/', 'HomeController@registration')->name('registration');
+
+Route::get('flux', 'PostController@flux')->name('flux');
+Route::post('add_post', 'PostController@create')->name('new_post');
+Route::get('user/{id}', 'UserController@cv')->name('');
+Route::get('user/{id}/', 'UserController@cv')->name('');
+Route::get('user/{id}', 'UserController@cv')->name('');
+Route::get('user/{id}', 'UserController@cv')->name('');
+Route::get('user/{id}', 'UserController@cv')->name('');
+Route::get('user/cv', 'UserController@cv')->name('cv');
+Route::get('user/reseau', 'UserController@reseau')->name('reseau');
+Route::get('user/parametres', 'UserController@parametres')->name('parametres');
 
 Route::get('messagerie', 'MailController@mail')->name('messagerie');
 
-Route::get('flux', 'PostController@flux')->name('flux');
-Route::get('publications', 'PostController@publications')->name('publications');
 
-Route::get('medias', 'MediaController@medias')->name('medias');
+Route::get('user/publications', 'PostController@publications')->name('publications');
+
+Route::get('user/medias', 'MediaController@medias')->name('medias');
+
+Route::get('cgu', 'HomeController@cgu')->name('cgu');
+Route::get('about-us', 'HomeController@about-us')->name('about-us');
 
 Auth::routes();

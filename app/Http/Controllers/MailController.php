@@ -13,7 +13,7 @@ class MailController extends Controller
      */
     public function mail()
     {
-        return view('messagerie');
+        return view('messaging');
     }
 
     public function index()
