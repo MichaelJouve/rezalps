@@ -16,6 +16,7 @@ class UserController extends Controller
     {
         return view('network');
     }
+
     public function settings()
     {
         return view('settings');
