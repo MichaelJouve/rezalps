@@ -41,20 +41,20 @@
                                                         <label for="phone_number"></label>
                                                         <input type="tel" class="form-control"
                                                                aria-describedby="Votre numero"
-                                                               placeholder="Numero de téléphone" name="phone_number" id="phone_number" value=""{{ $user->phone_number }}>
+                                                               placeholder="Numero de téléphone" name="phone_number" id="phone_number" value="{{ $user->phone_number }}">
                                                     </div>
                                                     <div class="input-group">
-                                                        <label for="date"></label>
+                                                        <label for="birthdate"></label>
                                                         <input type="text" class="form-control"
                                                                aria-describedby="Votre date de naissance"
                                                                placeholder="jj/mm/aaaa" name="calendar"
-                                                               id="datepicker">
+                                                               id="datepicker" value="{{ $user->birthdate }}">
                                                     </div>
                                                     <div class="input-group">
-                                                        <label for="ville"></label>
+                                                        <label for="city"></label>
                                                         <input type="text" class="form-control"
                                                                aria-describedby="Votre ville"
-                                                               placeholder="Nouvelle ville" name="Ville" id="ville">
+                                                               placeholder="Nouvelle ville" name="city" id="city" value="{{ $user->city }}">
                                                     </div>
                                                     <div class="input-group">
                                                         <label for="mdp"></label>
