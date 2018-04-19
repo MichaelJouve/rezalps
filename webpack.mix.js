@@ -12,10 +12,26 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-mix.styles(['node_modules/bootstrap/dist/css/bootstrap.min.css',
-            'resources/assets/css/pages_rezalps.css', 'resources/assets/css/jquery-comments.css',
-            'node_modules/font-awesome.min.css/font-awesome.min.css'], 'public/css/all.css');
+mix.styles('resources/assets/sass/app.scss', 'public/css/all.css');
+
+
 mix.copyDirectory('resources/assets/img', 'public/img');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 mix.scripts(['resources/assets/js/jquery-comments.js',
              'node_modules/jquery/dist/jquery.min.js', 'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js'],
     'public/js/all.js');
