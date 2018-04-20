@@ -11,10 +11,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function registration()
+    public function index()
     {
 
-        return view('registration');
+        return view('index');
     }
 
     public function legalNotice()
