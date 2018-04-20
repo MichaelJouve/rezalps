@@ -40,7 +40,7 @@
                         <p>Valence</p>
                     </a>
                     <a href="#form_mail" class="form-button lien_modif_params">
-                        <p>jouvemichael@gmail.com</p>
+                        <p>{{ $user->email }}</p>
                     </a>
                     <a href="#form_tel" class="form-button lien_modif_params">
                         <p>06 07 08 09 01</p>

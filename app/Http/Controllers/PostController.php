@@ -44,7 +44,7 @@ class PostController extends Controller
     public function create(Request $request)
     {
         $validateData = $request->validate([
-           'title' => 'required|min:3|max:250',
+           //'title' => 'required|min:3|max:250',
             'publication' => 'required'
         ]);
 
