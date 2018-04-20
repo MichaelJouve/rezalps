@@ -3,7 +3,7 @@
 <head>
 
     <title>App Name</title>
-    <link href="{{URL::asset('css/all.css')}}" rel="stylesheet">
+    <link href="{{URL::asset('css/main.css')}}" rel="stylesheet">
 </head>
 <body>
 <header id="header">
