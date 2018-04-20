@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -16,9 +17,12 @@ class UserController extends Controller
     {
         return view('network');
     }
+
     public function settings()
     {
-        return view('settings');
+        $user = Auth::user();
+
+        return view('settings', ['user' => $user]);
     }
 
     public function cv($id)

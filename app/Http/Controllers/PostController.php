@@ -24,14 +24,16 @@ class PostController extends Controller
 
     public function publications()
     {
-        return view('publications');
+        $posts = Post::all();
+
+        return view('publications', ['posts' => $posts]);
     }
 
     public function index()
     {
         $posts = Post::all();
 
-        return view('post', $posts);
+        return view('publications', $posts);
     }
 
     /**
@@ -39,9 +41,17 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $validateData = $request->validate([
+           'title' => 'required|min:3|max:250',
+            'publication' => 'required'
+        ]);
+
+        $post = Post::create($validateData);
+
+        return view('publications', ['post' => $post]);
+
     }
 
     /**

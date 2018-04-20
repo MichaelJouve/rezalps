@@ -26,9 +26,18 @@
                     <img class="img-contact" src="{{URL::asset('img/avatar1.jpg')}}" id="dropdownMenuButton" data-toggle="dropdown"
                          width="50" height="40" alt="photo-profil-michael">
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="page_profil_publications.php">Profil</a>
-                        <a class="dropdown-item" href="page_profil_parametres.php">Paramètres</a>
-                        <a class="dropdown-item" href="{{'/'}}">Déconnection</a>
+                        <a class="dropdown-item" href="{{ route('publications') }}">Profil</a>
+                        <a class="dropdown-item" href="{{ route('settings') }}">Paramètres</a>
+
+
+                        <a href="{{route('logout')}}"
+                           onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                           class="dropdown-item" title="Deconnexion">Deconnexion</a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+
                     </div>
                 </div>
             </div>
