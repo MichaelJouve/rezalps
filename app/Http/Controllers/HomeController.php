@@ -18,7 +18,7 @@ class HomeController extends Controller
 
     public function legalNotice()
     {
-        return view('legalnotice');
+        return view('legal_notice');
     }
 
     public function cgu()
