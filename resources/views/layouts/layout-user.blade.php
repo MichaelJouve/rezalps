@@ -68,11 +68,3 @@
 
 </div>
 
-
-<footer>
-    <p id="SAS" class="row justify-content-center">&copy; EPIK S.A.S</p>
-</footer>
-
-</body>
-<script href="{{URL::asset('js/all.js')}}"></script>
-</html>
