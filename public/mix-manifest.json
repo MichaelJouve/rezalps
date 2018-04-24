@@ -1,4 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
+<<<<<<< HEAD
     "/css/app.css": "/css/app.css"
+=======
+    "/css/main.css": "/css/main.css"
+>>>>>>> 771399d0200680726a58cf97ea05171bd3fff93b
 }
