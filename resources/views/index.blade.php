@@ -3,7 +3,7 @@
 <head>
     <title>Connexion REZALPS</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/all.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="REZALPS reseau social dédié au metier de developpeur informatique">
     <meta>
