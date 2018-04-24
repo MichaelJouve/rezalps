@@ -11,17 +11,36 @@
 |
 */
 
+Route::get('/', 'HomeController@index')->name('index');
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('welcome2', 'HomeController@index');
-Route::get('flux', 'HomeController@index');
-Route::get('publications', 'HomeController@index');
-Route::get('cv', 'HomeController@index');
-Route::get('medias', 'HomeController@index');
-Route::get('reseau', 'HomeController@index');
-Route::get('parametres', 'HomeController@index');
-Route::get('messagerie', 'HomeController@index');
-Route::get('cgu', 'HomeController@index');
-Route::get('about-us', 'HomeController@index');
+Route::get('flux', 'PostController@flux')->name('flux');
+
+Route::get('user/{id}/publications', 'UserController@publications')->name('user.publications');
+Route::get('user/{id}/cv', 'UserController@cv')->name('user.cv');
+Route::get('user/{id}/network', 'UserController@network')->name('user.network');
+Route::get('user/{id}/medias', 'UserController@medias')->name('user.medias');
+
+Route::get('user/cv', 'UserController@cv')->name('user.cv');
+Route::post('add-cv', 'UserController@create')->name('add-cv');
+Route::post('add-pitch', 'UserController@create')->name('add-pitch');
+Route::post('update-apropos', 'UserController@create')->name('update-apropos');
+
+Route::get('user/network', 'UserController@network')->name('network');
+
+Route::get('user/settings', 'UserController@settings')->name('settings');
+Route::post('update-setting', 'UserController@create')->name('update-setting');
+
+Route::get('messaging', 'MailController@mail')->name('messaging');
+Route::post('send-message', 'MailController@create')->name('send-message');
+
+Route::get('user/publications', 'PostController@publications')->name('publications');
+Route::post('add-post', 'PostController@create')->name('add-post');
+Route::post('add-comment', 'PostController@create')->name('add-comment');
+
+Route::get('user/medias', 'MediaController@medias')->name('medias');
+
+Route::get('cgu', 'HomeController@cgu')->name('cgu');
+Route::get('about-us', 'HomeController@aboutUs')->name('about-us');
+Route::get('legal-notice', 'HomeController@legalNotice')->name('legal-notice');
 
 Auth::routes();

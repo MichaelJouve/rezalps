@@ -13,6 +13,22 @@ class HomeController extends Controller
      */
     public function index()
     {
+
         return view('index');
+    }
+
+    public function legalNotice()
+    {
+        return view('legal_notice');
+    }
+
+    public function cgu()
+    {
+        return view('cgu');
+    }
+
+    public function aboutUs()
+    {
+        return view('about-us');
     }
 }
