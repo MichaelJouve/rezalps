@@ -2,7 +2,7 @@
 
 @section('content')
 
-<body class="body">
+
 
 <header id="header_inscription">
     <div class="container">
