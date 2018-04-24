@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class HomeController extends Controllergit pull
 {
     /**
      * Show the application dashboard.
