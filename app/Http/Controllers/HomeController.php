@@ -13,6 +13,22 @@ class HomeController extends Controllergit pull
      */
     public function index()
     {
+
         return view('index');
+    }
+
+    public function legalNotice()
+    {
+        return view('legalnotice');
+    }
+
+    public function cgu()
+    {
+        return view('cgu');
+    }
+
+    public function aboutUs()
+    {
+        return view('about-us');
     }
 }
