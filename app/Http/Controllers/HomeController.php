@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controllergit pull
+class HomeController extends Controller
 {
     /**
      * Show the application dashboard.
@@ -19,7 +19,7 @@ class HomeController extends Controllergit pull
 
     public function legalNotice()
     {
-        return view('legalnotice');
+        return view('legal_notice');
     }
 
     public function cgu()
