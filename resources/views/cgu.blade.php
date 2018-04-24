@@ -1,4 +1,4 @@
-@extends('layouts.layout-user')
+@extends('layouts.static')
 @section('content')
 
     <main>
