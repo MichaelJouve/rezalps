@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
+@extends('layouts.general')
 
-    <title>App Name</title>
-    <link href="{{URL::asset('css/app.css')}}" rel="stylesheet">
-</head>
-<body>
 <header id="header">
     <div class="container-fluid">
 

@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Connexion REZALPS</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="css/app.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="REZALPS reseau social dédié au metier de developpeur informatique">
-    <meta>
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-</head>
+@extends('layouts.general')
+
+@section('content')
 
 <body class="body">
 
@@ -225,14 +217,3 @@
 </section>
 
 
-<footer>
-    <p id="SAS" class="row justify-content-center">&copy; EPIK S.A.S</p>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-
-<script src="js/all.js"></script>
-
-</body>
-</html>
