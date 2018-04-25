@@ -17,8 +17,8 @@
 
                 <a href="{{ route('flux') }}"><img src="{{URL::asset('img/accueil.png')}}" alt="Accueil" height="30px"></a>
                 <div class="btn-group dropleft dropdown">
-                    <img class="img-contact" src="{{$user->avatar}}" id="dropdownMenuButton" data-toggle="dropdown"
-                         width="50" height="40" alt="{{ $user->name}}">
+                   {{-- <img class="img-contact" src="{{$user->avatar}}" id="dropdownMenuButton" data-toggle="dropdown"
+                         width="50" height="40" alt="{{ $user->name}}">--}}
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ route('publications') }}">Profil</a>
