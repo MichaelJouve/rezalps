@@ -13,11 +13,11 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <img src="">
+                <img src="/img/marie.png">
                 <h3>Marie</h3>
             </div>
             <div class="col-6">
-                <img src="">
+                <img src="/img/nicolas.png">
                 <h3>Nicolas</h3>
             </div>
         </div>
@@ -28,7 +28,7 @@
                     <h3>Damien</h3>
                 </div>
                 <div class="col-6">
-                    <img src="">
+                    <img src="/img/michael.png">
                     <h3>Michael</h3>
                 </div>
             </div>
