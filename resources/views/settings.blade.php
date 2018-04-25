@@ -10,9 +10,6 @@
                                 <div class="card">
                                     <div class="card_parametre mb-3 mt-3">
                                         <div class="row col-12 justify-centent-between">
-                                            <div class="col-6" id="photo">
-                                                <p class="text-center">Photo de Profil</p>
-                                            </div>
                                             <div class="offset-3 col-6 offset-3">
                                                 <form method="post" action="{{route('update-setting')}}" id="form">
                                                     @csrf
@@ -55,6 +52,11 @@
                                                     <button class="btn btn-secondary submit" type="submit">
                                                         Soumettre
                                                     </button>
+                                                </form>
+                                                <form method="post" action="{{route('update-password')}}">
+                                                    @csrf
+                                                    <label for="password"></label>
+                                                    <input >
                                                 </form>
                                             </div>
                                         </div>

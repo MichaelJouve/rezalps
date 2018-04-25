@@ -4,7 +4,7 @@
     <main>
         <section>
         <div class="row">
-            <div class="col-6 offset-3">
+            <div class="col-6 offset-3 text-center">
                 <div>
                     <p>Epik SAS, créée en Janvier 2018 est une équipe du Campus Numérique In The Alps Valence</p>
                     <p>Notre Projet "Rezalps" est un réseau social nous servant de fil rouge tout au long de notre formation de Technicien Analyste Développeur</p>
