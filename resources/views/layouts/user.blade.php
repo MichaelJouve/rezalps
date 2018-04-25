@@ -15,7 +15,10 @@
                     <img src="{{asset('img/message.png')}}" alt="Messages" height="40px">
                 </a>
 
-                <a href="{{ route('flux') }}"><img src="{{URL::asset('img/accueil.png')}}" alt="Accueil" height="30px"></a>
+                <a href="{{ route('flux') }}">
+                    <img src="{{URL::asset('img/accueil.png')}}" alt="Accueil" height="30px">
+                </a>
+
                 <div class="btn-group dropleft">
                     <img class="img-contact" src="{{$user->avatar}}" id="dropdownMenuButton" data-toggle="dropdown"
                          width="50" height="40" alt="{{ $user->name}}">
