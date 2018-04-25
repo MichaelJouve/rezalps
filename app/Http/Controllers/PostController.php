@@ -29,12 +29,6 @@ class PostController extends Controller
         return view('publications', ['posts' => $posts]);
     }
 
-    public function index()
-    {
-        $posts = Post::all();
-
-        return view('publications', $posts);
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -44,13 +38,13 @@ class PostController extends Controller
     public function create(Request $request)
     {
         $validateData = $request->validate([
-           'title' => 'required|min:3|max:250',
             'publication' => 'required'
         ]);
 
         $post = Post::create($validateData);
+        $posts = Post::all();
 
-        return view('publications', ['post' => $post]);
+        return view('publications', ['posts' => $posts]);
 
     }
 

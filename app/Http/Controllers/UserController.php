@@ -38,9 +38,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function publications($id)
     {
-        //
+        $user = User::with('posts')->findOrFail($id);
+
+        return view('publications', ['user' => $user]);
     }
 
     /**
