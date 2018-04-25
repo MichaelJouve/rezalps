@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -24,9 +25,11 @@ class PostController extends Controller
 
     public function publications()
     {
-        $posts = Post::recup_posts();
+        $user = Auth::user();
+        /* $posts = Post::recup_posts(); */
+        $posts = Post::orderBy('created_at', 'desc')->get();
 
-        return view('publications', ['posts' => $posts]);
+        return view('publications', ['posts' => $posts, 'user' => $user]);
     }
 
     public function index()
