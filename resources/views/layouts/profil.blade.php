@@ -33,21 +33,14 @@
                 <div class="col-6 mt-5">
                     <a href="#form_name" class="form-button lien_modif_params">
                         <p class="text-center"></p>
-                    </a>
+                    </div>
+                    <div class="col-3 mt-5">
+                        <p>{{$user->city}}</p>
+                        <p>{{$user->email}}</p>
+                        <p>{{$user->phone_number}}</p>
+                    </div>
                 </div>
-                <div class="col-3 mt-5">
-                    <a href="#form_city" class="form-button lien_modif_params">
-                        <p>Valence</p>
-                    </a>
-                    <a href="#form_mail" class="form-button lien_modif_params">
-                        <p>jouvemichael@gmail.com</p>
-                    </a>
-                    <a href="#form_tel" class="form-button lien_modif_params">
-                        <p>06 07 08 09 01</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </div>
-</main>
+            </section>
+        </div>
+    </main>
 @endsection

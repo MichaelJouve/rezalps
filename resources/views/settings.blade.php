@@ -13,20 +13,16 @@
                                             <div class="col-6" id="photo">
                                                 <p class="text-center">Photo de Profil</p>
                                             </div>
-                                            <div class="col-6">
-                                                <a href="{{ URL::route('settings') }}"
-                                                   class="form-button alignement_droite lien_modif_params"
-                                                   id="change_photo" namebis="#form_photo">Modifier</a>
-                                            </div>
                                             <div class="offset-3 col-6 offset-3">
-                                                <form method="post" action="" name="" class="" id="">
+                                                <form method="post" action="{{route('update-setting')}}" id="form">
+                                                    @csrf
                                                     <div class="upload-btn-wrapper">
                                                         <button class="btn">Photos</button>
                                                         <input type="file" name="myfile"/>
                                                     </div>
                                                     <div class="input-group">
                                                         <label for="name"></label>
-                                                        <input type="name" class="form-control"
+                                                        <input type="text" class="form-control"
                                                                aria-describedby="Votre nom" placeholder="Nom"
                                                                name="name" id="name" value="{{ $user->name }}">
                                                     </div>
@@ -45,9 +41,9 @@
                                                     </div>
                                                     <div class="input-group">
                                                         <label for="birthdate"></label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="date" class="form-control"
                                                                aria-describedby="Votre date de naissance"
-                                                               placeholder="jj/mm/aaaa" name="calendar"
+                                                               placeholder="jj/mm/aaaa" name="birthdate"
                                                                id="datepicker" value="{{ $user->birthdate }}">
                                                     </div>
                                                     <div class="input-group">
@@ -55,12 +51,6 @@
                                                         <input type="text" class="form-control"
                                                                aria-describedby="Votre ville"
                                                                placeholder="Nouvelle ville" name="city" id="city" value="{{ $user->city }}">
-                                                    </div>
-                                                    <div class="input-group">
-                                                        <label for="mdp"></label>
-                                                        <input type="password" class="form-control"
-                                                               placeholder="Mot de passe" name="mp_connexion"
-                                                               id="mdp">
                                                     </div>
                                                     <button class="btn btn-secondary submit" type="submit">
                                                         Soumettre

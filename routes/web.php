@@ -28,7 +28,7 @@ Route::post('user/update-apropos', 'UserController@update_apropos')->name('updat
 Route::get('user/network', 'UserController@network')->name('network');
 
 Route::get('user/settings', 'UserController@settings')->name('settings');
-Route::post('update-setting', 'UserController@create')->name('update-setting');
+Route::post('user/update-setting', 'UserController@update')->name('update-setting');
 
 Route::get('messaging', 'MailController@mail')->name('messaging');
 Route::post('send-message', 'MailController@create')->name('send-message');

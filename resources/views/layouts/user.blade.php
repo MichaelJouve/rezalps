@@ -11,7 +11,7 @@
             <div class="row header-top d-flex align-items-center" id="block_btn_droit">
                 <img src="{{asset('img/notif.png')}}" alt="Notifications" height="30px">
 
-                <a href="http://localhost/michael/rezalps_php_test/page_messagerie.php?id=1">
+                <a href="{{ route('messaging') }}">
                     <img src="{{asset('img/message.png')}}" alt="Messages" height="40px">
                 </a>
 
