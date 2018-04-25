@@ -13,7 +13,7 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <img src="/img/marie.png">
+                <img src="{{ asset('img/marie.png') }}">
                 <h3>Marie</h3>
             </div>
             <div class="col-6">
