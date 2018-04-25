@@ -29,6 +29,7 @@ Route::get('user/network', 'UserController@network')->name('network');
 
 Route::get('user/settings', 'UserController@settings')->name('settings');
 Route::post('user/update-setting', 'UserController@update')->name('update-setting');
+Route::post('user/update-avatar', 'UserController@updateAvatar')->name('update-avatar');
 
 Route::get('messaging', 'MailController@mail')->name('messaging');
 Route::post('send-message', 'MailController@create')->name('send-message');

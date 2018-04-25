@@ -123,6 +123,17 @@ class UserController extends Controller
 
     }
 
+    public function updateAvatar(Request $request)
+    {
+        $avatar = $request->avatar->store('useravatar', 'public');
+
+        $user = Auth::user();
+        $user->avatar = $avatar;
+        $user->save();
+
+        return view('settings', ['user' => $user]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

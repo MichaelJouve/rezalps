@@ -13,6 +13,23 @@
                                             <div class="col-6" id="photo">
                                                 <p class="text-center">Photo de Profil</p>
                                             </div>
+                                            <div class="card">
+                                                <form action="{{URL::route('update-avatar')}}" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="card-header">
+                                                        <h3 class="card-title">Ma Photo</h3>
+                                                    </div>
+                                                    <div class="card-body text-center">
+                                                        <img src="{{asset('storage/'.$user->avatar)}}"
+                                                             alt="Mon avatar"
+                                                             class="rounded border img-fluid">
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <input type="file" name="avatar" id="avatar">
+                                                        <button class="btn btn-info float-right" type="submit">Modifier</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                             <div class="offset-3 col-6 offset-3">
                                                 <form method="post" action="{{route('update-setting')}}" id="form">
                                                     @csrf

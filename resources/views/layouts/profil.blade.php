@@ -25,9 +25,9 @@
     <div class="container"> <!-- Header profil -->
         <section id="main-profil">
             <div class="row justify-centent-between">
-                <div class="offset-1 col-2 mt-3 mb-3">
+                <div class="offset-1 col-2 mt-3 mb-3 ">
                     <a href="#form_photo" class="form-button">
-                        <img id="photo_entete" src="{{asset('img/avatar1.jpg')}}" width="160" height="160" alt="photo-profil-michael">
+                        <img class="img-fluid rounded-circle" id="avatar" src="{{ asset('storage/' . $user->avatar) }}" width="160" height="160" alt="photo-profil-michael">
                     </a>
                 </div>
                 <div class="col-6 mt-5">
