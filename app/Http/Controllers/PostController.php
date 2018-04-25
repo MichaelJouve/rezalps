@@ -49,11 +49,11 @@ class PostController extends Controller
         $validateData = $request->validate([
             'publication' => 'required'
         ]);
-
+        $user = Auth::user();
         $post = Post::create($validateData);
         $posts = Post::orderBy('created_at','desc')->get();
 
-        return view('publications', ['posts' => $posts]);
+        return view('publications', ['posts' => $posts, 'user' => $user]);
 
     }
 
