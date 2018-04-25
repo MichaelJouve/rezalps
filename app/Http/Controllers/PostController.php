@@ -33,7 +33,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('publications', $posts);
+        return view('publications', ['posts' => $posts]);
     }
 
     /**

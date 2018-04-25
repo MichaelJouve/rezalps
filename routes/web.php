@@ -23,7 +23,7 @@ Route::get('user/{id}/medias', 'UserController@medias')->name('user.medias');
 Route::get('user/cv', 'UserController@cv')->name('user.cv');
 Route::post('add-cv', 'UserController@create')->name('add-cv');
 Route::post('add-pitch', 'UserController@create')->name('add-pitch');
-Route::post('update-apropos', 'UserController@create')->name('update-apropos');
+Route::post('user/update-apropos', 'UserController@update_apropos')->name('update-apropos');
 
 Route::get('user/network', 'UserController@network')->name('network');
 

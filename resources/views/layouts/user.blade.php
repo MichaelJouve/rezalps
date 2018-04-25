@@ -39,7 +39,7 @@
 
 
         <!-- contacts list -->
-        <div class="row justify-centent-between" id="header_list_contact">
+        <div class="row justify-content-between" id="header_list_contact">
             <div class="col-lg-8 list">
 
 

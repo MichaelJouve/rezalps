@@ -25,9 +25,9 @@ class UserController extends Controller
         return view('settings', ['user' => $user]);
     }
 
-    public function cv($id)
+    public function cv()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         return view('cv', ['user' => $user]);
     }
@@ -95,6 +95,17 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+    }
+    public function update_apropos(Request $request)
+    {
+        $user = Auth::user();
+        $validateData = $request->validate([
+            'description' => 'max:16000',
+        ]);
+
+        $user->update($validateData);
+        return view('cv',['user'=> $user]);
+
     }
 
     /**
