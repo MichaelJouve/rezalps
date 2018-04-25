@@ -17,8 +17,10 @@
 
                 <a href="page_flux.php"><img src="{{URL::asset('img/accueil.png')}}" alt="Accueil" height="30px"></a>
                 <div class="btn-group dropleft dropdown">
-                    <img class="img-contact" src="{{URL::asset('img/avatar1.jpg')}}" id="dropdownMenuButton" data-toggle="dropdown"
+                        <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="img-fluid rounded-circle" src="{{URL::asset('img/avatar1.jpg')}}" id="dropdownMenuButton" data-toggle="dropdown"
                          width="50" height="40" alt="photo-profil-michael">
+                        </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ route('publications') }}">Profil</a>
                         <a class="dropdown-item" href="{{ route('settings') }}">Paramètres</a>
