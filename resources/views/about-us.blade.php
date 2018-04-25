@@ -17,18 +17,18 @@
                 <h3>Marie</h3>
             </div>
             <div class="col-6">
-                <img src="/img/nicolas.png">
+                <img src="{{ asset('img/nicolas.png') }}">
                 <h3>Nicolas</h3>
             </div>
         </div>
 
             <div class="row">
                 <div class="col-6">
-                    <img src="/img/damiend.png">
+                    <img src="{{ asset('img/damiend.png') }}">
                     <h3>Damien</h3>
                 </div>
                 <div class="col-6">
-                    <img src="/img/michael.png">
+                    <img src="{{ asset('img/michael.png') }}">
                     <h3>Michael</h3>
                 </div>
             </div>
