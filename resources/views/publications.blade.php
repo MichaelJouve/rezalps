@@ -32,16 +32,15 @@
                         <div class="card-body">
                             <p class="card-text">{{ $post->publication }}</p>
                         </div>
-                        @endforeach
+
                         <div class="card-footer">
                             <small class="text-muted">
                                 <button class="button-like"></button>
                                 <button class="button-dislike"></button>
-                                5 commentaires | Publié il y a 5 minutes
+                                5 commentaires | Publié le {{ $post->created_at }}
                             </small>
                         </div>
-                        <div class="card-deck">       <!-- PUBLICATION 2 -->
-                        </div>
+                @endforeach
                     </div>
                 </div>
             </div>

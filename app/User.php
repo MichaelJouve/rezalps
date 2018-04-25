@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function scopePopular($query)
+    {
+        return $query->where('votes', '>', 100);
+    }
+
     /**
      * Get post from user
      *

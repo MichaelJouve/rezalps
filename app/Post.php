@@ -18,10 +18,20 @@ class Post extends Model
         return $this->belongsTo('App\User');
     }
 
+    /**
+     * Link with model comment
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function comments()
     {
-        return $this->hasMany('App\comments');
+        return $this->hasMany('App\Comment');
     }
+
+    /*public function scopeRecup_posts()
+    {
+        return Post::orderBy('created_at', 'desc')->get();
+    }*/
 
 
 }
