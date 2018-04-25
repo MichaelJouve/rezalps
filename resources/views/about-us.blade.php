@@ -13,24 +13,31 @@
         </div>
         <div class="row">
             <div class="col-6">
+                <img src="{{ asset('img/marie.png') }}">
                 <h3>Marie</h3>
-                <img src="">
             </div>
             <div class="col-6">
+                <img src="{{ asset('img/nicolas.png') }}">
                 <h3>Nicolas</h3>
-                <img src="">
             </div>
         </div>
 
             <div class="row">
                 <div class="col-6">
+                    <img src="{{ asset('img/damiend.png') }}">
                     <h3>Damien</h3>
-                    <img src="/img/damiend.png">
                 </div>
                 <div class="col-6">
+                    <img src="{{ asset('img/michael.png') }}">
                     <h3>Michael</h3>
-                    <img src="">
                 </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 offset-2 justify-content-center">
+                    <p>Merci d'avoir visité notre site et à bientôt.</p>
+                </div>
+
             </div>
         </section>
     </main>
