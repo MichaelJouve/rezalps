@@ -13,24 +13,31 @@
         </div>
         <div class="row">
             <div class="col-6">
-                <h3>Marie</h3>
                 <img src="">
+                <h3>Marie</h3>
             </div>
             <div class="col-6">
-                <h3>Nicolas</h3>
                 <img src="">
+                <h3>Nicolas</h3>
             </div>
         </div>
 
             <div class="row">
                 <div class="col-6">
-                    <h3>Damien</h3>
                     <img src="/img/damiend.png">
+                    <h3>Damien</h3>
                 </div>
                 <div class="col-6">
-                    <h3>Michael</h3>
                     <img src="">
+                    <h3>Michael</h3>
                 </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6 offset-2 justify-content-center">
+                    <p>Merci d'avoir visité notre site et à bientôt.</p>
+                </div>
+
             </div>
         </section>
     </main>
