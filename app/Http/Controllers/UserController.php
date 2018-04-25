@@ -26,9 +26,9 @@ class UserController extends Controller
         return view('settings', ['user' => $user]);
     }
 
-    public function cv($id)
+    public function cv()
     {
-        $user = User::findOrFail($id);
+        $user= Auth::user();
 
         return view('cv', ['user' => $user]);
     }
