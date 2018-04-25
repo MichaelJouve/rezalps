@@ -24,7 +24,7 @@ class PostController extends Controller
 
     public function publications()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at','desc')->get();
 
         return view('publications', ['posts' => $posts]);
     }
