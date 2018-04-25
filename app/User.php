@@ -27,6 +27,11 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function scopePopular($query)
+    {
+        return $query->where('votes', '>', 100);
+    }
+
     /**
      * Get post from user
      *
@@ -35,5 +40,14 @@ class User extends Authenticatable
     public function posts()
     {
         return $this->hasMany('App\Post');
+    }
+
+    /**
+     * Get media from user
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function medias()
+    {
+        return $this->hasMany('App\Media');
     }
 }
