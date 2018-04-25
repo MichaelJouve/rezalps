@@ -42,7 +42,7 @@ class PostController extends Controller
         ]);
 
         $post = Post::create($validateData);
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at','desc')->get();
 
         return view('publications', ['posts' => $posts]);
 
