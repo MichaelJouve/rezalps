@@ -1,4 +1,4 @@
-@extends('layouts.layout-profil')
+@extends('layouts.profil')
 @section('content')
     <main>
         <section id="content" class="container">
@@ -11,6 +11,10 @@
                                 <p>
                                     {{ $user->description }}
                                 </p>
+                                <form method="post" action="{{ ('update-apropos') }}">
+                                    @csrf
+                                    <img src="img/edit.png" title="modifier">
+                                </form>
                             </div>
                         </div>
                     </div>

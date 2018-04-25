@@ -1,4 +1,4 @@
-@extends('layouts.layout-profil')
+@extends('layouts.profil')
 
 @section('content')
     <div class="container publications">  <!-- Composition de l'onglet publications de la page profil -->

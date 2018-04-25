@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
+@extends('layouts.general')
 
-    <title>App Name</title>
-    <link href="{{URL::asset('css/all.css')}}" rel="stylesheet">
-</head>
-<body>
 <header id="header">
     <div class="container-fluid">
 
@@ -15,16 +9,17 @@
             </div>
 
             <div class="row header-top d-flex align-items-center" id="block_btn_droit">
-                <img src="img/notif.png" alt="Notifications" height="30px">
+                <img src="{{url::asset('img/notif.png')}}" alt="Notifications" height="30px">
 
-                <a href="http://localhost/michael/rezalps_php_test/page_messagerie.php?id=1">
-                    <img src="img/message.png" alt="Messages" height="40px">
+                <a href="{{ route('messaging') }}">
+                    <img src="{{asset('img/message.png')}}" alt="Messages" height="40px">
                 </a>
 
-                <a href="page_flux.php"><img src="{{URL::asset('img/accueil.png')}}" alt="Accueil" height="30px"></a>
+                <a href="{{ route('flux') }}"><img src="{{URL::asset('img/accueil.png')}}" alt="Accueil" height="30px"></a>
                 <div class="btn-group dropleft dropdown">
-                    <img class="img-contact" src="{{URL::asset('img/avatar1.jpg')}}" id="dropdownMenuButton" data-toggle="dropdown"
-                         width="50" height="40" alt="photo-profil-michael">
+                    <img class="img-contact" src="{{$user->avatar}}" id="dropdownMenuButton" data-toggle="dropdown"
+                         width="50" height="40" alt="{{ $user->name}}">
+
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ route('publications') }}">Profil</a>
                         <a class="dropdown-item" href="{{ route('settings') }}">Paramètres</a>
@@ -68,11 +63,3 @@
 
 </div>
 
-
-<footer>
-    <p id="SAS" class="row justify-content-center">&copy; EPIK S.A.S</p>
-</footer>
-
-</body>
-<script href="{{URL::asset('js/all.js')}}"></script>
-</html>

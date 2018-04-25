@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@registration')->name('registration');
+Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('flux', 'PostController@flux')->name('flux');
 
