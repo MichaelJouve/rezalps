@@ -20,6 +20,7 @@
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-6 col-sm-12">
                         <div id="experiences">
                             <h2>CV</h2>

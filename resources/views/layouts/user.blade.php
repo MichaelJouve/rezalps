@@ -9,10 +9,10 @@
             </div>
 
             <div class="row header-top d-flex align-items-center" id="block_btn_droit">
-                <img src="img/notif.png" alt="Notifications" height="30px">
+                <img src="{{asset('img/notif.png')}}" alt="Notifications" height="30px">
 
                 <a href="http://localhost/michael/rezalps_php_test/page_messagerie.php?id=1">
-                    <img src="img/message.png" alt="Messages" height="40px">
+                    <img src="{{asset('img/message.png')}}" alt="Messages" height="40px">
                 </a>
 
                 <a href="page_flux.php"><img src="{{URL::asset('img/accueil.png')}}" alt="Accueil" height="30px"></a>
