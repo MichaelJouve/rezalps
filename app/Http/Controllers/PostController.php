@@ -30,7 +30,7 @@ class PostController extends Controller
     public function publications()
     {
         $user = Auth::user();
-        $posts = Post::where(['user_id' => $user->id])->with('comment')->orderBy('created_at', 'desc')->get();
+        $posts = Post::where(['user_id' => $user->id])->with('comments')->orderBy('created_at', 'desc')->get();
         $posts;
 
         // keep the data in this view because there is redirection to it.

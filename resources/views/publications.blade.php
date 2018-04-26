@@ -40,10 +40,11 @@
                                     </small>
                                 </div>
 
-
+                                @foreach($post->comments as $comment)
                                 <div class="card-body">
-                                    <p class="card-text">{{ $post->comment->content }}</p> //bonne syntaxe mais ne fonctionne pas lol
+                                    <p class="card-text">{{ $comment->content }}</p>
                                 </div>
+                                @endforeach
 
 
                                 <form method="post"  action="{{ route('add-comment') }}">
