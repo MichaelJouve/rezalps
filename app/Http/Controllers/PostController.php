@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -24,16 +25,18 @@ class PostController extends Controller
 
     public function publications()
     {
-        $posts = Post::all();
+        $user = Auth::user();
+        /* $posts = Post::recup_posts(); */
+        $posts = Post::orderBy('created_at', 'desc')->get();
 
-        return view('publications', ['posts' => $posts]);
+        return view('publications', ['posts' => $posts, 'user' => $user]);
     }
 
     public function index()
     {
         $posts = Post::all();
 
-        return view('publications', $posts);
+        return view('publications', ['posts' => $posts]);
     }
 
     /**
@@ -44,13 +47,13 @@ class PostController extends Controller
     public function create(Request $request)
     {
         $validateData = $request->validate([
-           'title' => 'required|min:3|max:250',
             'publication' => 'required'
         ]);
-
+        $user = Auth::user();
         $post = Post::create($validateData);
+        $posts = Post::orderBy('created_at','desc')->get();
 
-        return view('publications', ['post' => $post]);
+        return view('publications', ['posts' => $posts, 'user' => $user]);
 
     }
 
