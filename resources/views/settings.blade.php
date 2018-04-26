@@ -10,8 +10,28 @@
                                 <div class="card">
                                     <div class="card_parametre mb-3 mt-3">
                                         <div class="row col-12 justify-centent-between">
+                                            <div class="col-6" id="photo">
+                                                <p class="text-center">Photo de Profil</p>
+                                            </div>
+                                            <div class="card">
+                                                <form action="{{URL::route('update-avatar')}}" method="post" enctype="multipart/form-data">
+                                                    @csrf
+                                                    <div class="card-header">
+                                                        <h3 class="card-title">Ma Photo</h3>
+                                                    </div>
+                                                    <div class="card-body text-center">
+                                                        <img src="{{asset('storage/'.$user->avatar)}}"
+                                                             alt="Mon avatar"
+                                                             class="rounded border img-fluid">
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <input type="file" name="avatar" id="avatar">
+                                                        <button class="btn btn-info float-right" type="submit">Modifier</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                             <div class="offset-3 col-6 offset-3">
-                                                <form method="post" action="{{route('update-settings')}}" id="form">
+                                                <form method="post" action="{{route('update-setting')}}" id="form">
                                                     @csrf
                                                     <div class="upload-btn-wrapper">
                                                         <button class="btn">Photos</button>
@@ -49,15 +69,6 @@
                                                                aria-describedby="Votre ville"
                                                                placeholder="Nouvelle ville" name="city" id="city" value="{{ $user->city }}">
                                                     </div>
-                                                    <button class="btn btn-secondary submit" type="submit">
-                                                        Soumettre
-                                                    </button>
-                                                </form>
-                                                <form method="post" action="{{route('update-password')}}">
-                                                    @csrf
-                                                    <label for="password"></label>
-                                                    <input type="password" placeholder="Nouveau mot de passe">
-                                                    <input type="password" placeholder="Confirmation du mot de passe">
                                                     <button class="btn btn-secondary submit" type="submit">
                                                         Soumettre
                                                     </button>
