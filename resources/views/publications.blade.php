@@ -40,20 +40,15 @@
                                     </small>
                                 </div>
 
-                                @foreach($comments as $comment)
+
                                 <div class="card-body">
-                                    <p class="card-text">{{ $comment->content }}</p>
+                                    <p class="card-text">{{ $post->comment->content }}</p> //bonne syntaxe mais ne fonctionne pas lol
                                 </div>
-
-                                @endforeach
-
-
-
 
 
                                 <form method="post"  action="{{ route('add-comment') }}">
                                     @csrf
-                                    <input type="hidden" value="{{ $post->id }}">
+                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
                                     <textarea name="content" class="form-control" placeholder="Commenter ..." rows="1"></textarea>
                                     <div class="card-footer text-right">
                                         <button class="btn btn-secondary" type="submit">Valider</button>

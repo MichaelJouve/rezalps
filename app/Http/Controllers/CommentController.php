@@ -34,12 +34,12 @@ class CommentController extends Controller
     public function createComment(Request $request)
     {
         $validateData = $request->validate([
-            'content' => 'required'
+            'content' => 'required',
+            'post_id' => 'required|int'
         ]);
-        $user = Auth::user();
-        $comment = Comment::create($validateData);
-        $comments = Comment::orderBy('created_at','desc')->get();
 
+        $user = Auth::user();
+        $comment = Comment::create(array_merge($validateData, ['user_id' => $user->id]));
 
         return redirect()->route('publications');
     }
