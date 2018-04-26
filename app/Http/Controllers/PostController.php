@@ -18,6 +18,8 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function flux()
     {
         $user = Auth::user();
@@ -54,7 +56,17 @@ class PostController extends Controller
             'publication' => 'required'
         ]);
         $user = Auth::user();
-        $post = Post::create($validateData);
+
+        $post = Post::create(array_merge($validateData, ['user_id' => $user->id]));
+
+/*
+        ou
+
+        $post = new Post($validateData);
+        $post->user_id = $user->id;
+        $post->save();*/
+
+
         $posts = Post::orderBy('created_at','desc')->get();
 
         return view('publications', ['posts' => $posts, 'user' => $user]);
