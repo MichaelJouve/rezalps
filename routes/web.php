@@ -23,12 +23,13 @@ Route::get('user/{id}/medias', 'UserController@medias')->name('user.medias');
 Route::get('user/cv', 'UserController@cv')->name('user.cv');
 Route::post('add-cv', 'UserController@create')->name('add-cv');
 Route::post('add-pitch', 'UserController@create')->name('add-pitch');
-Route::post('update-apropos', 'UserController@create')->name('update-apropos');
+Route::post('user/update-apropos', 'UserController@update_apropos')->name('update-apropos');
 
 Route::get('user/network', 'UserController@network')->name('network');
 
 Route::get('user/settings', 'UserController@settings')->name('settings');
-Route::post('update-setting', 'UserController@create')->name('update-setting');
+Route::post('user/update-setting', 'UserController@update')->name('update-setting');
+Route::post('user/update-avatar', 'UserController@updateAvatar')->name('update-avatar');
 
 Route::get('messaging', 'MailController@mail')->name('messaging');
 Route::post('send-message', 'MailController@create')->name('send-message');

@@ -1,4 +1,4 @@
-@extends('layouts.layout-user')
+@extends('layouts.user')
 
 @section('sous-header')
 <main>
@@ -25,29 +25,22 @@
     <div class="container"> <!-- Header profil -->
         <section id="main-profil">
             <div class="row justify-centent-between">
-                <div class="offset-1 col-2 mt-3 mb-3">
+                <div class="offset-1 col-2 mt-3 mb-3 ">
                     <a href="#form_photo" class="form-button">
-                        <img id="photo_entete" src="img/avatar1.jpg" width="160" height="160" alt="photo-profil-michael">
+                        <img class="img-fluid rounded-circle" id="avatar" src="{{ asset('storage/' . $user->avatar) }}" width="160" height="160" alt="photo-profil-michael">
                     </a>
                 </div>
                 <div class="col-6 mt-5">
                     <a href="#form_name" class="form-button lien_modif_params">
                         <p class="text-center"></p>
-                    </a>
+                    </div>
+                    <div class="col-3 mt-5">
+                        <p>{{$user->city}}</p>
+                        <p>{{$user->email}}</p>
+                        <p>{{$user->phone_number}}</p>
+                    </div>
                 </div>
-                <div class="col-3 mt-5">
-                    <a href="#form_city" class="form-button lien_modif_params">
-                        <p>Valence</p>
-                    </a>
-                    <a href="#form_mail" class="form-button lien_modif_params">
-                        <p>jouvemichael@gmail.com</p>
-                    </a>
-                    <a href="#form_tel" class="form-button lien_modif_params">
-                        <p>06 07 08 09 01</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </div>
-</main>
+            </section>
+        </div>
+    </main>
 @endsection

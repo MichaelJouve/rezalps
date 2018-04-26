@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Media extends Model
+class Comment extends Model
 {
     /**
-     * link with model user
+     * Link with model Comments
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function user()
+    public function post()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Post');
     }
 }

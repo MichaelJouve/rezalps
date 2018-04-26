@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,9 +26,9 @@ class UserController extends Controller
         return view('settings', ['user' => $user]);
     }
 
-    public function cv($id)
+    public function cv()
     {
-        $user = User::findOrFail($id);
+        $user = Auth::user();
 
         return view('cv', ['user' => $user]);
     }
@@ -37,9 +38,11 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function publications($id)
     {
-        //
+        $user = User::with('posts')->findOrFail($id);
+
+        return view('publications', ['user' => $user]);
     }
 
     /**
@@ -47,7 +50,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         //
     }
@@ -92,9 +95,43 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $validateData = $request->validate([
+            'name' => 'min:3|max:250',
+            'email' => 'email',
+            'phone_number' => 'nullable|min:10|max:12',
+            'birthdate' => 'nullable|date',
+            'city' => 'nullable|max:250'
+        ]);
+
+
+        $user->update($validateData);
+        return view('settings', ['user' => $user]);
+    }
+    public function update_apropos(Request $request)
+    {
+        $user = Auth::user();
+        $validateData = $request->validate([
+            'description' => 'max:16000',
+        ]);
+
+        $user->update($validateData);
+        return view('cv',['user'=> $user]);
+
+    }
+
+    public function updateAvatar(Request $request)
+    {
+        $avatar = $request->avatar->store('useravatar', 'public');
+
+        $user = Auth::user();
+        $user->avatar = $avatar;
+        $user->save();
+
+        return view('settings', ['user' => $user]);
     }
 
     /**
