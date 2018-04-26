@@ -20,7 +20,8 @@ class PostController extends Controller
      */
     public function flux()
     {
-        return view('flux');
+        $user = Auth::user();
+        return view('flux', ['user' => $user]);
     }
 
     public function publications()
