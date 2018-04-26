@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Comment;
 class PostController extends Controller
 {
     function __construct()
@@ -27,10 +27,13 @@ class PostController extends Controller
     public function publications()
     {
         $user = Auth::user();
-        /* $posts = Post::recup_posts(); */
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = (new \App\Post)->user();
+        $posts = Post::orderBy('created_at', 'desc')->where(['user_id' => $user->id])->get();
+        $comments = Comment::orderBy('created_at','desc')->get();
 
-        return view('publications', ['posts' => $posts, 'user' => $user]);
+
+        // keep the data in this view because there is redirection to it.
+        return view('publications', ['posts' => $posts, 'comments' => $comments, 'user' => $user]);
     }
 
     public function index()
