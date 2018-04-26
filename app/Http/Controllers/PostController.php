@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use App\Comment;
 class PostController extends Controller
 {
     function __construct()
@@ -18,18 +18,25 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function flux()
     {
-        return view('flux');
+        $user = Auth::user();
+        return view('flux', ['user' => $user]);
     }
+
 
     public function publications()
     {
         $user = Auth::user();
-        /* $posts = Post::recup_posts(); */
-        $posts = Post::orderBy('created_at', 'desc')->get();
+        $posts = (new \App\Post)->user();
+        $posts = Post::orderBy('created_at', 'desc')->where(['user_id' => $user->id])->get();
+        $comments = Comment::orderBy('created_at','desc')->get();
 
-        return view('publications', ['posts' => $posts, 'user' => $user]);
+
+        // keep the data in this view because there is redirection to it.
+        return view('publications', ['posts' => $posts, 'comments' => $comments, 'user' => $user]);
     }
 
     public function index()
@@ -50,10 +57,18 @@ class PostController extends Controller
             'publication' => 'required'
         ]);
         $user = Auth::user();
-        $post = Post::create($validateData);
+
+        $post = Post::create(array_merge($validateData, ['user_id' => $user->id]));
+/*
+        ou
+
+        $post = new Post($validateData);
+        $post->user_id = $user->id;
+        $post->save();*/
+
         $posts = Post::orderBy('created_at','desc')->get();
 
-        return view('publications', ['posts' => $posts, 'user' => $user]);
+        return redirect()->route('publications');
 
     }
 
