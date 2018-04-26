@@ -31,15 +31,38 @@
                     <div class="card">   <!-- PUBLICATION 1 -->
                         <div class="card-body">
                             <p class="card-text">{{ $post->publication }}</p>
+                            <div class="card-footer text-muted">
+                                <div class="card-footer">
+                                    <small class="text-muted">
+                                        <button class="button-like"></button>
+                                        <button class="button-dislike"></button>
+                                        5 commentaires | Publié le {{ $post->created_at }}
+                                    </small>
+                                </div>
+
+                                @foreach($comments as $comment)
+                                <div class="card-body">
+                                    <p class="card-text">{{ $comment->content }}</p>
+                                </div>
+
+                                @endforeach
+
+
+
+
+
+                                <form method="post"  action="{{ route('add-comment') }}">
+                                    @csrf
+                                    <input type="hidden" value="{{ $post->id }}">
+                                    <textarea name="content" class="form-control" placeholder="Commenter ..." rows="1"></textarea>
+                                    <div class="card-footer text-right">
+                                        <button class="btn btn-secondary" type="submit">Valider</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
 
-                        <div class="card-footer">
-                            <small class="text-muted">
-                                <button class="button-like"></button>
-                                <button class="button-dislike"></button>
-                                5 commentaires | Publié le {{ $post->created_at }}
-                            </small>
-                        </div>
+
                 @endforeach
                     </div>
                 </div>
