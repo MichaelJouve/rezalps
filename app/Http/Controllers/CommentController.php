@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    /**
+     * CommentController constructor.
+     */
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +30,20 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function createComment(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'content' => 'required'
+        ]);
+        $user = Auth::user();
+        $comment = Comment::create($validateData);
+        $comments = Comment::orderBy('created_at','desc')->get();
+
+
+        return redirect()->route('publications');
     }
+
 
     /**
      * Store a newly created resource in storage.

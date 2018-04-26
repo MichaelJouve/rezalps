@@ -43,6 +43,15 @@ class User extends Authenticatable
     }
 
     /**
+     * Get comment from user
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
+
+    /**
      * Get media from user
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */

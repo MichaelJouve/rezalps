@@ -26,6 +26,7 @@ class PostController extends Controller
         return view('flux', ['user' => $user]);
     }
 
+
     public function publications()
     {
         $user = Auth::user();
@@ -58,7 +59,6 @@ class PostController extends Controller
         $user = Auth::user();
 
         $post = Post::create(array_merge($validateData, ['user_id' => $user->id]));
-
 /*
         ou
 
@@ -66,10 +66,9 @@ class PostController extends Controller
         $post->user_id = $user->id;
         $post->save();*/
 
-
         $posts = Post::orderBy('created_at','desc')->get();
 
-        return view('publications', ['posts' => $posts, 'user' => $user]);
+        return redirect()->route('publications');
 
     }
 
