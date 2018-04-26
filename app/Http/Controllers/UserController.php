@@ -116,8 +116,11 @@ class UserController extends Controller
     {
         $user = Auth::user();
         $validateData = $request->validate([
-            'password' => 'required'|'min:8'
+            'password' => 'required'|'min:8',
         ]);
+
+        $user->update($validateData);
+        return view('settings', ['user' => $user]);
     }
 
     public function updateApropos(Request $request)

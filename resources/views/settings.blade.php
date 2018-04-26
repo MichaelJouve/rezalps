@@ -11,7 +11,7 @@
                                     <div class="card_parametre mb-3 mt-3">
                                         <div class="row col-12 justify-centent-between">
                                             <div class="offset-3 col-6 offset-3">
-                                                <form method="post" action="{{route('update-setting')}}" id="form">
+                                                <form method="post" action="{{route('update-settings')}}" id="form">
                                                     @csrf
                                                     <div class="upload-btn-wrapper">
                                                         <button class="btn">Photos</button>
@@ -56,7 +56,11 @@
                                                 <form method="post" action="{{route('update-password')}}">
                                                     @csrf
                                                     <label for="password"></label>
-                                                    <input >
+                                                    <input type="password" placeholder="Nouveau mot de passe">
+                                                    <input type="password" placeholder="Confirmation du mot de passe">
+                                                    <button class="btn btn-secondary submit" type="submit">
+                                                        Soumettre
+                                                    </button>
                                                 </form>
                                             </div>
                                         </div>

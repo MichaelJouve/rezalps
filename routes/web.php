@@ -28,8 +28,8 @@ Route::post('user/update-apropos', 'UserController@updateApropos')->name('update
 Route::get('user/network', 'UserController@network')->name('network');
 
 Route::get('user/settings', 'UserController@settings')->name('settings');
-Route::post('user/update-settings', 'UserController@update')->name('update-setting');
-Route::post('user/update-settings', 'UserController@updatePassword')->name('update-password');
+Route::post('user/update-settings', 'UserController@update')->name('update-settings');
+Route::post('user/update-password', 'UserController@updatePassword')->name('update-password');
 
 Route::get('messaging', 'MailController@mail')->name('messaging');
 Route::post('send-message', 'MailController@create')->name('send-message');
