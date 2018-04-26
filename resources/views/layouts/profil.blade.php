@@ -24,15 +24,13 @@
     </nav>
     <div class="container"> <!-- Header profil -->
         <section id="main-profil">
-            <div class="row justify-centent-between">
-                <div class="offset-1 col-2 mt-3 mb-3 ">
-                    <a href="#form_photo" class="form-button">
-                        <img class="img-fluid rounded-circle" id="avatar" src="{{ asset('storage/' . $user->avatar) }}" width="160" height="160" alt="photo-profil-michael">
+            <div class="row justify-content-between align-items-center">
+                <div class="offset-1 col-2 mt-3 mb-3">
+                        <img class="img-fluid rounded-circle" id="avatar" src="{{asset('storage/' .$user->avatar)}}" width="160" height="160" alt="avatar">
                     </a>
                 </div>
                 <div class="col-6 mt-5">
-                    <a href="#form_name" class="form-button lien_modif_params">
-                        <p class="text-center"></p>
+                        <h2 class="text-center">{{$user->name}}</h2>
                     </div>
                     <div class="col-3 mt-5">
                         <p>{{$user->city}}</p>
