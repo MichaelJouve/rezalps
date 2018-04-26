@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     //only thoses items can be filled.
-    protected $fillable = ['publication'];
+    protected $fillable = ['publication', 'user_id'];
 
     /**
      * Link with model user
