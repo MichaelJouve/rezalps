@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('pitch_video')->nullable();
             $table->string('cv')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('job')->nullable();
             $table->rememberToken();
             $table->timestamps(); //created and update by it self
         });

@@ -107,7 +107,8 @@ class UserController extends Controller
             'phone_number' => 'nullable|min:10|max:12',
             'birthdate' => 'nullable|date',
             'city' => 'nullable|max:250',
-            'website' => 'nullable|min:3|max:250'
+            'website' => 'nullable|min:3|max:250',
+            'job' => 'nullable'
         ]);
 
 
@@ -117,24 +118,20 @@ class UserController extends Controller
 
     public function updatePassword(Request $request)
     {
-
         $user = Auth::user();
 
+        if (! Hash::check($user->password, $request->input('password'))) {
+            return back()
+                ->withErrors('password', 'Current Password Error !')
+                ->withInput();
+        }
+
         $validateData = $request->validate([
-            'current-password' => 'required|string',
-            'new-password' => 'required|string|min:6|confirmed',
-            'new-password_confirmation' => 'required|string|min:6',]);
-         dd($validateData);
+            'password' => 'required|string',
+            'new_password' => 'required|string|min:6|confirmed',
+        ]);
 
-        // if ( $request->get('current-password') === $user->password)
-        // {
-        // $validateData = $request->validate([
-        //    'new-password' => 'required|string|min:6|confirmed',
-        //    'new-password_confirmation' => 'required|string|min:6',
-        // ]);
-        // }
-
-        $user->password = $validateData['new-password'];
+        $user->password = Hash::make($validateData['new-password']);
         $user->save();
         //$user->update($validateData);
         return view('settings', ['user' => $user]);
