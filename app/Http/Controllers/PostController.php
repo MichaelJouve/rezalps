@@ -31,7 +31,7 @@ class PostController extends Controller
     {
         $user = Auth::user();
         $posts = Post::where(['user_id' => $user->id])->with('comments')->orderBy('created_at', 'desc')->get();
-        $posts;
+      //  $avatar =  il faut aller chercher l'avatar dans la table user
 
         // keep the data in this view because there is redirection to it.
         return view('publications', ['posts' => $posts, 'user' => $user]);

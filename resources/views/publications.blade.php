@@ -20,50 +20,62 @@
                 <div class="card-deck"> <!-- PUBLICATION 0 -->
                     <div class="card">
                         <div class="card-body">
-                        @include('shared.postinput')
+                            @include('shared.postinput')
                         </div>
                     </div>
                 </div>
 
                 <!--   zones qui afficheront les données enregistrées des publications  -->
                 @foreach($posts as $post)
-                <div class="card-deck">
-                    <div class="card">   <!-- PUBLICATION 1 -->
-                        <div class="card-body">
-                            <p class="card-text">{{ $post->publication }}</p>
-                            <div class="card-footer text-muted">
-                                <div class="card-footer">
-                                    <small class="text-muted">
-                                        <button class="button-like"></button>
-                                        <button class="button-dislike"></button>
-                                        5 commentaires | Publié le {{ $post->created_at }}
-                                    </small>
+                    <div class="card-deck">
+                        <div class="card border-dark">   <!-- PUBLICATION 1 -->
+                            <div class="card-body">
+                                <img src="{{asset('storage/' .$post->user_id)}}" alt="..."
+                                     class="rounded-circle">
+                                <h5 class="card-title">{{ $post->publication }}</h5>
+
+                                <small class="text-muted">
+                                    <button class="button-like"></button>
+                                    <button class="button-dislike"></button>
+                                    Post publié le {{ $post->created_at }}
+                                </small>
+                                <div class="card-footer text-muted">
                                 </div>
 
                                 @foreach($post->comments as $comment)
-                                <div class="card-body">
-                                    <p class="card-text">{{ $comment->content }}</p>
-                                </div>
-                                @endforeach
-
-
-                                <form method="post"  action="{{ route('add-comment') }}">
-                                    @csrf
-                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                    <textarea name="content" class="form-control" placeholder="Commenter ..." rows="1"></textarea>
-                                    <div class="card-footer text-right">
-                                        <button class="btn btn-secondary" type="submit">Valider</button>
+                                    <div class="card-body">
+                                        <p class="card-text">{{ $comment->content }}</p>
                                     </div>
-                                </form>
+
+                                    <small class="text-muted">
+                                        <button class="button-like"></button>
+                                        <button class="button-dislike"></button>
+                                        Commentaire publié le {{ $post->created_at }}
+                                        <div class="card-footer">
+
+                                    </small>
                             </div>
+                            @endforeach
+
+
+                            <form method="post" action="{{ route('add-comment') }}">
+                                @csrf
+                                <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                <textarea name="content" class="form-control" placeholder="Commenter ..."
+                                          rows="1"></textarea>
+                                <div class="card-footer text-right">
+                                    <button class="btn btn-secondary" type="submit">Valider</button>
+                                </div>
+                            </form>
+
                         </div>
-
-
-                @endforeach
+                        <p></p>
                     </div>
-                </div>
             </div>
+            @endforeach
+
         </div>
+    </div>
     </div>
 @endsection
 
