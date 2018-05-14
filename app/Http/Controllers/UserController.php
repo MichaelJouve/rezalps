@@ -163,6 +163,17 @@ class UserController extends Controller
         return view('settings', ['user' => $user]);
     }
 
+    public function updateCV(Request $request)
+    {
+        $cv = $request->cv->store('usercv', 'public');
+
+        $user = Auth::user();
+        $user->cv = $cv;
+        $user->save();
+
+        return view('settings', ['user' => $user]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
