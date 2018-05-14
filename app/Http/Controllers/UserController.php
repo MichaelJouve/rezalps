@@ -16,7 +16,9 @@ class UserController extends Controller
 
     public function network()
     {
-        return view('network');
+        $user = Auth::user();
+
+        return view('network', ['user' => $user]);
     }
 
     public function settings()
