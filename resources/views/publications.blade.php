@@ -31,7 +31,7 @@
                         <div class="card border-dark">   <!-- PUBLICATION 1 -->
                             <div class="card-body">
                                <div class="row">
-                                <img src="{{asset('storage/' .$post->user->avatar)}}" alt="..."
+                                <img src="{{ asset('storage/' .$post->user->avatar) }}" alt="..."
                                      class="rounded-circle postAvatar">
                                 <p>{{ $post->user->name }}</p>
                                </div>
