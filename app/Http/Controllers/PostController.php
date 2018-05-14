@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Comment;
@@ -29,12 +30,8 @@ class PostController extends Controller
 
     public function publications()
     {
-        $user = Auth::user();
-        $posts = Post::where(['user_id' => $user->id])->with('comments')->orderBy('created_at', 'desc')->get();
-      //  $avatar =  il faut aller chercher l'avatar dans la table user
-
-        // keep the data in this view because there is redirection to it.
-        return view('publications', ['posts' => $posts, 'user' => $user]);
+        $user = User::with('posts.comments', 'posts.user')->find(Auth::id());
+        return view('publications', ['user' => $user]);
     }
 
     public function index()

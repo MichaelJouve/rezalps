@@ -403,10 +403,21 @@ textarea {
   border-radius: 1%;
 }
 
-/*PAGE FLUX_BOX_commentaire*/
+/*PAGE FLUX_BOX_commentaire et page publication */
 
 #new_publications {
   margin-top: 15px;
+}
+
+.postAvatar {
+  height: 40px;
+  margin-right: 5px;
+}
+
+.commentAvatar {
+  height: 30px;
+  margin-right: 5px;
+  padding-left: 5px;
 }
 
 /*CSS Page Paramètre */

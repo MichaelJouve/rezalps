@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'city', 'birthdate', 'phone_number', 'siret', 'entreprise', 'description', 'pitch_video', 'cv', 'avatar', 'website',
+        'name', 'email', 'city', 'birthdate', 'phone_number', 'siret', 'entreprise', 'description', 'pitch_video', 'cv', 'avatar', 'website', 'job'
     ];
 
     /**
@@ -39,7 +39,7 @@ class User extends Authenticatable
      */
     public function posts()
     {
-        return $this->hasMany('App\Post');
+        return $this->hasMany('App\Post')->orderBy('created_at', 'desc');
     }
 
     /**
@@ -48,7 +48,7 @@ class User extends Authenticatable
      */
     public function comments()
     {
-        return $this->hasMany('App\Comment');
+        return $this->hasMany('App\Comment')->orderBy('created_at', 'desc');
     }
 
     /**
