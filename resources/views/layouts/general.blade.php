@@ -14,7 +14,12 @@
 
 
 <footer>
-    <p id="SAS" class="row justify-content-center">&copy; EPIK S.A.S</p>
+    <div class="footer text-center">
+        <a class="footerlink" href="{{ URL::route('cgu') }}" TARGET=_BLANK title="CGU">CGU</a> -
+        <a class="footerlink" href="{{ URL::route('legal-notice') }}" TARGET=_BLANK title="Mentions légales">Mentions légales</a> -
+        <a class="footerlink" href="{{ URL::route('about-us') }}" TARGET=_BLANK title="About us">About Us</a>
+        <p>&copy; EPIK S.A.S</p>
+    </div>
 </footer>
 
 <script src="{{URL::asset('js/app.js')}}"></script>

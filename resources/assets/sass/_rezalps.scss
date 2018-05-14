@@ -190,8 +190,19 @@ textarea {
   background-color: #444444;
 }
 
-#SAS {
-  margin: 15px 0;
+.footer {
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+
+.footerlink {
+  text-decoration: none;
+  color: white;
+}
+
+.footerlink:hover {
+  text-decoration: none;
+  color: lightpink;
 }
 
 .fullsize {
