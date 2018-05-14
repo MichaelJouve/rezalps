@@ -80,11 +80,12 @@
                                                 </form>
                                                 <form method="post" action="{{route('update-password')}}">
                                                     @csrf
+                                                    <h3 class="card-title">Modifier mon mot de passe</h3>
                                                     <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
-                                                        <label class="float-left" for="current-password">Mot de passe actuel</label>
+                                                        <label class="float-left" for="current-password"></label>
                                                         <input id="current-password" type="password"
                                                                aria-describedby="Mot de passe actuel"
-                                                               placeholder="Mot de passe actuel" required>
+                                                               placeholder="Mot de passe actuel" name="current-password" required>
                                                         @if ($errors->has('current-password'))
                                                             <span class="help-block">
                                                                 <strong>{{ $errors->first('current-password') }}</strong>
@@ -92,21 +93,21 @@
                                                         @endif
                                                     </div>
                                                     <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
-                                                        <label class="float-left" for="new-password">Nouveau mot de passe</label>
+                                                        <label class="float-left" for="new-password"></label>
                                                         <input id="new-password" type="password"
                                                                aria-describedby="Nouveau mot de passe"
-                                                               placeholder="Nouveau mot de passe">
+                                                               placeholder="Nouveau mot de passe" name="new-password">
                                                         @if ($errors->has('new-password'))
                                                             <span class="help-block">
                                                                 <strong>{{ $errors->first('new-password') }}</strong>
                                                             </span>
                                                         @endif
                                                     </div>
-                                                    <div>
-                                                        <label class="float-left" for="password-confirm">Confirmation du mot de passe</label>
+                                                    <div class="form-group">
+                                                        <label class="float-left" for="password-confirm"></label>
                                                         <input id="password-confirm" type="password"
                                                                aria-describedby="Votre mot de passe"
-                                                               placeholder="Confirmation">
+                                                               placeholder="Confirmation" name="new-password_confirmation">
                                                     </div>
                                                     <button class="btn btn-info submit" type="submit">
                                                         Soumettre
