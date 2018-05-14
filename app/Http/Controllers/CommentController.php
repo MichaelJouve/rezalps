@@ -39,9 +39,9 @@ class CommentController extends Controller
         ]);
 
         $user = Auth::user();
-        $comment = Comment::create(array_merge($validateData, ['user_id' => $user->id]));
+        Comment::create(array_merge($validateData, ['user_id' => $user->id]));
 
-        return redirect()->route('publications');
+        return back();
     }
 
 

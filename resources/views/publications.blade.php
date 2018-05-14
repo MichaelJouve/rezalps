@@ -30,8 +30,11 @@
                     <div class="card-deck">
                         <div class="card border-dark">   <!-- PUBLICATION 1 -->
                             <div class="card-body">
-                                <img src="{{asset('storage/' .$post->user_id)}}" alt="..."
-                                     class="rounded-circle">
+                               <div class="row">
+                                <img src="{{ asset('storage/' .$post->user->avatar) }}" alt="..."
+                                     class="rounded-circle postAvatar">
+                                <p>{{ $post->user->name }}</p>
+                               </div>
                                 <h5 class="card-title">{{ $post->publication }}</h5>
 
                                 <small class="text-muted">
@@ -44,6 +47,11 @@
 
                                 @foreach($post->comments as $comment)
                                     <div class="card-body">
+                                        <div class="row">
+                                            <img src="{{asset('storage/' .$post->user->avatar)}}" alt="..."
+                                                 class="rounded-circle commentAvatar">
+                                            <p>{{ $post->user->name }}</p>
+                                        </div>
                                         <p class="card-text">{{ $comment->content }}</p>
                                     </div>
 
@@ -51,31 +59,30 @@
                                         <button class="button-like"></button>
                                         <button class="button-dislike"></button>
                                         Commentaire publié le {{ $post->created_at }}
-                                        <div class="card-footer">
-
                                     </small>
+                                    <div class="card-footer">
+                                    </div>
+                                @endforeach
+
+
+                                <form method="post" action="{{ route('add-comment') }}">
+                                    @csrf
+                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                                    <textarea name="content" class="form-control" placeholder="Commenter ..."
+                                              rows="1"></textarea>
+                                    <div class="card-footer text-right">
+                                        <button class="btn btn-secondary" type="submit">Valider</button>
+                                    </div>
+                                </form>
+
                             </div>
-                            @endforeach
-
-
-                            <form method="post" action="{{ route('add-comment') }}">
-                                @csrf
-                                <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                <textarea name="content" class="form-control" placeholder="Commenter ..."
-                                          rows="1"></textarea>
-                                <div class="card-footer text-right">
-                                    <button class="btn btn-secondary" type="submit">Valider</button>
-                                </div>
-                            </form>
-
+                            <p></p>
                         </div>
-                        <p></p>
                     </div>
-            </div>
-            @endforeach
+                @endforeach
 
+            </div>
         </div>
-    </div>
     </div>
 @endsection
 

@@ -24,7 +24,8 @@ class PostController extends Controller
     public function flux()
     {
         $user = Auth::user();
-        return view('flux', ['user' => $user]);
+        $posts = Post::with('comments.user', 'user')->orderBy('created_at', 'desc')->get();
+        return view('flux', ['posts' => $posts, 'user' => $user]);
     }
 
 
@@ -61,10 +62,7 @@ class PostController extends Controller
         $post->user_id = $user->id;
         $post->save();*/
 
-        $posts = Post::orderBy('created_at','desc')->get();
-
-        return redirect()->route('publications');
-
+        return back();
     }
 
     /**
