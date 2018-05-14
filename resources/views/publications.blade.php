@@ -26,7 +26,7 @@
                 </div>
 
                 <!--   zones qui afficheront les données enregistrées des publications  -->
-                @foreach($posts as $post)
+                @foreach($user->posts as $post)
                     <div class="card-deck">
                         <div class="card border-dark">   <!-- PUBLICATION 1 -->
                             <div class="card-body">

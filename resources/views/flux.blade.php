@@ -36,9 +36,9 @@
                                 @foreach($post->comments as $comment)
                                     <div class="card-body">
                                         <div class="row">
-                                            <img src="{{asset('storage/' .$post->user->avatar)}}" alt="..."
+                                            <img src="{{asset('storage/' .$comment->user->avatar)}}" alt="..."
                                                  class="rounded-circle commentAvatar">
-                                            <p>{{ $post->user->name }}</p>
+                                            <p>{{ $comment->user->name }}</p>
                                         </div>
                                         <p class="card-text">{{ $comment->content }}</p>
                                     </div>
@@ -46,7 +46,7 @@
                                     <small class="text-muted">
                                         <button class="button-like"></button>
                                         <button class="button-dislike"></button>
-                                        Commentaire publié le {{ $post->created_at }}
+                                        Commentaire publié le {{ $comment->created_at }}
                                     </small>
                                     <div class="card-footer">
                                     </div>
