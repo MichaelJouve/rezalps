@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -118,22 +118,19 @@ class UserController extends Controller
 
     public function updatePassword(Request $request)
     {
-
         $user = Auth::user();
 
-        $validateData = $request->validate([
-            'current-password' => 'required|string',
-            'new-password' => 'required|string|min:6|confirmed',
-            'new-password_confirmation' => 'required|string|min:6',]);
-         dd($validateData);
+        if (! Hash::check($request->input('password'), $user->password)) {
+            return back()
+                ->withErrors(['password' => 'Mot de passe incorrect'])
+                ->withInput();
+        }
 
-        // if ( $request->get('current-password') === $user->password)
-        // {
-        // $validateData = $request->validate([
-        //    'new-password' => 'required|string|min:6|confirmed',
-        //    'new-password_confirmation' => 'required|string|min:6',
-        // ]);
-        // }
+        $validateData = $request->validate([
+            'password' => 'required|string',
+            'new_password' => 'required|string|min:6|confirmed',
+            ]);
+
 
         $user->password = $validateData['new-password'];
         $user->save();
