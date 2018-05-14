@@ -73,6 +73,13 @@
                                                                    placeholder="Nouvelle ville" name="city" id="city"
                                                                    value="{{ $user->city }}">
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label class="float-left" for="city">Site Web</label>
+                                                            <input type="text" class="form-control"
+                                                                   aria-describedby="Votre site web"
+                                                                   placeholder="Modifier le site" name="website" id="website"
+                                                                   value="{{ $user->website }}">
+                                                        </div>
                                                     </div>
                                                     <button class="btn btn-info submit" type="submit">
                                                         Soumettre
