@@ -3,6 +3,9 @@
 @section('content')
     <main>
         <section>
+            <div class="col-10 offset-1 text-center">
+                <br/><h1>Qui sommes nous?</h1><br/>
+            </div>
         <div class="row">
             <div class="col-6 offset-3 text-center">
                 <div>
