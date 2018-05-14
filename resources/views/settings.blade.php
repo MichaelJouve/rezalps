@@ -80,6 +80,13 @@
                                                                    placeholder="Modifier le site" name="website" id="website"
                                                                    value="{{ $user->website }}">
                                                         </div>
+                                                        <div class="form-group">
+                                                            <label class="float-left" for="city">Poste actuel</label>
+                                                            <input type="text" class="form-control"
+                                                                   aria-describedby="Votre poste actuel"
+                                                                   placeholder="Modifier le poste actuel" name="job" id="job"
+                                                                   value="{{ $user->job }}">
+                                                        </div>
                                                     </div>
                                                     <button class="btn btn-info submit" type="submit">
                                                         Soumettre
