@@ -47,6 +47,11 @@
 
                                 @foreach($post->comments as $comment)
                                     <div class="card-body">
+                                        <div class="row">
+                                            <img src="{{asset('storage/' .$post->user->avatar)}}" alt="..."
+                                                 class="rounded-circle commentAvatar">
+                                            <p>{{ $post->user->name }}</p>
+                                        </div>
                                         <p class="card-text">{{ $comment->content }}</p>
                                     </div>
 
