@@ -3,9 +3,10 @@
 
     <main>
         <div>
-            <div>
-                <h1>Déclaration des droits et responsabilités</h1><br>
+            <div class="col-10 offset-1 text-center">
+                <br/><h1 class="cgu-title">Déclaration des droits et responsabilités.</h1><br/>
             </div>
+            <div class="col-10 offset-1">
             <div>
                 <p>
                 La présente Déclaration des droits et responsabilités (« Déclaration », « Conditions » ou « DDR ») est tirée des Principes de Rezalps
@@ -288,6 +289,7 @@
                     </ol>
                 </li>
             </ol>
+        </div>
         </div>
     </main>
 
