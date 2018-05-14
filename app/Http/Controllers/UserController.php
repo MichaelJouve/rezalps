@@ -117,13 +117,19 @@ class UserController extends Controller
 
         $user = Auth::user();
 
-        if ( $request->get('current-password') === $user->password) {
-
         $validateData = $request->validate([
+            'current-password' => 'required|string',
             'new-password' => 'required|string|min:6|confirmed',
-            'new-password_confirmation' => 'required|string|min:6',
-        ]);
-        }
+            'new-password_confirmation' => 'required|string|min:6',]);
+         dd($validateData);
+
+        // if ( $request->get('current-password') === $user->password)
+        // {
+        // $validateData = $request->validate([
+        //    'new-password' => 'required|string|min:6|confirmed',
+        //    'new-password_confirmation' => 'required|string|min:6',
+        // ]);
+        // }
 
         $user->password = $validateData['new-password'];
         $user->save();
