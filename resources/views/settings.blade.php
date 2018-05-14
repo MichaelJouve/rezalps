@@ -56,7 +56,7 @@
                                                             <input type="tel" class="form-control"
                                                                    aria-describedby="Votre numero"
                                                                    placeholder="Numero de téléphone" name="phone_number"
-                                                                   id="phone_number" value="{{ $user->phone_number }}">
+                                                                   id="phone_number" value="{{ old('phone_number', $user->phone_number) }}">
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="float-left" for="birthdate">Date de
@@ -88,33 +88,33 @@
                                                 <form method="post" action="{{route('update-password')}}">
                                                     @csrf
                                                     <h3 class="card-title">Modifier mon mot de passe</h3>
-                                                    <div class="form-group{{ $errors->has('current-password') ? ' has-error' : '' }}">
-                                                        <label class="float-left" for="current-password"></label>
-                                                        <input id="current-password" type="password"
+                                                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                                        <label class="float-left" for="password"></label>
+                                                        <input id="password" type="password"
                                                                aria-describedby="Mot de passe actuel"
-                                                               placeholder="Mot de passe actuel" name="current-password" required>
-                                                        @if ($errors->has('current-password'))
+                                                               placeholder="Mot de passe actuel" name="password" required>
+                                                        @if ($errors->has('password'))
                                                             <span class="help-block">
-                                                                <strong>{{ $errors->first('current-password') }}</strong>
+                                                                <strong>{{ $errors->first('password') }}</strong>
                                                             </span>
                                                         @endif
                                                     </div>
-                                                    <div class="form-group{{ $errors->has('new-password') ? ' has-error' : '' }}">
-                                                        <label class="float-left" for="new-password"></label>
-                                                        <input id="new-password" type="password"
+                                                    <div class="form-group{{ $errors->has('new_password') ? ' has-error' : '' }}">
+                                                        <label class="float-left" for="new_password"></label>
+                                                        <input id="new_password" type="password"
                                                                aria-describedby="Nouveau mot de passe"
-                                                               placeholder="Nouveau mot de passe" name="new-password">
-                                                        @if ($errors->has('new-password'))
+                                                               placeholder="Nouveau mot de passe" name="new_password">
+                                                        @if ($errors->has('new_password'))
                                                             <span class="help-block">
-                                                                <strong>{{ $errors->first('new-password') }}</strong>
+                                                                <strong>{{ $errors->first('new_password') }}</strong>
                                                             </span>
                                                         @endif
                                                     </div>
                                                     <div class="form-group">
-                                                        <label class="float-left" for="password-confirm"></label>
-                                                        <input id="password-confirm" type="password"
+                                                        <label class="float-left" for="password_confirm"></label>
+                                                        <input id="password_confirm" type="password"
                                                                aria-describedby="Votre mot de passe"
-                                                               placeholder="Confirmation" name="new-password_confirmation">
+                                                               placeholder="Confirmation" name="new_password_confirmation">
                                                     </div>
                                                     <button class="btn btn-info submit" type="submit">
                                                         Soumettre
