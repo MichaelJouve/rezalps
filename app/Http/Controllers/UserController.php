@@ -107,7 +107,8 @@ class UserController extends Controller
             'phone_number' => 'nullable|min:10|max:12',
             'birthdate' => 'nullable|date',
             'city' => 'nullable|max:250',
-            'website' => 'nullable|min:3|max:250'
+            'website' => 'nullable|min:3|max:250',
+            'job' => 'nullable'
         ]);
 
 
