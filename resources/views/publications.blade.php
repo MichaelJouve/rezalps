@@ -45,6 +45,10 @@
                                 <div class="card-footer text-muted">
                                 </div>
 
+                                @if ($user)
+                                    @include('shared.deleteinput')
+                                @endif
+
                                 @foreach($post->comments as $comment)
                                     <div class="card-body">
                                         <div class="row">

@@ -42,9 +42,9 @@ class UserController extends Controller
      */
     public function publications($id)
     {
-        $authUser = User::with('posts')->findOrFail($id);
+        $user = User::with('posts')->findOrFail($id);
 
-        return view('publications', ['authUser' => $authUser]);
+        return view('publications', ['user' => $user]);
     }
 
     /**
