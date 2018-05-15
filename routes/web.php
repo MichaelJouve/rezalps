@@ -42,6 +42,8 @@ Route::post('user/update-post/{id}', 'PostController@update')->name('update-post
 Route::get('delete-post/{id}', 'PostController@destroy')->name('delete-post');
 
 Route::post('add-comment', 'CommentController@createComment')->name('add-comment');
+Route::get('delete-comment/{id}', 'CommentController@destroy')->name('delete-comment');
+Route::get('update-comment/{id}', 'CommentController@update')->name('update-comment');
 
 Route::get('user/medias', 'MediaController@medias')->name('medias');
 

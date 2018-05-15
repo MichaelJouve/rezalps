@@ -55,7 +55,7 @@ class PostController extends Controller
         ]);
         $user = Auth::user();
 
-        $post = Post::create(array_merge($validateData, ['user_id' => $user->id]));
+        Post::create(array_merge($validateData, ['user_id' => $user->id]));
 /*
         ou
 
@@ -113,7 +113,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $user = Auth::user();
-        $post = Post::findOrFail($id);
+        $comment = Comment::findOrFail($id);
 
         $this->validate($request, [
             'publication' => 'required'
@@ -121,9 +121,9 @@ class PostController extends Controller
 
         $validateData = $request->all();
 
-        $post->update($validateData);
+        $comment->update($validateData);
 
-        return view('publications', ['post' => $post, 'user' => $user]);
+        return view('publications', ['comment' => $comment, 'user' => $user]);
     }
 
     /**
