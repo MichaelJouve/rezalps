@@ -19,8 +19,10 @@
                         <div class="card border-dark">   <!-- PUBLICATION 1 -->
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="{{ asset('storage/' .$post->user->avatar) }}" alt="..."
+                                    <a href="{{URL::route('user.publications', ['id' => $post->user->id])}}">
+                                        <img src="{{ asset('storage/' .$post->user->avatar) }}" alt="..."
                                          class="rounded-circle postAvatar">
+                                    </a>
                                     <p>{{ $post->user->name }}</p>
                                 </div>
                                 <h5 class="card-title">{{ $post->publication }}</h5>

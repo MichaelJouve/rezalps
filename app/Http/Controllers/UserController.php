@@ -42,9 +42,18 @@ class UserController extends Controller
      */
     public function publications($id)
     {
-        $authUser = User::with('posts')->findOrFail($id);
+        $user = User::with('posts')->findOrFail($id);
 
-        return view('publications', ['authUser' => $authUser]);
+        return view('publications', ['user' => $user]);
+    }
+
+    public function userPublications($id)
+    {
+
+        $user = User::findOrFail($id);
+        /**$user = User::where($user->avatar == $id)->get();*/
+
+        return view('publications', ['user' => $user]);
     }
 
     /**
@@ -132,7 +141,7 @@ class UserController extends Controller
             ]);
 
 
-        $user->password = $validateData['new-password'];
+        $user->password = $validateData['new_password'];
         $user->save();
         //$user->update($validateData);
         return view('settings', ['user' => $user]);
