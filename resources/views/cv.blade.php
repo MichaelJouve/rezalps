@@ -26,7 +26,8 @@
                             <h2>CV</h2>
                             <div class="card">
                                 <p>Pour afficher votre CV sur votre page veuillez l'importer ci-dessous.</p>
-                                <form method="post" action="{{ route('update-cv') }}">
+                                <form method="post" action="{{ route('update-cv') }}" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="upload-btn-wrapper">
                                         <button class="btn">Importer</button>
                                         <input type="file" name="cv"/>
