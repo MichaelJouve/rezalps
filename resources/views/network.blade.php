@@ -6,6 +6,7 @@
         <section id="content" class="container">
             <div class="row">
                 <div class=" row col-12">
+                    {{--Start area Suggestions--}}
                     <div class="col-md-3 col-sm-12">
                         <div class="reseau" id="suggestions">
                             <h2 class="text-center">Suggestions</h2>
@@ -73,18 +74,23 @@
                             </div>
                         </div>
                     </div>
+                    {{--End area Suggestions--}}
+
+                    {{--Start area friends--}}
                     <div class="col-md-6 col-sm-12">
                         <div class="reseau" id="amis">
                             <h2 class="text-center">Amis</h2>
                             <div class="card">
                                 <div id="profamis">
                                     <div class="row col-12">
+                                       @foreach($friends as $friend)
                                         <div class="col-3">
-                                            <a href="#">
+                                            <a href="{{ asset('storage/' .$friend->user->avatar)}}">
                                                 <img class="img_contact" src="img/michael-photo.jpg" width="30" height="30" alt="photo-profil-michael">
                                                 <p>Nom</p>
                                             </a>
                                         </div>
+                                        @endforeach
                                         <div class="col-3">
                                             <a href="#">
                                                 <img class="img_contact" src="img/michael-photo.jpg" width="30" height="30" alt="photo-profil-michael">
@@ -136,6 +142,9 @@
                             </div>
                         </div>
                     </div>
+                    {{--End Area friends--}}
+
+                    {{--Start area Entreprises followed--}}
                     <div class="col-md-3 col-sm-12">
                         <div class="reseau" id="entreprises">
                             <h2 class="text-center">Entreprises</h2>
@@ -166,6 +175,7 @@
                             </div>
                         </div>
                     </div>
+            {{--End area Entreprises followed--}}
         </section>
     </main>
 

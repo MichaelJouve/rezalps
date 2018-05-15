@@ -17,8 +17,9 @@ class UserController extends Controller
     public function network()
     {
         $user = Auth::user();
+        $friends = User::with('relationships')->orderby('created_at', 'desc')->get();
 
-        return view('network', ['user' => $user]);
+        return view('network', ['friends' => $friends, 'user' => $user]);
     }
 
     public function settings()
