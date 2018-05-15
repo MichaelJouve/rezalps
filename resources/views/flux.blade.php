@@ -35,6 +35,12 @@
                                 <div class="card-footer text-muted">
                                 </div>
 
+                            {{--contrôle de l'utilisateur, si c'est celui connecté alors on affiche les 2 boutons delete et update--}}
+                            @if (Auth::id() == $post->user_id)
+                                    @include('shared.deleteinput')
+                                    @include('shared.updateinput')
+                                @endif
+
                                 @foreach($post->comments as $comment)
                                     <div class="card-body">
                                         <div class="row">
@@ -45,6 +51,19 @@
                                             <p>{{ $comment->user->name }}</p>
                                         </div>
                                         <p class="card-text">{{ $comment->content }}</p>
+
+                                        {{--contrôle de l'utilisateur, si c'est celui connecté alors on affiche les 2 boutons delete et update pour le commentaire--}}
+                                        @if (Auth::id() == $comment->user_id)
+                                            <form action="{{route('delete-comment', $comment->id)}}" method="DELETE">
+                                                @csrf
+                                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre post ?');">Supprimer</button>
+                                            </form>
+                                            <form action="{{route('update-comment', ['comment' => $comment->id])}}" method="GET">
+                                                @csrf
+                                                <button type="submit">Editer</button>
+                                            </form>
+                                        @endif
+
                                     </div>
 
                                     <small class="text-muted">

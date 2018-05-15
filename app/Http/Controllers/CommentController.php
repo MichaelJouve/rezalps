@@ -85,9 +85,20 @@ class CommentController extends Controller
      * @param  \App\Comment  $comments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comments)
+    public function update(Request $request, $id)
     {
-        //
+        $user = Auth::user();
+        $comment = Comment::findOrFail($id);
+
+        $this->validate($request, [
+            'publication' => 'required'
+        ]);
+
+        $validateData = $request->all();
+
+        $comment->update($validateData);
+
+        return view('publications', ['comment' => $comment, 'user' => $user]);
     }
 
     /**
@@ -96,8 +107,10 @@ class CommentController extends Controller
      * @param  \App\Comment  $comments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comments)
+    public function destroy($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+        return redirect()->route('flux');
     }
 }

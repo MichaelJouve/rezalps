@@ -31,8 +31,9 @@ class PostController extends Controller
 
     public function publications()
     {
+        $allposts = Post::all();
         $user = User::with('posts.comments', 'posts.user')->find(Auth::id());
-        return view('publications', ['user' => $user]);
+        return view('publications', ['user' => $user, 'allposts' => $allposts]);
     }
 
     public function index()
@@ -54,7 +55,7 @@ class PostController extends Controller
         ]);
         $user = Auth::user();
 
-        $post = Post::create(array_merge($validateData, ['user_id' => $user->id]));
+        Post::create(array_merge($validateData, ['user_id' => $user->id]));
 /*
         ou
 
@@ -95,7 +96,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $post = Post::findOrFail($id);
+
+        return view('update-publications', ['post' => $post, 'user' => $user]);
+
     }
 
     /**
@@ -107,7 +112,18 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = Auth::user();
+        $comment = Comment::findOrFail($id);
+
+        $this->validate($request, [
+            'publication' => 'required'
+        ]);
+
+        $validateData = $request->all();
+
+        $comment->update($validateData);
+
+        return view('publications', ['comment' => $comment, 'user' => $user]);
     }
 
     /**
