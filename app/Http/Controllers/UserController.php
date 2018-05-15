@@ -48,6 +48,14 @@ class UserController extends Controller
         return view('publications', ['user' => $user]);
     }
 
+    public function userPublications($id)
+    {
+
+        $user = User::findOrFail($id);
+        /**$user = User::where($user->avatar == $id)->get();*/
+
+        return view('publications', ['user' => $user]);
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -159,17 +167,6 @@ class UserController extends Controller
         $user->save();
 
         return view('settings', ['user' => $user]);
-    }
-
-    public function updateCV(Request $request)
-    {
-        $cv = $request->cv->store('usercv', 'public');
-
-        $user = Auth::user();
-        $user->cv = $cv;
-        $user->save();
-
-        return back();
     }
 
     /**

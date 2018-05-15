@@ -15,7 +15,7 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('flux', 'PostController@flux')->name('flux');
 
-Route::get('user/{id}/publications', 'UserController@publications')->name('user.publications');
+Route::get('user/{id}/publications', 'UserController@userPublications')->name('user.publications');
 Route::get('user/{id}/cv', 'UserController@cv')->name('user.cv');
 Route::get('user/{id}/network', 'UserController@network')->name('user.network');
 Route::get('user/{id}/medias', 'UserController@medias')->name('user.medias');
@@ -37,6 +37,7 @@ Route::post('send-message', 'MailController@create')->name('send-message');
 
 Route::get('user/publications', 'PostController@publications')->name('publications');
 Route::post('add-post', 'PostController@create')->name('add-post');
+Route::get('delete-post/{id}', 'PostController@destroy')->name('delete-post');
 Route::post('add-comment', 'CommentController@createComment')->name('add-comment');
 
 Route::get('user/medias', 'MediaController@medias')->name('medias');

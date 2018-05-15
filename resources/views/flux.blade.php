@@ -19,8 +19,10 @@
                         <div class="card border-dark">   <!-- PUBLICATION 1 -->
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="{{ asset('storage/' .$post->user->avatar) }}" alt="..."
-                                         class="rounded-circle postAvatar">
+                                    <a href="{{URL::route('user.publications', ['id' => $post->user->id])}}">
+                                        <img src="{{ asset('storage/' .$post->user->avatar) }}" alt="..."
+                                             class="rounded-circle postAvatar">
+                                    </a>
                                     <p>{{ $post->user->name }}</p>
                                 </div>
                                 <h5 class="card-title">{{ $post->publication }}</h5>
@@ -36,8 +38,10 @@
                                 @foreach($post->comments as $comment)
                                     <div class="card-body">
                                         <div class="row">
-                                            <img src="{{asset('storage/' .$comment->user->avatar)}}" alt="..."
-                                                 class="rounded-circle commentAvatar">
+                                            <a href="{{URL::route('user.publications', ['id' => $comment->user->id])}}">
+                                                <img src="{{asset('storage/' .$comment->user->avatar)}}" alt="..."
+                                                     class="rounded-circle commentAvatar">
+                                            </a>
                                             <p>{{ $comment->user->name }}</p>
                                         </div>
                                         <p class="card-text">{{ $comment->content }}</p>
