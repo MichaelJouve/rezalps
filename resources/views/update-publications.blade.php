@@ -29,7 +29,7 @@
                                         @csrf
                                         <input type="text" name="publication" value="{{$post->publication}}">
                                         <div class="alignement_droite">
-                                            <input type="submit" class="btn" value="Mise à jour"/>
+                                            <button type="submit" class="btn-secondary">Mise à jour</button>
                                         </div>
                                     </form>
                                 </h5>
@@ -65,17 +65,6 @@
                                     <div class="card-footer">
                                     </div>
                                 @endforeach
-
-
-                                <form method="post" action="{{ route('add-comment') }}">
-                                    @csrf
-                                    <input type="hidden" name="post_id" value="{{ $post->id }}">
-                                    <textarea name="content" class="form-control" placeholder="Commenter ..."
-                                              rows="1"></textarea>
-                                    <div class="card-footer text-right">
-                                        <button class="btn btn-secondary" type="submit">Valider</button>
-                                    </div>
-                                </form>
 
                             </div>
                             <p></p>
