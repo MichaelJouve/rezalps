@@ -55,7 +55,6 @@ class UserController extends Controller
 
         return view('publications', ['user' => $user]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -141,7 +140,7 @@ class UserController extends Controller
             ]);
 
 
-        $user->password = $validateData['new_password'];
+        $user->password = $validateData['new-password'];
         $user->save();
         //$user->update($validateData);
         return view('settings', ['user' => $user]);

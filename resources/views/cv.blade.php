@@ -26,10 +26,11 @@
                             <h2>CV</h2>
                             <div class="card">
                                 <p>Pour afficher votre CV sur votre page veuillez l'importer ci-dessous.</p>
-                                <form method="post" action="">
+                                <form method="post" action="{{ route('update-cv') }}" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="upload-btn-wrapper">
                                         <button class="btn">Importer</button>
-                                        <input type="file" name="myfile"/>
+                                        <input type="file" name="cv"/>
                                     </div>
 
                                     <div class="alignement_droite">
@@ -39,7 +40,7 @@
                                 <!-- La div suivante permet de rajouter un viewer PDF -->
                                 <div id="pdf">
                                     <div class="pdfobject-com">
-                                        <embed class="pdfobject" src="img/PDF_test.pdf" type="application/pdf">
+                                        <embed class="pdfobject" src="{{ asset('storage/' .$user->cv) }}" name="cv" type="application/pdf">
                                     </div>
                                 </div>
                             </div>

@@ -21,7 +21,7 @@ Route::get('user/{id}/network', 'UserController@network')->name('user.network');
 Route::get('user/{id}/medias', 'UserController@medias')->name('user.medias');
 
 Route::get('user/cv', 'UserController@cv')->name('user.cv');
-Route::post('add-cv', 'UserController@create')->name('add-cv');
+Route::post('user/update-cv', 'UserController@updateCV')->name('update-cv');
 Route::post('add-pitch', 'UserController@create')->name('add-pitch');
 Route::post('user/update-apropos', 'UserController@updateApropos')->name('update-apropos');
 
