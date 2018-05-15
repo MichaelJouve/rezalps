@@ -15,27 +15,24 @@
                     </ul>
                 </div>
             </div>
-            <div class="profil-publications col-lg-9 col-12"> <!-- Colonne flux publications -->
-                <!--  zone fixe pour faire une publication   -->
-                <div class="card-deck"> <!-- PUBLICATION 0 -->
-                    <div class="card">
-                        <div class="card-body">
-                            @include('shared.postinput')
-                        </div>
-                    </div>
-                </div>
-
                 <!--   zones qui afficheront les données enregistrées des publications  -->
-                @foreach($user->posts as $post)
                     <div class="card-deck">
                         <div class="card border-dark">   <!-- PUBLICATION 1 -->
                             <div class="card-body">
-                               <div class="row">
-                                <img src="{{ asset('storage/' .$post->user->avatar) }}" alt="..."
-                                     class="rounded-circle postAvatar">
-                                <p>{{ $post->user->name }}</p>
-                               </div>
-                                <h5 class="card-title">{{ $post->publication }}</h5>
+                                <div class="row">
+                                    <img src="{{ asset('storage/' .$post->user->avatar) }}" alt="..."
+                                         class="rounded-circle postAvatar">
+                                    <p>{{ $post->user->name }}</p>
+                                </div>
+                                <h5 class="card-title">
+                                    <form action="{{route('update-post', ['post' => $post->id])}}" method="POST">
+                                        @csrf
+                                        <input type="text" name="publication" value="{{$post->publication}}">
+                                        <div class="alignement_droite">
+                                            <input type="submit" class="btn" value="Mise à jour"/>
+                                        </div>
+                                    </form>
+                                </h5>
 
                                 <small class="text-muted">
                                     <button class="button-like"></button>
@@ -45,10 +42,9 @@
                                 <div class="card-footer text-muted">
                                 </div>
 
-                                {{--contrôle de l'utilisateur, si c'est celui connecté alors on affiche les 2 boutons delete et update--}}
-                                @if (Auth::id() == $post->user_id)
+                            {{--contrôle de l'utilisateur, si c'est celui connecté alors on affiche le bouton delete--}}
+                            @if (Auth::id() == $post->user_id)
                                     @include('shared.deleteinput')
-                                    @include('shared.updateinput')
                                 @endif
 
                                 @foreach($post->comments as $comment)
@@ -85,7 +81,6 @@
                             <p></p>
                         </div>
                     </div>
-                @endforeach
 
             </div>
         </div>

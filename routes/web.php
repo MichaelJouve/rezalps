@@ -37,7 +37,10 @@ Route::post('send-message', 'MailController@create')->name('send-message');
 
 Route::get('user/publications', 'PostController@publications')->name('publications');
 Route::post('add-post', 'PostController@create')->name('add-post');
+Route::get('user/edit-post/{id}', 'PostController@edit')->name('edit-post');
+Route::post('user/update-post/{id}', 'PostController@update')->name('update-post');
 Route::get('delete-post/{id}', 'PostController@destroy')->name('delete-post');
+
 Route::post('add-comment', 'CommentController@createComment')->name('add-comment');
 
 Route::get('user/medias', 'MediaController@medias')->name('medias');

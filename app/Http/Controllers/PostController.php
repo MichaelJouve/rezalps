@@ -31,8 +31,9 @@ class PostController extends Controller
 
     public function publications()
     {
+        $allposts = Post::all();
         $user = User::with('posts.comments', 'posts.user')->find(Auth::id());
-        return view('publications', ['user' => $user]);
+        return view('publications', ['user' => $user, 'allposts' => $allposts]);
     }
 
     public function index()
@@ -95,7 +96,11 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $post = Post::findOrFail($id);
+
+        return view('update-publications', ['post' => $post, 'user' => $user]);
+
     }
 
     /**
@@ -107,7 +112,18 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = Auth::user();
+        $post = Post::findOrFail($id);
+
+        $this->validate($request, [
+            'publication' => 'required'
+        ]);
+
+        $validateData = $request->all();
+
+        $post->update($validateData);
+
+        return view('publications', ['post' => $post, 'user' => $user]);
     }
 
     /**
