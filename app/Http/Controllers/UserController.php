@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Relationship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -17,9 +18,9 @@ class UserController extends Controller
     public function network()
     {
         $user = Auth::user();
-        $friends = User::with('relationships')->orderby('created_at', 'desc')->get();
+        $user->load('sender');
 
-        return view('network', ['friends' => $friends, 'user' => $user]);
+        return view('network', ['user' => $user]);
     }
 
     public function settings()
@@ -50,8 +51,7 @@ class UserController extends Controller
 
     public function userPublications($id)
     {
-
-        $user = User::findOrFail($id);
+        $user = User::with('posts.comments', 'posts.user')->findOrFail($id);
         /**$user = User::where($user->avatar == $id)->get();*/
 
         return view('publications', ['user' => $user]);
