@@ -12,16 +12,17 @@
                             <h2 class="text-center">Suggestions</h2>
                             <div class="card">
                                 <div class="" id="profsug">
+                                    {{--suggestion à faire dans la méthode network--}}
+                                    @foreach($sugUser as $suggest)
                                     <div class="row col-12">
-                                        {{--suggestion à faire dans la méthode network--}}
-                                        @foreach($suguser as $suggest)
+
                                         <div class="col-4">
                                             <a href="{{ URL::route('user.publications', ['id' => $suggest->id]) }}">
                                                 <img class="img_contact" src="{{ asset('storage/' .$suggest->avatar) }}" width="30"
                                                      height="50" alt="{{ $suggest->name }}">
                                             </a>
                                         </div>
-                                        @endforeach
+
                                         <div class="col-8">
                                             <p class="text-center">Informations sur le contact</p>
                                         </div>
@@ -30,54 +31,7 @@
                                         <p class="">12 amis communs</p>
                                     </div>
                                 </div>
-                                <div id="profsug">
-                                    <div class="row col-12">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="img_contact" src="img/michael-photo.jpg" width="30"
-                                                     height="30" alt="photo-profil-michael">
-                                            </a>
-                                        </div>
-                                        <div class="col-8">
-                                            <p class="text-center">Informations sur le contact</p>
-                                        </div>
-                                    </div>
-                                    <div class="row col-12 d-flex justify-content-center">
-                                        <p class="">9 amis communs</p>
-                                    </div>
-                                </div>
-                                <div id="profsug">
-                                    <div class="row col-12">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="img_contact" src="img/michael-photo.jpg" width="30"
-                                                     height="30" alt="photo-profil-michael">
-                                            </a>
-                                        </div>
-                                        <div class="col-8">
-                                            <p class="text-center">Informations sur le contact</p>
-                                        </div>
-                                    </div>
-                                    <div class="row col-12 d-flex justify-content-center">
-                                        <p class="">6 amis communs</p>
-                                    </div>
-                                </div>
-                                <div id="profsug">
-                                    <div class="row col-12">
-                                        <div class="col-4">
-                                            <a href="#">
-                                                <img class="img_contact" src="img/michael-photo.jpg" width="30"
-                                                     height="30" alt="photo-profil-michael">
-                                            </a>
-                                        </div>
-                                        <div class="col-8">
-                                            <p class="text-center">Informations sur le contact</p>
-                                        </div>
-                                    </div>
-                                    <div class="row col-12 d-flex justify-content-center">
-                                        <p class="">3 amis communs</p>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

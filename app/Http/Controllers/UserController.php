@@ -18,9 +18,14 @@ class UserController extends Controller
     public function network()
     {
         $user = Auth::user();
-        $user->load('sender');
+        $user->findFollowed(10, ['created_at', 'desc'], $queries = array());
 
-        return view('network', ['user' => $user]);
+        $sugUser = User::doesntHave('sender')->get();
+
+
+
+
+        return view('network', ['user' => $user, 'sugUser' => $sugUser]);
     }
 
     public function settings()
