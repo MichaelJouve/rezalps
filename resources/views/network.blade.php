@@ -90,7 +90,6 @@
                             <div class="card">
                                 <div id="profamis">
                                     <div class="row col-12">
-
                                         @foreach($user->sender as $sender)
                                             <div class="col-3">
                                                 <a href="{{ URL::route('user.publications', ['id' => $sender->id]) }}">
