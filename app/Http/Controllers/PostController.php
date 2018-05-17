@@ -29,7 +29,9 @@ class PostController extends Controller
         return view('flux', ['posts' => $posts, 'authUser' => $authUser]);
     }
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function publications()
     {
         $allposts = Post::all();
@@ -39,6 +41,9 @@ class PostController extends Controller
         return view('publications', ['user' => $user, 'allposts' => $allposts, 'authUser' => $authUser]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $posts = Post::all();
@@ -59,12 +64,12 @@ class PostController extends Controller
         $authUser = Auth::user();
 
         Post::create(array_merge($validateData, ['authUser_id' => $authUser->id]));
-/*
-        ou
+        /*
+                ou
 
-        $post = new Post($validateData);
-        $post->user_id = $user->id;
-        $post->save();*/
+                $post = new Post($validateData);
+                $post->user_id = $user->id;
+                $post->save();*/
 
         return back();
     }

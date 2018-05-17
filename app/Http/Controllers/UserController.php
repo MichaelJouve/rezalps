@@ -38,8 +38,6 @@ class UserController extends Controller
     public function cv()
     {
         $authUser = Auth::user();
-        return view('cv', ['authUser' => $authUser, 'user' => $authUser]);
-
 
         return view('cv', ['authUser' => $authUser, 'user' => $authUser]);
     }
@@ -139,11 +137,14 @@ class UserController extends Controller
             'job' => 'nullable'
         ]);
 
-
         $authUser->update($validateData);
         return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function updatePassword(Request $request)
     {
         $authUser = Auth::user();
@@ -166,6 +167,10 @@ class UserController extends Controller
         return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function updateApropos(Request $request)
     {
         $authUser = Auth::user();
@@ -177,6 +182,10 @@ class UserController extends Controller
         return view('cv', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function updateAvatar(Request $request)
     {
         $avatar = $request->avatar->store('useravatar', 'public');
@@ -188,6 +197,10 @@ class UserController extends Controller
         return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function updateCV(Request $request)
     {
         $cv = $request->cv->store('usercv', 'public');
