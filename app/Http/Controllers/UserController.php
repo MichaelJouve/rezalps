@@ -90,7 +90,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('user.avatar', ['user'=> User::findOrFail($id)]);
     }
 
     /**

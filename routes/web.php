@@ -40,6 +40,7 @@ Route::post('add-post', 'PostController@create')->name('add-post');
 Route::get('user/edit-post/{id}', 'PostController@edit')->name('edit-post');
 Route::post('user/update-post/{id}', 'PostController@update')->name('update-post');
 Route::get('delete-post/{id}', 'PostController@destroy')->name('delete-post');
+Route::get('user/{id}', 'UserController@show')->name('show-avatar');
 
 Route::post('add-comment', 'CommentController@createComment')->name('add-comment');
 Route::get('delete-comment/{id}', 'CommentController@destroy')->name('delete-comment');

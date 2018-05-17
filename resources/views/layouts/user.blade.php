@@ -47,14 +47,7 @@
         <div class="row justify-content-between" id="header_list_contact">
             <!-- display area of receiver's images of connected user -->
             <div class="col-lg-8 list">
-                @foreach($users->receiver as $receiver)
-                    <a href="{{ URL::route('user.publications', ['id' => $receiver->id]) }}">
-                        <img class="img_contact"
-                             src="{{ asset('storage/' .$receiver->avatar) }}" width="50"
-                             height="50" alt="{{ $receiver->name }}">
-                        <p>{{ $receiver->name }}</p>
-                    </a>
-                @endforeach
+                @include('shared.contactslist')
             </div>
             <div class="col-lg-4">
                 <form class="form-inline" id="search-barre" method="get" action="">
