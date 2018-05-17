@@ -100,5 +100,4 @@
             {{--End area Entreprises followed--}}
         </section>
     </main>
-
 @endsection

@@ -18,14 +18,12 @@ class UserController extends Controller
     public function network()
     {
         $user = Auth::user();
-        $user->findFollowed(10, ['created_at', 'desc'], $queries = array());
+//        $user->findFollowed(10, ['created_at', 'desc'], $queries = array());
 
         $sugUser = User::doesntHave('sender')->get();
+        $authUser = $user;
 
-
-
-
-        return view('network', ['user' => $user, 'sugUser' => $sugUser]);
+        return view('network', ['user' => $user, 'sugUser' => $sugUser, 'authUser' => $authUser]);
     }
 
     public function settings()
@@ -57,9 +55,10 @@ class UserController extends Controller
     public function userPublications($id)
     {
         $user = User::with('posts.comments', 'posts.user')->findOrFail($id);
+        $authUser = Auth::user();
         /**$user = User::where($user->avatar == $id)->get();*/
 
-        return view('publications', ['user' => $user]);
+        return view('publications', ['user' => $user, 'authUser' => $authUser]);
     }
     /**
      * Show the form for creating a new resource.

@@ -11,7 +11,7 @@
                                 <div class="card-body">
                                     <form method="post"  action="{{ ('update-apropos') }}">
                                         @csrf
-                                        <textarea name="description" class="form-control" rows="10">{{ $user->description }}</textarea>
+                                        <textarea name="description" class="form-control" rows="10">{{ $authUser->description }}</textarea>
                                         <div class="card-footer text-right">
                                             <button class="btn btn-secondary" type="submit">Modifier</button>
                                         </div>
@@ -40,7 +40,7 @@
                                 <!-- La div suivante permet de rajouter un viewer PDF -->
                                 <div id="pdf">
                                     <div class="pdfobject-com">
-                                        <embed class="pdfobject" src="{{ asset('storage/' .$user->cv) }}" name="cv" type="application/pdf">
+                                        <embed class="pdfobject" src="{{ asset('storage/' .$authUser->cv) }}" name="cv" type="application/pdf">
                                     </div>
                                 </div>
                             </div>
