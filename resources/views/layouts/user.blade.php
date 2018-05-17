@@ -22,7 +22,7 @@
                          width="50" height="40" alt="photo-profil-michael">
                         </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ route('publications') }}">Profil</a>
+                        <a class="dropdown-item" href="{{ route('publications'), $authUser->id }}">Profil</a>
                         <a class="dropdown-item" href="{{ route('settings') }}">Paramètres</a>
 
 

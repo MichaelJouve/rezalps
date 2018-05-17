@@ -16,11 +16,11 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('flux', 'PostController@flux')->name('flux');
 
 Route::get('user/{id}/publications', 'UserController@userPublications')->name('user.publications');
-Route::get('user/{id}/cv', 'UserController@cv')->name('user.id.cv');
+Route::get('user/{id}/cv', 'UserController@userCv')->name('user.cv');
 Route::get('user/{id}/network', 'UserController@network')->name('user.network');
 Route::get('user/{id}/medias', 'UserController@medias')->name('user.medias');
 
-Route::get('user/cv', 'UserController@cv')->name('user.cv');
+Route::get('user/cv', 'UserController@cv')->name('authUser.cv');
 Route::post('user/update-cv', 'UserController@updateCV')->name('update-cv');
 Route::post('add-pitch', 'UserController@create')->name('add-pitch');
 Route::post('user/update-apropos', 'UserController@updateApropos')->name('update-apropos');
