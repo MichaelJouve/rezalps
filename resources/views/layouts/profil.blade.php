@@ -12,7 +12,7 @@
                                title="Publications">Publications</a>
                         </li>
                         <li class="nav-item">
-                            {{----}}
+                            {{--' '--}}
                             @if($user == $authUser)
                                 <a class="nav-link" href="{{ URL::route('authUser.cv') }}" title="CV">CV</a>
                             @else
@@ -20,9 +20,12 @@
                                    title="CV">CV</a>
                             @endif
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ URL::route('medias') }}" title="Medias">Medias</a>
-                        </li>
+                        @if($user == $authUser)
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ URL::route('medias') }}" title="Medias">Medias</a>
+                            </li>
+                        @else
+                        @endif
                         <li class="nav-item">
                             @if($user == $authUser)
                                 <a class="nav-link" href="{{ URL::route('network') }}" title="Réseau">Réseau</a>

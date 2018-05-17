@@ -47,8 +47,6 @@ class UserController extends Controller
     public function cv()
     {
         $authUser = Auth::user();
-        return view('cv', ['authUser' => $authUser, 'user' => $authUser]);
-
 
         return view('cv', ['authUser' => $authUser, 'user' => $authUser]);
     }
