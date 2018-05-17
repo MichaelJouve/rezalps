@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
+use Barryvdh\Reflection\DocBlock\Tag\AuthorTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Comment;
@@ -101,7 +102,7 @@ class PostController extends Controller
         $authUser = Auth::user();
         $post = Post::findOrFail($id);
 
-        return view('update-publications', ['post' => $post, 'authUser' => $authUser]);
+        return view('update-publications', ['post' => $post, 'authUser' => $authUser, 'user' => $authUser]);
 
     }
 
@@ -125,7 +126,7 @@ class PostController extends Controller
 
         $post->update($validateData);
 
-        return view('publications', ['post' => $post, 'authUser' => $authUser]);
+        return view('publications', ['post' => $post, 'authUser' => $authUser, 'user' => $authUser]);
     }
 
     /**

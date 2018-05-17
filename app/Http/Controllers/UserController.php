@@ -21,9 +21,8 @@ class UserController extends Controller
 //        $user->findFollowed(10, ['created_at', 'desc'], $queries = array());
 
         $sugUser = User::doesntHave('sender')->get();
-        $authUser = $user;
 
-        return view('network', ['user' => $user, 'sugUser' => $sugUser, 'authUser' => $authUser]);
+        return view('network', ['user' => $user, 'sugUser' => $sugUser, 'authUser' => $user]);
     }
 
     public function userNetwork($id)
@@ -39,7 +38,7 @@ class UserController extends Controller
     {
         $authUser = Auth::user();
 
-        return view('settings', ['authUser' => $authUser]);
+        return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
     /**
@@ -48,8 +47,10 @@ class UserController extends Controller
     public function cv()
     {
         $authUser = Auth::user();
-        $user = $authUser;
-        return view('cv', ['authUser' => $authUser, 'user' => $user]);
+        return view('cv', ['authUser' => $authUser, 'user' => $authUser]);
+
+
+        return view('cv', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
     public function userCv($id)
@@ -78,10 +79,10 @@ class UserController extends Controller
      */
     public function userPublications($id)
     {
-        $user = User::with('posts.comments', 'posts.user')->findOrFail($id);
+        $user = User::with('posts.comments', 'posts.user', 'sender')->findOrFail($id);
         $authUser = Auth::user();
 
-        return view('publications', ['user' => $user, 'authUser' => $authUser]);
+        return view('publications', ['user' => $user, 'authUser' => $authUser, 'id' =>$id]);
     }
     /**
      * Show the form for creating a new resource.
@@ -149,7 +150,7 @@ class UserController extends Controller
 
 
         $authUser->update($validateData);
-        return view('settings', ['authUser' => $authUser]);
+        return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
     public function updatePassword(Request $request)
@@ -171,7 +172,7 @@ class UserController extends Controller
         $authUser->password = $validateData['new-password'];
         $authUser->save();
         //$user->update($validateData);
-        return view('settings', ['authUser' => $authUser]);
+        return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
     public function updateApropos(Request $request)
@@ -182,7 +183,7 @@ class UserController extends Controller
         ]);
 
         $authUser->update($validateData);
-        return view('cv', ['authUser' => $authUser]);
+        return view('cv', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
     public function updateAvatar(Request $request)
@@ -193,7 +194,18 @@ class UserController extends Controller
         $authUser->avatar = $avatar;
         $authUser->save();
 
-        return view('settings', ['authUser' => $authUser]);
+        return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
+    }
+
+    public function updateCV(Request $request)
+    {
+        $cv = $request->cv->store('usercv', 'public');
+
+        $authUser = Auth::user();
+        $authUser->cv = $cv;
+        $authUser->save();
+
+        return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
     /**
