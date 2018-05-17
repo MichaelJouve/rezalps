@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Relationship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -17,22 +18,29 @@ class UserController extends Controller
     public function network()
     {
         $user = Auth::user();
+//        $user->findFollowed(10, ['created_at', 'desc'], $queries = array());
 
-        return view('network', ['user' => $user]);
+        $sugUser = User::doesntHave('sender')->get();
+        $authUser = $user;
+
+        return view('network', ['user' => $user, 'sugUser' => $sugUser, 'authUser' => $authUser]);
     }
 
     public function settings()
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
 
-        return view('settings', ['user' => $user]);
+        return view('settings', ['authUser' => $authUser]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function cv()
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
 
-        return view('cv', ['user' => $user]);
+        return view('cv', ['authUser' => $authUser]);
     }
 
     /**
@@ -47,13 +55,16 @@ class UserController extends Controller
         return view('publications', ['user' => $user]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function userPublications($id)
     {
+        $user = User::with('posts.comments', 'posts.user')->findOrFail($id);
+        $authUser = Auth::user();
 
-        $user = User::findOrFail($id);
-        /**$user = User::where($user->avatar == $id)->get();*/
-
-        return view('publications', ['user' => $user]);
+        return view('publications', ['user' => $user, 'authUser' => $authUser]);
     }
     /**
      * Show the form for creating a new resource.
@@ -107,7 +118,7 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
 
         $validateData = $request->validate([
             'name' => 'min:3|max:250',
@@ -120,15 +131,15 @@ class UserController extends Controller
         ]);
 
 
-        $user->update($validateData);
-        return view('settings', ['user' => $user]);
+        $authUser->update($validateData);
+        return view('settings', ['authUser' => $authUser]);
     }
 
     public function updatePassword(Request $request)
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
 
-        if (! Hash::check($request->input('password'), $user->password)) {
+        if (! Hash::check($request->input('password'), $authUser->password)) {
             return back()
                 ->withErrors(['password' => 'Mot de passe incorrect'])
                 ->withInput();
@@ -140,32 +151,32 @@ class UserController extends Controller
             ]);
 
 
-        $user->password = $validateData['new-password'];
-        $user->save();
+        $authUser->password = $validateData['new-password'];
+        $authUser->save();
         //$user->update($validateData);
-        return view('settings', ['user' => $user]);
+        return view('settings', ['authUser' => $authUser]);
     }
 
     public function updateApropos(Request $request)
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
         $validateData = $request->validate([
             'description' => 'max:16000',
         ]);
 
-        $user->update($validateData);
-        return view('cv', ['user' => $user]);
+        $authUser->update($validateData);
+        return view('cv', ['authUser' => $authUser]);
     }
 
     public function updateAvatar(Request $request)
     {
         $avatar = $request->avatar->store('useravatar', 'public');
 
-        $user = Auth::user();
-        $user->avatar = $avatar;
-        $user->save();
+        $authUser = Auth::user();
+        $authUser->avatar = $avatar;
+        $authUser->save();
 
-        return view('settings', ['user' => $user]);
+        return view('settings', ['authUser' => $authUser]);
     }
 
     /**

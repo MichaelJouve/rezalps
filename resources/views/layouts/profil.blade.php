@@ -26,6 +26,7 @@
         <section id="main-profil">
             <div class="row justify-content-between align-items-center">
                 <div class="offset-1 col-2 mt-3 mb-3">
+                    <a>
                         <img class="img-fluid rounded-circle" id="avatar" src="{{asset('storage/' .$user->avatar)}}" width="160" height="160" alt="avatar">
                     </a>
                 </div>

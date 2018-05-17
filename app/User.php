@@ -39,7 +39,7 @@ class User extends Authenticatable
      */
     public function posts()
     {
-        return $this->hasMany('App\Post')->orderBy('created_at', 'desc');
+        return $this->hasMany('App\Post')->latest();
     }
 
     /**
@@ -48,7 +48,7 @@ class User extends Authenticatable
      */
     public function comments()
     {
-        return $this->hasMany('App\Comment')->orderBy('created_at', 'desc');
+        return $this->hasMany('App\Comment')->latest();
     }
 
     /**
@@ -59,4 +59,36 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Media');
     }
+
+    /**
+     * All that is because we have a pivot table "relationship" therefore we need to say: this is related to Model user with relation in table relationships
+     * and add the foreignPivot key and relatedPivotkey...
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function sender()
+    {
+        return $this->belongsToMany('App\User', 'relationships', 'sender_id', 'receiver_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+
+    public function receiver()
+    {
+        return $this->belongsToMany('App\User', 'relationships', 'receiver_id', 'sender_id');
+    }
+
+    /**
+     * @param $limit of users who will be return.
+     * @param array $sort
+     * @param array $queries
+     * @return mixed
+     */
+//    public function findFollowed($limit, $sort = array(), $queries = array())
+//    {
+//        $user = User::load('sender')->take($limit)->orderBy($sort)->; //Factorisation à faire !!
+//
+//        return $user;
+//    }
 }
