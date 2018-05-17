@@ -115,7 +115,7 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $authUser = Auth::user();
-        $comment = Comment::findOrFail($id);
+        $post = Post::findOrFail($id);
 
         $this->validate($request, [
             'publication' => 'required'
@@ -123,9 +123,9 @@ class PostController extends Controller
 
         $validateData = $request->all();
 
-        $comment->update($validateData);
+        $post->update($validateData);
 
-        return view('publications', ['comment' => $comment, 'authUser' => $authUser]);
+        return view('publications', ['post' => $post, 'authUser' => $authUser]);
     }
 
     /**
