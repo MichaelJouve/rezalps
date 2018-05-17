@@ -85,10 +85,10 @@ class User extends Authenticatable
      * @param array $queries
      * @return mixed
      */
-    public function findFollowed($limit, $sort = array(), $queries = array())
+    /*public function findFollowed($limit, $sort = array(), $queries = array())
     {
         $user = User::load('sender')->take($limit)->orderBy($sort)->;
 
         return $user;
-    }
+    }*/
 }

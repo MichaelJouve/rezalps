@@ -23,9 +23,9 @@ class PostController extends Controller
 
     public function flux()
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
         $posts = Post::with('comments.user', 'user')->orderBy('created_at', 'desc')->get();
-        return view('flux', ['posts' => $posts, 'user' => $user]);
+        return view('flux', ['posts' => $posts, 'authUser' => $authUser]);
     }
 
 
@@ -53,9 +53,9 @@ class PostController extends Controller
         $validateData = $request->validate([
             'publication' => 'required'
         ]);
-        $user = Auth::user();
+        $authUser = Auth::user();
 
-        Post::create(array_merge($validateData, ['user_id' => $user->id]));
+        Post::create(array_merge($validateData, ['authUser_id' => $authUser->id]));
 /*
         ou
 
@@ -96,10 +96,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
         $post = Post::findOrFail($id);
 
-        return view('update-publications', ['post' => $post, 'user' => $user]);
+        return view('update-publications', ['post' => $post, 'authUser' => $authUser]);
 
     }
 
@@ -112,7 +112,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
         $comment = Comment::findOrFail($id);
 
         $this->validate($request, [
@@ -123,7 +123,7 @@ class PostController extends Controller
 
         $comment->update($validateData);
 
-        return view('publications', ['comment' => $comment, 'user' => $user]);
+        return view('publications', ['comment' => $comment, 'authUser' => $authUser]);
     }
 
     /**
