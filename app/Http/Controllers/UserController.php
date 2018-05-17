@@ -33,6 +33,9 @@ class UserController extends Controller
         return view('settings', ['authUser' => $authUser]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function cv()
     {
         $authUser = Auth::user();
@@ -52,10 +55,15 @@ class UserController extends Controller
         return view('publications', ['user' => $user]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function userPublications($id)
     {
         $user = User::with('posts.comments', 'posts.user')->findOrFail($id);
         $authUser = Auth::user();
+
         return view('publications', ['user' => $user, 'authUser' => $authUser]);
     }
     /**

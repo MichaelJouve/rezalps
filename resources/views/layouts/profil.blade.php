@@ -27,16 +27,16 @@
             <div class="row justify-content-between align-items-center">
                 <div class="offset-1 col-2 mt-3 mb-3">
                     <a>
-                        <img class="img-fluid rounded-circle" id="avatar" src="{{asset('storage/' .$authUser->avatar)}}" width="160" height="160" alt="avatar">
+                        <img class="img-fluid rounded-circle" id="avatar" src="{{asset('storage/' .$user->avatar)}}" width="160" height="160" alt="avatar">
                     </a>
                 </div>
                 <div class="col-6 mt-5">
-                        <h2 class="text-center">{{$authUser->name}}</h2>
+                        <h2 class="text-center">{{$user->name}}</h2>
                     </div>
                     <div class="col-3 mt-5">
-                        <p>{{$authUser->city}}</p>
-                        <p>{{$authUser->email}}</p>
-                        <p>{{$authUser->phone_number}}</p>
+                        <p>{{$user->city}}</p>
+                        <p>{{$user->email}}</p>
+                        <p>{{$user->phone_number}}</p>
                     </div>
                 </div>
             </section>
