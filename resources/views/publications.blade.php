@@ -3,9 +3,9 @@
 @section('content')
     <div class="container publications">  <!-- Composition de l'onglet publications de la page profil -->
         <div class="row">
-            <div class="profil-informations col-lg-3 col-12"> <!-- Colonne "MES INFOS" -->
+            <div class="profil-informations col-lg-3 col-12"> <!-- Colonne "INFOS" -->
                 <div class="card">
-                    <h4 class="card-header"> MES INFOS</h4>
+                    <h4 class="card-header"> INFOS</h4>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">{{ $user->job }}</li>
                         <li class="list-group-item">
@@ -47,16 +47,20 @@
 
                                 {{--contrôle de l'utilisateur, si c'est celui connecté alors on affiche les 2 boutons delete et update pour le post--}}
                                 @if (Auth::id() == $post->user_id)
+                                    <div class="row justify-content-md-around">
                                     @include('shared.deleteinput')
                                     @include('shared.updateinput')
+                                    </div>
                                 @endif
 
                                 @foreach($post->comments as $comment)
                                     <div class="card-body">
                                         <div class="row">
-                                            <img src="{{asset('storage/' .$post->user->avatar)}}" alt="..."
+                                            <a href="{{ URL::route('user.publications', ['id' => $comment->user->id]) }}">
+                                            <img src="{{asset('storage/' .$comment->user->avatar)}}" alt="..."
                                                  class="rounded-circle commentAvatar">
-                                            <p>{{ $post->user->name }}</p>
+                                            <p>{{ $comment->user->name }}</p>
+                                             <a/>
                                         </div>
                                         <p class="card-text">{{ $comment->content }}</p>
 
