@@ -35,7 +35,7 @@ class PostController extends Controller
     public function publications()
     {
         $allposts = Post::all();
-        $user = User::with('posts.comments', 'posts.user')->find(Auth::id());
+        $user = User::with('posts.comments', 'posts.user')->withCount('receiver')->find(Auth::id());
         $authUser = Auth::user();
 
         return view('publications', ['user' => $user, 'allposts' => $allposts, 'authUser' => $authUser]);

@@ -66,7 +66,8 @@ class UserController extends Controller
      */
     public function publications($id)
     {
-        $user = User::with('posts')->findOrFail($id);
+        $user = User::with('posts', 'relationships')->findOrFail($id);
+
 
         return view('publications', ['user' => $user]);
     }
@@ -77,7 +78,7 @@ class UserController extends Controller
      */
     public function userPublications($id)
     {
-        $user = User::with('posts.comments', 'posts.user', 'sender')->findOrFail($id);
+        $user = User::with('posts.comments', 'posts.user', 'sender')->withCount('receiver')->findOrFail($id);
         $authUser = Auth::user();
 
         return view('publications', ['user' => $user, 'authUser' => $authUser, 'id' =>$id]);
