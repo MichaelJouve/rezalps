@@ -11,8 +11,8 @@ class MediaController extends Controller
     public function medias()
     {
         $authUser = Auth::user();
-
-        return view('medias', ['authUser' => $authUser]);
+        $user = $authUser;
+        return view('medias', ['authUser' => $authUser, 'user' => $user]);
     }
 
     /**

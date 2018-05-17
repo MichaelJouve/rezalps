@@ -7,20 +7,29 @@
                 <div class="col">
                     <ul class="nav nav-pills nav-fill">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ URL::route('publications', ['id'=> $user->id]) }}" title="Publications">Publications</a>
+
+                            <a class="nav-link" href="{{ URL::route('publications', ['id'=> $user->id]) }}"
+                               title="Publications">Publications</a>
                         </li>
                         <li class="nav-item">
+                            {{----}}
                             @if($user == $authUser)
                                 <a class="nav-link" href="{{ URL::route('authUser.cv') }}" title="CV">CV</a>
                             @else
-                                <a class="nav-link" href="{{ URL::route('user.cv', ['id'=> $user->id]) }}" title="CV">CV</a>
-                            @endisset
+                                <a class="nav-link" href="{{ URL::route('user.cv', ['id'=> $user->id]) }}"
+                                   title="CV">CV</a>
+                            @endif
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ URL::route('medias') }}" title="Medias">Medias</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ URL::route('network') }}" title="Réseau">Réseau</a>
+                            @if($user == $authUser)
+                                <a class="nav-link" href="{{ URL::route('network') }}" title="Réseau">Réseau</a>
+                            @else
+                                <a class="nav-link" href="{{ URL::route('user.network', ['id'=> $user->id]) }}"
+                                   title="Réseau">Réseau</a>
+                            @endif
                         </li>
                     </ul>
                 </div>

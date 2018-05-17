@@ -17,7 +17,7 @@ Route::get('flux', 'PostController@flux')->name('flux');
 
 Route::get('user/{id}/publications', 'UserController@userPublications')->name('user.publications');
 Route::get('user/{id}/cv', 'UserController@userCv')->name('user.cv');
-Route::get('user/{id}/network', 'UserController@network')->name('user.network');
+Route::get('user/{id}/network', 'UserController@userNetwork')->name('user.network');
 Route::get('user/{id}/medias', 'UserController@medias')->name('user.medias');
 
 Route::get('user/cv', 'UserController@cv')->name('authUser.cv');

@@ -26,6 +26,15 @@ class UserController extends Controller
         return view('network', ['user' => $user, 'sugUser' => $sugUser, 'authUser' => $authUser]);
     }
 
+    public function userNetwork($id)
+    {
+        $authUser = Auth::user();
+        $user = User::findOrFail($id);
+        $sugUser = User::doesntHave('sender')->get();
+
+        return view('network', ['user' => $user, 'sugUser' => $sugUser, 'authUser' => $authUser]);
+    }
+
     public function settings()
     {
         $authUser = Auth::user();
