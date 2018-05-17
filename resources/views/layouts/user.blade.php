@@ -43,8 +43,7 @@
         <!-- contacts list -->
         <div class="row justify-content-between" id="header_list_contact">
             <div class="col-lg-8 list">
-
-
+                @include('shared.contactslist');
             </div>
             <div class="col-lg-4">
                 <form class="form-inline" id="search-barre" method="get" action="">
