@@ -78,4 +78,17 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\User', 'relationships', 'receiver_id', 'sender_id');
     }
+
+    /**
+     * @param $limit of users who will be return.
+     * @param array $sort
+     * @param array $queries
+     * @return mixed
+     */
+    public function findFollowed($limit, $sort = array(), $queries = array())
+    {
+        $user = User::load('sender')->take($limit)->orderBy($sort)->;
+
+        return $user;
+    }
 }
