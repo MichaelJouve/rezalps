@@ -126,7 +126,7 @@ class PostController extends Controller
 
         $post->update($validateData);
 
-        return view('publications', ['post' => $post, 'authUser' => $authUser]);
+        return view('publications', ['post' => $post, 'authUser' => $authUser, 'user' => $authUser]);
     }
 
     /**
