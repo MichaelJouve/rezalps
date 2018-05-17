@@ -1,7 +1,7 @@
-@foreach($user->receiver as $receiver)
-    <a href="{{ URL::route('user.publications', ['id' => $receiver->id]) }}">
+@foreach($user->receiver as $sender)
+    <a href="{{ URL::route('user.publications', ['id' => $sender->id]) }}">
         <img class="img_contact"
-             src="{{ asset('storage/' .$receiver->avatar) }}" width="50"
-             height="50" alt="{{ $receiver->name }}">
+             src="{{ asset('storage/' .$sender->avatar) }}" width="50"
+             height="50" alt="{{ $sender->name }}">
     </a>
 @endforeach
