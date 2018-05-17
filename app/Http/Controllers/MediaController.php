@@ -10,9 +10,9 @@ class MediaController extends Controller
 {
     public function medias()
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
 
-        return view('medias', ['user' => $user]);
+        return view('medias', ['authUser' => $authUser]);
     }
 
     /**
