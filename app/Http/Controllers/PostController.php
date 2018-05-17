@@ -33,7 +33,9 @@ class PostController extends Controller
     {
         $allposts = Post::all();
         $user = User::with('posts.comments', 'posts.user')->find(Auth::id());
-        return view('publications', ['user' => $user, 'allposts' => $allposts]);
+        $authUser = Auth::user();
+
+        return view('publications', ['user' => $user, 'allposts' => $allposts, 'authUser' => $authUser]);
     }
 
     public function index()
