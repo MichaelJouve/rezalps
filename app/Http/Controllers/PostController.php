@@ -25,7 +25,7 @@ class PostController extends Controller
     public function flux()
     {
         $authUser = Auth::user();
-        $posts = Post::with('comments.user', 'user')->orderBy('created_at', 'desc')->get();
+        $posts = Post::with('comments.user', 'user')->latest()->get();
         return view('flux', ['posts' => $posts, 'authUser' => $authUser]);
     }
 
