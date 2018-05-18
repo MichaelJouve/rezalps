@@ -7,27 +7,30 @@
                 <div class="col">
                     <ul class="nav nav-pills nav-fill">
                         <li class="nav-item">
-
-                            <a class="nav-link" href="{{ URL::route('publications', ['id'=> $user->id]) }}"
-                               title="Publications">Publications</a>
+                            @if($user->id == $authUser->id)
+                                <a class="nav-link" href="{{ URL::route('publications', ['id'=> $user->id]) }}"
+                                   title="Publications">Publications</a>
+                            @else
+                                <a class="nav-link" href="{{ URL::route('user.publications', ['id'=> $user->id]) }}"
+                                   title="Publications">Publications</a>
+                            @endif
                         </li>
                         <li class="nav-item">
                             {{--' '--}}
-                            @if($user == $authUser)
+                            @if($user->id == $authUser->id)
                                 <a class="nav-link" href="{{ URL::route('authUser.cv') }}" title="CV">CV</a>
                             @else
                                 <a class="nav-link" href="{{ URL::route('user.cv', ['id'=> $user->id]) }}"
                                    title="CV">CV</a>
                             @endif
                         </li>
-                        @if($user == $authUser)
+                        @if($user->id == $authUser->id)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ URL::route('medias') }}" title="Medias">Medias</a>
                             </li>
-                        @else
                         @endif
                         <li class="nav-item">
-                            @if($user == $authUser)
+                            @if($user->id == $authUser->id)
                                 <a class="nav-link" href="{{ URL::route('network') }}" title="Réseau">Réseau</a>
                             @else
                                 <a class="nav-link" href="{{ URL::route('user.network', ['id'=> $user->id]) }}"

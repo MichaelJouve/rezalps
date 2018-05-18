@@ -22,9 +22,8 @@
                          width="50" height="40" alt="photo-profil-michael">
                         </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="{{ route('publications'), $authUser->id }}">Profil</a>
+                        <a class="dropdown-item" href="{{ route('publications', ['id'=> $user->id]), $authUser->id }}">Profil</a>
                         <a class="dropdown-item" href="{{ route('settings') }}">Paramètres</a>
-
 
                         <a href="{{route('logout')}}"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
