@@ -26,7 +26,6 @@
                                         <div class="col-8">
                                             <p class="text-center">Informations sur le contact</p>
                                         </div>
-                                    </div>
                                     <div class="row col-12 d-flex justify-content-center">
                                         <p class="">12 amis communs</p>
                                     </div>

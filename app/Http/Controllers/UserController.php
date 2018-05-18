@@ -19,7 +19,6 @@ class UserController extends Controller
     {
         $user = Auth::user();
 //        $user->findFollowed(10, ['created_at', 'desc'], $queries = array());
-
         $sugUser = User::doesntHave('sender')->get();
 
         return view('network', ['user' => $user, 'sugUser' => $sugUser, 'authUser' => $user]);
@@ -29,9 +28,29 @@ class UserController extends Controller
     {
         $authUser = Auth::user();
         $user = User::findOrFail($id);
-        $sugUser = User::doesntHave('sender')->get();
+        $sugUser = User::doesntHave('sender')->take(10)->get();
 
-        return view('network', ['user' => $user, 'sugUser' => $sugUser, 'authUser' => $authUser]);
+
+        $commonFollowed = 0;
+        $myFollowed = User::with('sender')->findOrFail($authUser->id);
+        $hisFollowed = User::with('sender')->findOrFail($id);
+
+        dd($hisFollowed, $myFollowed);
+//        foreach ($myFollowed->sender as $receiver) {
+//            foreach ($hisFollowed->sender as $receiver2) {
+//                if ($receiver->sender === $receiver2->sender) {
+//                    $commonFollowed++;
+//                }
+//                dd($receiver, $receiver2);
+//            }
+//        }
+
+
+        return view('network', [
+            'user' => $user,
+            'sugUser' => $sugUser,
+            'authUser' => $authUser,
+        ]);
     }
 
     public function settings()
