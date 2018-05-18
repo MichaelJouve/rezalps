@@ -37,8 +37,10 @@
 
                             {{--contrôle de l'utilisateur, si c'est celui connecté alors on affiche les 2 boutons delete et update--}}
                             @if (Auth::id() == $post->user_id)
+                                    <div class="row justify-content-center">
                                     @include('shared.deleteinput')
                                     @include('shared.updateinput')
+                                    </div>
                                 @endif
 
                                 @foreach($post->comments as $comment)
@@ -54,6 +56,7 @@
 
                                         {{--contrôle de l'utilisateur, si c'est celui connecté alors on affiche les 2 boutons delete et update pour le commentaire--}}
                                         @if (Auth::id() == $comment->user_id)
+                                            <div class="row justify-content-start">
                                             <form action="{{route('delete-comment', $comment->id)}}" method="DELETE">
                                                 @csrf
                                                 <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer votre post ?');">Supprimer</button>
@@ -62,6 +65,7 @@
                                                 @csrf
                                                 <button type="submit">Editer</button>
                                             </form>
+                                            </div>
                                         @endif
 
                                     </div>
