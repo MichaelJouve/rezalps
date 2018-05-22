@@ -30,21 +30,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $sugUser = User::doesntHave('sender')->take(10)->get();
 
-
-        $commonFollowed = 0;
-        $myFollowed = User::with('sender')->findOrFail($authUser->id);
-        $hisFollowed = User::with('sender')->findOrFail($id);
-
-        dd($hisFollowed, $myFollowed);
-//        foreach ($myFollowed->sender as $receiver) {
-//            foreach ($hisFollowed->sender as $receiver2) {
-//                if ($receiver->sender === $receiver2->sender) {
-//                    $commonFollowed++;
-//                }
-//                dd($receiver, $receiver2);
-//            }
-//        }
-
+//        $myFollowed = User::with('sender')->findOrFail($authUser->id);
+//        $hisFollowed = User::with('sender')->findOrFail($id);
+//        dd($myFollowed, $hisFollowed);
 
         return view('network', [
             'user' => $user,
