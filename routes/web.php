@@ -15,37 +15,46 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('flux', 'PostController@flux')->name('flux');
 
-Route::get('user/{id}/publications', 'UserController@userPublications')->name('user.publications');
-Route::get('user/{id}/cv', 'UserController@cv')->name('user.cv');
-Route::get('user/{id}/network', 'UserController@network')->name('user.network');
-Route::get('user/{id}/medias', 'UserController@medias')->name('user.medias');
+Route::prefix('user')->group(function () {
 
-Route::get('user/cv', 'UserController@cv')->name('user.cv');
-Route::post('user/update-cv', 'UserController@updateCV')->name('update-cv');
+    Route::get('/cv', 'UserController@cv')->name('authUser.cv');
+    Route::post('/update-cv', 'UserController@updateCV')->name('update-cv');
+    Route::post('/update-apropos', 'UserController@updateApropos')->name('update-apropos');
+    Route::get('/settings', 'UserController@settings')->name('settings');
+    Route::post('/update-setting', 'UserController@update')->name('update-setting');
+    Route::post('/update-avatar', 'UserController@updateAvatar')->name('update-avatar');
+    Route::post('/update-password', 'UserController@updatePassword')->name('update-password');
+    Route::get('/publications', 'PostController@publications')->name('publications');
+    Route::get('/medias', 'MediaController@medias')->name('medias');
+    Route::get('/network', 'UserController@network')->name('network');
+
+    Route::get('/edit-post/{id}', 'PostController@edit')->name('edit-post');
+    Route::post('/update-post/{id}', 'PostController@update')->name('update-post');
+
+    Route::prefix('{id}')->group(function () {
+        Route::get('/', 'UserController@show')->name('show-avatar');
+        Route::get('/publications', 'UserController@userPublications')->name('user.publications');
+        Route::get('/cv', 'UserController@userCv')->name('user.cv');
+        Route::get('/network', 'UserController@userNetwork')->name('user.network');
+        Route::get('/medias', 'UserController@medias')->name('user.medias');
+    });
+});
+
 Route::post('add-pitch', 'UserController@create')->name('add-pitch');
-Route::post('user/update-apropos', 'UserController@updateApropos')->name('update-apropos');
-
-Route::get('user/network', 'UserController@network')->name('network');
-
-Route::get('user/settings', 'UserController@settings')->name('settings');
-Route::post('user/update-setting', 'UserController@update')->name('update-setting');
-Route::post('user/update-avatar', 'UserController@updateAvatar')->name('update-avatar');
-Route::post('user/update-password', 'UserController@updatePassword')->name('update-password');
 
 Route::get('messaging', 'MailController@mail')->name('messaging');
 Route::post('send-message', 'MailController@create')->name('send-message');
-
-Route::get('user/publications', 'PostController@publications')->name('publications');
 Route::post('add-post', 'PostController@create')->name('add-post');
-Route::get('user/edit-post/{id}', 'PostController@edit')->name('edit-post');
-Route::post('user/update-post/{id}', 'PostController@update')->name('update-post');
 Route::get('delete-post/{id}', 'PostController@destroy')->name('delete-post');
 
-Route::post('add-comment', 'CommentController@createComment')->name('add-comment');
-Route::get('delete-comment/{id}', 'CommentController@destroy')->name('delete-comment');
-Route::get('update-comment/{id}', 'CommentController@update')->name('update-comment');
+Route::prefix('comment')->group(function () {
+    Route::post('/', 'CommentController@createComment')->name('add-comment');
+    Route::get('/{id}/delete', 'CommentController@destroy')->name('delete-comment');
+    Route::get('/{id}/update', 'CommentController@update')->name('update-comment');
+});
 
-Route::get('user/medias', 'MediaController@medias')->name('medias');
+
+
 
 Route::get('cgu', 'HomeController@cgu')->name('cgu');
 Route::get('about-us', 'HomeController@aboutUs')->name('about-us');

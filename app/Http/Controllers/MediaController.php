@@ -8,11 +8,17 @@ use Illuminate\Http\Request;
 
 class MediaController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function medias()
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
+        $user = $authUser;
 
-        return view('medias', ['user' => $user]);
+        return view('medias', ['authUser' => $authUser, 'user' => $user]);
     }
 
     /**
