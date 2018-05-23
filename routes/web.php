@@ -15,7 +15,17 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('flux', 'PostController@flux')->name('flux');
 
-Route::get('admin123456', 'RoleController@isAdmin')->name('admin');
+Route::prefix('admin123456')->group(function () {
+//    Route::get('/update-user','RoleController@updateUser')->name('updateUser');
+    Route::get('/', 'Admin\DashboardController@index')->name('admin');
+    // Users
+    Route::prefix('users')->group(function () {
+        Route::get('/', 'Admin\UserController@index')->name('admin-user-index');
+        Route::get('{user}', 'Admin\UserController@show')->name('admin-user-show');
+        Route::get('{user}/edit', 'Admin\UserController@edit')->name('admin-user-edit');
+        Route::post('{user}/', 'Admin\UserController@update')->name('admin-user-update');
+    });
+});
 
 Route::prefix('user')->group(function () {
 
@@ -41,7 +51,7 @@ Route::prefix('user')->group(function () {
         Route::get('/cv', 'UserController@userCv')->name('user.cv');
         Route::get('/network', 'UserController@userNetwork')->name('user.network');
         Route::get('/medias', 'UserController@medias')->name('user.medias');
-        Route::get('/update-user','RoleController@updateUser')->name('updateUser');
+
     });
 });
 

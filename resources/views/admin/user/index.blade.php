@@ -2,6 +2,14 @@
 
 
 @section('content')
+    <ul>
+        <li>
+            <a href="{{route('admin')}}">Dashboard</a>
+        </li>
+        <li>
+            <a href="{{route('admin-user-index')}}">Users</a>
+        </li>
+    </ul>
     <h1 class="m-4"> Administration / Gestion des utilisateurs</h1>
     <div class="container-fluid">
 
@@ -28,7 +36,8 @@
             @foreach($users as $user)
                 <tr>
                     <th scope="row">{{ $user->id }}</th>
-                    <td> <img class="img_contact" src="{{asset('storage/' .$user->avatar) }}" width="40" height="40" alt="{{ $user->name }}"> </td>
+                    <td><img class="img_contact" src="{{asset('storage/' .$user->avatar) }}" width="40" height="40"
+                             alt="{{ $user->name }}"></td>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->city }}</td>
@@ -41,7 +50,9 @@
                         <a class="btn btn-secondary" href="{{ URL::route('admin-user-edit', ['id' => $user->id]) }}">Modifier
                         </a>
                     </td>
-                    <td> <button type="button" class="btn-secondary" >Supprimer</button> </td>
+                    <td>
+                        <button type="button" class="btn-secondary">Supprimer</button>
+                    </td>
                 </tr>
 
 

@@ -34,21 +34,12 @@ class RoleController extends Controller
     /**
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * For update user by admins.
      */
-    public static function updateUser($id)
+    public function showUser($id)
     {
         $authUser = Auth::user();
         $user = User::where('id', $id)->get();
-        dd($user);
-
-
-
-//            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]) ;
-
-
-
-
+           return view('show-user', ['user' => $user, 'authUser' => $authUser ]) ;
     }
 
 
