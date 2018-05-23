@@ -15,6 +15,8 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('flux', 'PostController@flux')->name('flux');
 
+Route::get('admin123456', 'RoleController@isAdmin')->name('admin');
+
 Route::prefix('user')->group(function () {
 
     Route::get('/cv', 'UserController@cv')->name('authUser.cv');
@@ -37,6 +39,7 @@ Route::prefix('user')->group(function () {
         Route::get('/cv', 'UserController@userCv')->name('user.cv');
         Route::get('/network', 'UserController@userNetwork')->name('user.network');
         Route::get('/medias', 'UserController@medias')->name('user.medias');
+        Route::get('/update-user','RoleController@updateUser')->name('updateUser');
     });
 });
 

@@ -18,7 +18,7 @@ class RoleController extends Controller
     {
         $authUser = Auth::user();
 
-        if ($authUser->roles == 1) {
+        if ($authUser->roles == 2) {
 
             $posts = Post::all();
             $users = User::all();
