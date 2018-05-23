@@ -18,23 +18,19 @@ class RoleController extends Controller
     {
         $authUser = Auth::user();
 
-        if ($authUser->roles == 2) {
+        if ($authUser != null and $authUser->roles == 2) {
             $posts = Post::all();
-            $users = User::all();
+            $users = User::simplePaginate(2);
 
-            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]) ;
+            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]);
         }
-
-
         else {
-            return redirect('admin-connexion');
+            return view('index');
         }
     }
 
     /**
      * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * For update user by admins.
      */
     public static function updateUser($id)
     {
