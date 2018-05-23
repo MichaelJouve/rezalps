@@ -20,7 +20,7 @@ class RoleController extends Controller
 
         if ($authUser != null and $authUser->roles == 2) {
             $posts = Post::all();
-            $users = User::simplePaginate(2);
+            $users = User::simplePaginate(4);
 
             return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]);
         }
@@ -32,7 +32,7 @@ class RoleController extends Controller
     /**
      * @param $id
      */
-    public static function updateUser($id)
+    public function updateUser($id)
     {
         $authUser = Auth::user();
         $user = User::where('id', $id)->get();
@@ -40,7 +40,7 @@ class RoleController extends Controller
 
 
 
-//            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]) ;
+//        return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]) ;
 
 
 

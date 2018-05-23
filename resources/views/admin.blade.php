@@ -33,36 +33,18 @@
                     <td>{{ $user->phone_number }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->roles }}</td>
-                    <td> <button type="button" class="btn-secondary" ><a href="{{ URL::route('updateUser', ['id' => $user->id]) }}">Modifier </a></button> </td>
-                    <td> <button type="button" class="btn-secondary" >Supprimer</button> </td>
+                    <td> <a class="btn btn-secondary" href="{{ URL::route('updateUser', ['id' => $user->id]) }}">Modifier</a></td>
+                    <td> <a class="btn btn-secondary" href="" >Supprimer</a></td>
                 </tr>
 
 
             @endforeach
             </tbody>
         </table>
-    </div>
-    <div class="">
-        <nav aria-label="...">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
-      <span class="page-link">
-        2
-        <span class="sr-only">(current)</span>
-      </span>
-                </li>
-                <li class="page-item"><a class="page-link" href="{{ $users->links() }}">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="{{ $users->links() }}">Next</a>
-                </li>
-            </ul>
-        </nav>
+        <div class="row justify-content-center">
+            {{ $users->links() }}
 
-    </div>
+        </div>
 @endsection
 
 
