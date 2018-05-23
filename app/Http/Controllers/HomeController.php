@@ -13,8 +13,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+        isset (auth::user()) {
         return view('index');
+    }
     }
 
     public function legalNotice()

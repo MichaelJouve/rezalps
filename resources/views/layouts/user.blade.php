@@ -19,7 +19,7 @@
                 <div class="btn-group dropleft dropdown">
                         <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img class="img-fluid rounded-circle" src="{{ asset('storage/' . $authUser->avatar) }}" id="dropdownMenuButton" data-toggle="dropdown"
-                         width="50" height="40" alt="photo-profil-michael">
+                         width="50" height="40" alt="{{ $authUser->name }}">
                         </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="{{ route('publications') }}">Profil</a>
@@ -57,7 +57,7 @@
 </header>
 @yield('sous-header')
 
-<div class="container">
+<div class="container-fluid">
     @yield('content')
 
 </div>
