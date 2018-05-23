@@ -1,0 +1,29 @@
+/*Header du Profil (Layout Profil)*/
+
+/*Première partie | Barre de navigation */
+
+
+main, .body {
+  background-color: #f9f9f9;
+}
+
+#main-nav-profil {
+  border-top: 1px solid lightgrey;
+  background-color: #444444;
+}
+
+.nav-link {
+  color: #ffffff;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  background-color: #ea4c89;
+}
+
+/*Deuxième partie | Header du Profil */
+
+#main-profil {
+  width: 100%;
+  height: 200px;
+}

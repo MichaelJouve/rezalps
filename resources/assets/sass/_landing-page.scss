@@ -1,0 +1,120 @@
+/*Landing page*/
+
+/*Header*/
+
+#header_inscription {
+  background-color: #444444;
+}
+
+.header_accueil {
+  margin-top: 15px;
+}
+
+#bouton_inscription_top {
+  margin-left: 10px;
+  background-color: #ea4c89;
+  color: #fff;
+}
+
+#bouton_inscription_top:hover {
+  border-color: #ea4c89;
+}
+
+#bouton_connexion_top {
+  margin-left: 5px;
+}
+
+/*Carousel + Mobile Version*/
+
+.fullsize {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+#slide {
+  height: 80vh;
+}
+
+#carousel_img0 {
+  height: 80vh;
+  background: url('/img/slide_code_1080.jpg') no-repeat center;
+
+}
+
+#carousel_img1 {
+  height: 80vh;
+  background: url('/img/slide_entraide_1080.jpg') no-repeat;
+}
+
+#carousel_img2 {
+  height: 80vh;
+  background: url('/img/slide_entreprise_1080.jpg') no-repeat center;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+}
+
+.input-group {
+  padding-left: 3px;
+}
+
+.text {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  border: solid 3px lightgrey;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px 10px 0px 10px;
+
+}
+
+.carousel-item { /*uniquement pour résoudre le pb de transistion sous firefox*/
+  transition: -webkit-transform 0.5s ease;
+  transition: transform 0.5s ease, -webkit-transform 0.5s ease;
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+
+.carousel-inner {
+  height: 100%;
+}
+
+#mobile_slider {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: lightgrey;
+  padding-top: 10px;
+}
+
+#connexion_mobile {
+  margin-bottom: 50px;
+}
+
+#connexion_bouton_mobile {
+  margin-top: 20px;
+}
+
+@media (max-width: 992px) {
+  #carousel_img0 {
+    background-image: url('/img/slide_code_768.jpg');
+  }
+  #carousel_img1 {
+    background: url('/img/slide_entraide_768.jpg') center;
+  }
+  #carousel_img2 {
+    background-image: url('/img/slide_entreprise_768.jpg');
+  }
+}
+
+@media (min-width: 576px) {
+  #mobile_slider /* Ce qui remplace le carousel en version mobile*/
+  {
+    display: none;
+
+  }
+  #connexion_mobile {
+    display: none;
+  }
+}
