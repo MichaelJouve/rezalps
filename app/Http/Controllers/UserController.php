@@ -86,15 +86,17 @@ class UserController extends Controller
     {
         $user = User::with('posts.comments', 'posts.user', 'sender')->withCount('receiver')->findOrFail($id);
         $authUser = Auth::user();
+        $following = Relationship::where('receiver_id', $user->id)->where('sender_id', $authUser->id)->first();
 
-        return view('publications', ['user' => $user, 'authUser' => $authUser, 'id' =>$id]);
+        return view('publications', ['user' => $user, 'authUser' => $authUser, 'id' => $id, 'following' => $following]);
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         //
     }
@@ -165,7 +167,7 @@ class UserController extends Controller
     {
         $authUser = Auth::user();
 
-        if (! Hash::check($request->input('password'), $authUser->password)) {
+        if (!Hash::check($request->input('password'), $authUser->password)) {
             return back()
                 ->withErrors(['password' => 'Mot de passe incorrect'])
                 ->withInput();
@@ -174,7 +176,7 @@ class UserController extends Controller
         $validateData = $request->validate([
             'password' => 'required|string',
             'new_password' => 'required|string|min:6|confirmed',
-            ]);
+        ]);
 
 
         $authUser->password = $validateData['new-password'];
@@ -234,7 +236,7 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         //
     }

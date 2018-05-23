@@ -36,6 +36,8 @@ Route::prefix('user')->group(function () {
     Route::prefix('{id}')->group(function () {
         Route::get('/', 'UserController@show')->name('show-avatar');
         Route::get('/publications', 'UserController@userPublications')->name('user.publications');
+        Route::post('/update-follow', 'RelationshipController@create')->name('follow');
+        Route::post('/update-unfollow', 'RelationshipController@destroy')->name('unfollow');
         Route::get('/cv', 'UserController@userCv')->name('user.cv');
         Route::get('/network', 'UserController@userNetwork')->name('user.network');
         Route::get('/medias', 'UserController@medias')->name('user.medias');
@@ -55,9 +57,6 @@ Route::prefix('comment')->group(function () {
     Route::get('/{id}/delete', 'CommentController@destroy')->name('delete-comment');
     Route::get('/{id}/update', 'CommentController@update')->name('update-comment');
 });
-
-
-
 
 Route::get('cgu', 'HomeController@cgu')->name('cgu');
 Route::get('about-us', 'HomeController@aboutUs')->name('about-us');

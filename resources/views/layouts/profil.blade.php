@@ -8,7 +8,7 @@
                     <ul class="nav nav-pills nav-fill">
                         <li class="nav-item">
                             @if($user->id == $authUser->id)
-                                <a class="nav-link" href="{{ URL::route('publications', ['id'=> $user->id]) }}"
+                                <a class="nav-link" href="{{ URL::route('publications') }}"
                                    title="Publications">Publications</a>
                             @else
                                 <a class="nav-link" href="{{ URL::route('user.publications', ['id'=> $user->id]) }}"
@@ -48,7 +48,24 @@
                         <a>
                             <img class="img-fluid rounded-circle" id="avatar" src="{{asset('storage/' .$user->avatar)}}"
                                  width="160" height="160" alt="avatar">
+                            @if($user->id != $authUser->id)
+                                @if($following)
+                                    <form method="post" action="{{route('unfollow', ['id'=> $user->id] )}}">
+                                        @csrf
+                                        <input type="hidden" name="followed_id_invisible" value="{{$user->id}}">
+                                        <input class="btn btn-outline-danger" type="submit" value="Ne plus suivre?">
+                                    </form>
+                                @else
+                                    <form method="post" action="{{route('follow', ['id'=> $user->id])}}">
+                                        @csrf
+                                        <input type="hidden" name="followed_id_invisible" value="{{$user->id}}">
+                                        <input class="btn btn-outline-success" type="submit" value="Suivre cette Personne?">
+                                    </form>
+                                @endif
+                            @else
+                            @endif
                         </a>
+
                     </div>
                     <div class="col-6 mt-5">
                         <h2 class="text-center">{{$user->name}}</h2>
