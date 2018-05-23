@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
@@ -31,20 +36,13 @@ class RoleController extends Controller
 
     /**
      * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function updateUser($id)
+    public function showUser($id)
     {
         $authUser = Auth::user();
         $user = User::where('id', $id)->get();
-        dd($user);
-
-
-
-//        return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]) ;
-
-
-
-
+        return view('show-user', ['user' => $user, 'authUser' => $authUser ]) ;
     }
 
 
