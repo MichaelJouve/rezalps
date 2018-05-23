@@ -7,7 +7,7 @@
                 <div class="col">
                     <ul class="nav nav-pills nav-fill">
                         <li class="nav-item">
-                            @if($user->id == $authUser->id)
+                            @if($user->id == Auth::user()->id)
                                 <a class="nav-link" href="{{ URL::route('publications') }}"
                                    title="Publications">Publications</a>
                             @else
@@ -17,20 +17,20 @@
                         </li>
                         <li class="nav-item">
                             {{--' '--}}
-                            @if($user->id == $authUser->id)
+                            @if($user->id == Auth::user()->id)
                                 <a class="nav-link" href="{{ URL::route('authUser.cv') }}" title="CV">CV</a>
                             @else
                                 <a class="nav-link" href="{{ URL::route('user.cv', ['id'=> $user->id]) }}"
                                    title="CV">CV</a>
                             @endif
                         </li>
-                        @if($user->id == $authUser->id)
+                        @if($user->id == Auth::user()->id)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ URL::route('medias') }}" title="Medias">Medias</a>
                             </li>
                         @endif
                         <li class="nav-item">
-                            @if($user->id == $authUser->id)
+                            @if($user->id == Auth::user()->id)
                                 <a class="nav-link" href="{{ URL::route('network') }}" title="Réseau">Réseau</a>
                             @else
                                 <a class="nav-link" href="{{ URL::route('user.network', ['id'=> $user->id]) }}"
@@ -48,7 +48,7 @@
                         <a>
                             <img class="img-fluid rounded-circle" id="avatar" src="{{asset('storage/' .$user->avatar)}}"
                                  width="160" height="160" alt="avatar">
-                            @if($user->id != $authUser->id)
+                            @if($user->id != Auth::user()->id)
                                 @if($following)
                                     <form method="post" action="{{route('unfollow', ['id'=> $user->id] )}}">
                                         @csrf

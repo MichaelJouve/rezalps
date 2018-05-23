@@ -11,6 +11,11 @@
                     Users
                 </a>
             </li>
+            <li>
+                <a href="{{route('admin-user-index')}}">
+                    Posts
+                </a>
+            </li>
         </ul>
     </div>
 @endsection
