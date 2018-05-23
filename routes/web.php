@@ -34,8 +34,8 @@ Route::prefix('user')->group(function () {
     Route::prefix('{id}')->group(function () {
         Route::get('/', 'UserController@show')->name('show-avatar');
         Route::get('/publications', 'UserController@userPublications')->name('user.publications');
-        Route::post('/follow', 'Relationship@create@create')->name('follow');
-        Route::post('/unfollow', 'Relationship@destroy')->name('unfollow');
+        Route::post('/update-follow', 'RelationshipController@create')->name('follow');
+        Route::post('/update-unfollow', 'RelationshipController@destroy')->name('unfollow');
         Route::get('/cv', 'UserController@userCv')->name('user.cv');
         Route::get('/network', 'UserController@userNetwork')->name('user.network');
         Route::get('/medias', 'UserController@medias')->name('user.medias');
