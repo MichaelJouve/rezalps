@@ -18,6 +18,8 @@ Route::get('flux', 'PostController@flux')->name('flux');
 Route::prefix('admin123456')->group(function () {
 //    Route::get('/update-user','RoleController@updateUser')->name('updateUser');
     Route::get('/', 'Admin\DashboardController@index')->name('admin-dashboard-index');
+    Route::get('/posts', 'RoleController@listPosts')->name('admin-posts');
+    Route::get('/comments', 'RoleController@listComments')->name('admin-comments');
     // Users
     Route::prefix('users')->group(function () {
         Route::get('/', 'Admin\UserController@index')->name('admin-user-index');
