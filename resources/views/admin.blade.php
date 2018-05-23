@@ -13,10 +13,8 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Email</th>
                 <th scope="col">Ville</th>
-                <th scope="col">Naissance</th>
                 <th scope="col">Tel</th>
                 <th scope="col">Création</th>
-                <th scope="col">Site web</th>
                 <th scope="col">Rôle</th>
                 <th scope="col">Modifier</th>
                 <th scope="col">Supprimer</th>
@@ -32,10 +30,8 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->city }}</td>
-                    <td>{{ $user->birthdate }}</td>
                     <td>{{ $user->phone_number }}</td>
                     <td>{{ $user->created_at }}</td>
-                    <td>{{ $user->website }}</td>
                     <td>{{ $user->roles }}</td>
                     <td>
                         <a class="btn btn-secondary" href="{{ URL::route('admin-user-edit', ['id' => $user->id]) }}">Modifier
@@ -48,6 +44,27 @@
             @endforeach
             </tbody>
         </table>
+    </div>
+    <div class="">
+        <nav aria-label="...">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <span class="page-link">Previous</span>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item active">
+      <span class="page-link">
+        2
+        <span class="sr-only">(current)</span>
+      </span>
+                </li>
+                <li class="page-item"><a class="page-link" href="{{ $users->links() }}">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="{{ $users->links() }}">Next</a>
+                </li>
+            </ul>
+        </nav>
+
     </div>
 @endsection
 
