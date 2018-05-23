@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Comment;
 use App\Post;
 use App\Role;
 use App\User;
@@ -22,15 +23,43 @@ class RoleController extends Controller
             $posts = Post::all();
             $users = User::all();
 
-            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]) ;
-        }
-
-
-        else {
+            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser]);
+        } else {
             return redirect('admin-connexion');
         }
     }
 
+    public static function listPosts()
+    {
+        $authUser = Auth::user();
+        $posts = Post::simplePaginate(1);
+        $comments = Comment::paginate(10);
+        $users = User::all();
+
+        return view('admin-posts', [
+                'posts' => $posts,
+                'users' => $users,
+                'authUser' => $authUser,
+                'comments' => $comments
+            ]
+        );
+    }
+
+    public static function listComments()
+    {
+        $authUser = Auth::user();
+        $posts = Post::simplePaginate(1);
+        $comments = Comment::paginate(10);
+        $users = User::all();
+
+        return view('admin-comments', [
+                'posts' => $posts,
+                'users' => $users,
+                'authUser' => $authUser,
+                'comments' => $comments
+            ]
+        );
+    }
     /**
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -43,10 +72,7 @@ class RoleController extends Controller
         dd($user);
 
 
-
 //            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]) ;
-
-
 
 
     }
@@ -75,7 +101,7 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -86,7 +112,7 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Role  $role
+     * @param  \App\Role $role
      * @return \Illuminate\Http\Response
      */
     public function show(Role $role)
@@ -97,7 +123,7 @@ class RoleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Role  $role
+     * @param  \App\Role $role
      * @return \Illuminate\Http\Response
      */
     public function edit(Role $role)
@@ -108,8 +134,8 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Role  $role
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Role $role
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Role $role)
@@ -120,7 +146,7 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Role  $role
+     * @param  \App\Role $role
      * @return \Illuminate\Http\Response
      */
     public function destroy(Role $role)

@@ -16,6 +16,8 @@ Route::get('/', 'HomeController@index')->name('index');
 Route::get('flux', 'PostController@flux')->name('flux');
 
 Route::get('admin123456', 'RoleController@isAdmin')->name('admin');
+Route::get('admin123456/posts', 'RoleController@listPosts')->name('admin-posts');
+Route::get('admin123456/comments', 'RoleController@listComments')->name('admin-comments');
 
 Route::prefix('user')->group(function () {
 
