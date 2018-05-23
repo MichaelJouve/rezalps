@@ -12,14 +12,13 @@ use Illuminate\Support\Facades\Auth;
 class RoleController extends Controller
 {
     /**
-     * @return bool|string
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public static function isAdmin()
     {
         $authUser = Auth::user();
 
         if ($authUser->roles == 2) {
-
             $posts = Post::all();
             $users = User::all();
 
@@ -28,7 +27,7 @@ class RoleController extends Controller
 
 
         else {
-            return view('admin-connexion');
+            return redirect('admin-connexion');
         }
     }
 
