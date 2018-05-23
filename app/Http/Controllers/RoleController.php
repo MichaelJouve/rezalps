@@ -26,7 +26,7 @@ class RoleController extends Controller
 
         if ($authUser != null and $authUser->roles == 2) {
             $posts = Post::all();
-            $users = User::simplePaginate(2);
+            $users = User::simplePaginate(4);
 
             return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]);
         }

@@ -44,26 +44,8 @@
             @endforeach
             </tbody>
         </table>
-    </div>
-    <div class="">
-        <nav aria-label="...">
-            <ul class="pagination justify-content-center">
-                <li class="page-item disabled">
-                    <span class="page-link">Previous</span>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item active">
-      <span class="page-link">
-        2
-        <span class="sr-only">(current)</span>
-      </span>
-                </li>
-                <li class="page-item"><a class="page-link" href="{{ $users->links() }}">3</a></li>
-                <li class="page-item">
-                    <a class="page-link" href="{{ $users->links() }}">Next</a>
-                </li>
-            </ul>
-        </nav>
+        <div class="row justify-content-center">
+            {{ $users->links() }}
 
     </div>
 @endsection
