@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
@@ -19,13 +24,14 @@ class RoleController extends Controller
     {
         $authUser = Auth::user();
 
-        if ($authUser->roles == 2) {
+        if ($authUser != null and $authUser->roles == 2) {
             $posts = Post::all();
-            $users = User::all();
+            $users = User::simplePaginate(2);
 
-            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser]);
-        } else {
-            return redirect('admin-connexion');
+            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]);
+        }
+        else {
+            return view('index');
         }
     }
 
@@ -62,8 +68,6 @@ class RoleController extends Controller
     }
     /**
      * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     * For update user by admins.
      */
     public static function updateUser($id)
     {
@@ -72,7 +76,10 @@ class RoleController extends Controller
         dd($user);
 
 
+
 //            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser ]) ;
+
+
 
 
     }
