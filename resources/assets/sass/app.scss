@@ -5,7 +5,16 @@
 // Variables
 @import "variables";
 
-@import "rezalps";
-
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+/*@import "rezalps";*/
+@import "footer";
+@import "header-user";
+@import "header-profil";
+@import "landing-page";
+@import "flux";
+@import "parameters";
+@import "cv";
+@import "reseau";
+@import "medias";

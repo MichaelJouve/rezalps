@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Connexion REZALPS</title>
+    <title>Rezalps</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href={{URL::asset('css/app.css')}}>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

@@ -79,15 +79,16 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'relationships', 'receiver_id', 'sender_id');
     }
 
-    /**
-     * @param $limit of users who will be return.
-     * @param array $sort
-     * @param array $queries
-     * @return mixed
-     */
+//          Try to find commonfollowed users for network page (not working)
+    public function commonFollowed()
+    {
+        return $this->BelongsToMany('App\User', 'relationships', 'sender_id', 'receiver_id');
+    }
+
+
 //    public function findFollowed($limit, $sort = array(), $queries = array())
 //    {
-//        $user = User::load('sender')->take($limit)->orderBy($sort)->; //Factorisation à faire !!
+//        $user = User::load('sender')->take($limit)->orderBy($sort)->;
 //
 //        return $user;
 //    }
