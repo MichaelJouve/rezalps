@@ -1,12 +1,16 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View

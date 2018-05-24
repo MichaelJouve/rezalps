@@ -8,12 +8,17 @@
         <ul>
             <li>
                 <a href="{{route('admin-user-index')}}">
-                    Users
+                    Utilisateurs
                 </a>
             </li>
             <li>
-                <a href="{{route('admin-user-index')}}">
+                <a href="{{route('admin-post-index')}}">
                     Posts
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin-comments-index')}}">
+                    Commentaires
                 </a>
             </li>
         </ul>

@@ -4,10 +4,20 @@
 @section('content')
     <ul>
         <li>
-            <a href="{{route('admin')}}">Dashboard</a>
+            <a href="{{route('admin-dashboard-index')}}">Dashboard</a>
         </li>
         <li>
             <a href="{{route('admin-user-index')}}">Users</a>
+        </li>
+        <li>
+            <a href="{{route('admin-post-index')}}">
+                Posts
+            </a>
+        </li>
+        <li>
+            <a href="{{route('admin-comments-index')}}">
+                Commentaires
+            </a>
         </li>
     </ul>
     <h1 class="m-4"> Administration / Gestion des utilisateurs</h1>

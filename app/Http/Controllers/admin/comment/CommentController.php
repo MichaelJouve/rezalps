@@ -1,41 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin\comment;
 
-use App\Role;
+use App\Comment;
 use App\User;
 use Illuminate\Http\Request;
+use App\Post;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-
-class RoleController extends Controller
+class CommentController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    public static function listPosts()
-    {
-
-    }
-
-    public static function listComments()
-    {
-
-    }
-    /**
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function showUser($id)
-    {
-        $authUser = Auth::user();
-        $user = User::where('id', $id)->get();
-        return view('show-user', ['user' => $user, 'authUser' => $authUser ]) ;
-    }
-
-
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +18,20 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user() != null and Auth::user()->roles == 2) {
+            $posts = Post::simplePaginate(1);
+            $comments = Comment::paginate(3);
+            $users = User::all();
+            return view('admin/comment/index', [
+                    'posts' => $posts,
+                    'users' => $users,
+                    'comments' => $comments
+                ]
+            );
+        }
+        else {
+            return view('index');
+        }
     }
 
     /**
@@ -59,7 +47,7 @@ class RoleController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -70,21 +58,21 @@ class RoleController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Role $role
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Role $role)
+    public function show()
     {
-        //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Role $role
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit($id)
     {
         //
     }
@@ -92,11 +80,11 @@ class RoleController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \App\Role $role
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -104,10 +92,10 @@ class RoleController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Role $role
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
         //
     }

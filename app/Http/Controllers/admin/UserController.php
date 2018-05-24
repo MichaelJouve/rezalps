@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Post;
@@ -17,13 +17,13 @@ class UserController extends Controller
      */
     public static function isAdmin()
     {
-        $authUser = Auth::user();
 
-        if ($authUser->roles == 2) {
+
+        if (Auth::user()->roles == 2) {
             $posts = Post::all();
             $users = User::all();
 
-            return view('admin', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser]);
+            return view('admin', ['posts' => $posts, 'users' => $users ]);
         } else {
             return redirect('admin-connexion');
         }
@@ -46,13 +46,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        $authUser = Auth::user();
 
-        if ($authUser->roles == 2) {
+        if (Auth::user()->roles == 2) {
             $posts = Post::all();
             $users = User::all();
 
-            return view('admin.user.index', ['posts' => $posts, 'users' => $users, 'authUser' => $authUser]);
+            return view('admin.user.index', ['posts' => $posts, 'users' => $users]);
         } else {
             return redirect('admin-connexion');
         }

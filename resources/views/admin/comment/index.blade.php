@@ -4,7 +4,23 @@
 @section('content')
     <h1 class="m-4"> Administration / Gestion des commentaires</h1>
     <div class="container-fluid">
-
+        <ul>
+            <li>
+                <a href="{{route('admin-user-index')}}">
+                    Utilisateurs
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin-post-index')}}">
+                    Posts
+                </a>
+            </li>
+            <li>
+                <a href="{{route('admin-comments-index')}}">
+                    Commentaires
+                </a>
+            </li>
+        </ul>
         <table class="table table-hover">
             <thead class="thead-dark">
             <tr>
@@ -25,7 +41,7 @@
                         {{ $comment->id }}
                     </td>
                     <th>
-                        <a href="{{ route('updateUser', ['id'=>$comment->user->id]) }}">
+                        <a href="{{ route('admin-comments-index', ['id'=>$comment->user->id]) }}">
                             {{ $comment->user->name }}
                         </a>
                     </th>
@@ -37,12 +53,12 @@
                     <td>{{ $comment->created_at }}</td>
                     <td>{{ $comment->publication }}</td>
                     <td>
-                        {{--<button type="button" class="btn-secondary">
-                            <a href="{{ URL::route('updateUsers-', ['id' => $users->user->id]) }}">Modifier </a>
-                        </button>--}}
+                        {{--<a class="btn btn-secondary">--}}
+                        {{--<a href="{{ URL::route('updateUsers-', ['id' => $users->user->id]) }}">Modifier </a>--}}
+                        {{--</a>--}}
                     </td>
                     <td>
-                        <button type="button" class="btn-secondary">Supprimer</button>
+                        <a class="btn btn-secondary">Supprimer</a>
                     </td>
                 </tr>
             @endforeach
