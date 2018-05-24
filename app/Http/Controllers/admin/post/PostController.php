@@ -58,7 +58,10 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('admin.post.show', ['post' => $post]);
+
     }
 
     /**
@@ -69,7 +72,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('admin.post.edit', ['post' => $post]);
     }
 
     /**
@@ -81,7 +86,14 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $validateData = $request->validate([
+            'publication' => 'required',
+        ]);
+
+        $post->update($validateData);
+        $request->session()->flash('status', 'Modification validée !');
+        return back();
     }
 
     /**

@@ -17,7 +17,14 @@ Route::get('flux', 'PostController@flux')->name('flux');
 
 Route::prefix('admin123456')->group(function () {
     Route::get('/', 'admin\DashboardController@index')->name('admin-dashboard-index');
-    Route::get('/posts', 'admin\post\PostController@index')->name('admin-post-index');
+    Route::prefix('posts')->group(function () {
+        Route::get('/', 'admin\post\PostController@index')->name('admin-post-index');
+        Route::get('{id}', 'admin\post\PostController@show')->name('admin-post-show');
+        Route::get('{id}/edit', 'admin\post\PostController@edit')->name('admin-post-edit');
+        Route::post('{id}/', 'admin\post\PostController@update')->name('admin-post-update');
+    });
+
+
     Route::get('/comments', 'admin\comment\CommentController@index')->name('admin-comments-index');
     // Users
     Route::prefix('users')->group(function () {
