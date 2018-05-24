@@ -41,21 +41,24 @@
                         {{ $comment->id }}
                     </td>
                     <th>
-                        <a href="{{ route('admin-comments-index', ['id'=>$comment->user->id]) }}">
+                        <a href="{{ route('admin-user-edit', ['id'=>$comment->id]) }}">
                             {{ $comment->user->name }}
                         </a>
                     </th>
                     <td>
-                        <a href="#">
+                        <a href="{{ route('admin-comment-edit', ['id'=>$comment->id]) }}">
                             {{ str_limit($comment->post->publication, $limit = 10, $end = '...') }}
                         </a>
                     </td>
                     <td>{{ $comment->created_at }}</td>
-                    <td>{{ $comment->publication }}</td>
                     <td>
-                        {{--<a class="btn btn-secondary">--}}
-                        {{--<a href="{{ URL::route('updateUsers-', ['id' => $users->user->id]) }}">Modifier </a>--}}
-                        {{--</a>--}}
+                        <a href="{{ route('admin-comment-edit', ['id'=>$comment->id]) }}">
+                            {{ str_limit( $comment->content, $limit = 10, $end = '...') }}
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-secondary" href="{{ URL::route('admin-comment-edit', ['id'=>$comment->id]) }}">Modifier
+                        </a>
                     </td>
                     <td>
                         <a class="btn btn-secondary">Supprimer</a>

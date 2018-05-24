@@ -17,14 +17,26 @@ Route::get('flux', 'PostController@flux')->name('flux');
 
 Route::prefix('admin123456')->group(function () {
     Route::get('/', 'admin\DashboardController@index')->name('admin-dashboard-index');
-    Route::get('/posts', 'admin\post\PostController@index')->name('admin-post-index');
-    Route::get('/comments', 'admin\comment\CommentController@index')->name('admin-comments-index');
     // Users
     Route::prefix('users')->group(function () {
         Route::get('/', 'admin\UserController@index')->name('admin-user-index');
         Route::get('{user}', 'admin\UserController@show')->name('admin-user-show');
         Route::get('{user}/edit', 'admin\UserController@edit')->name('admin-user-edit');
         Route::post('{user}/', 'admin\UserController@update')->name('admin-user-update');
+    });
+    // Posts
+    Route::prefix('posts')->group(function () {
+        Route::get('/', 'admin\post\PostController@index')->name('admin-post-index');
+        Route::get('{post}', 'admin\post\PostController@show')->name('admin-post-show');
+        Route::get('{post}/edit', 'admin\post\PostController@edit')->name('admin-post-edit');
+        Route::post('{post}/', 'admin\post\PostController@update')->name('admin-post-update');
+    });
+    // Comments
+    Route::prefix('comments')->group(function () {
+        Route::get('/', 'admin\comment\CommentController@index')->name('admin-comments-index');
+        Route::get('{comment}', 'admin\comment\CommentController@show')->name('admin-comment-show');
+        Route::get('{comment}/edit', 'admin\comment\CommentController@edit')->name('admin-comment-edit');
+        Route::post('{comment}/', 'admin\comment\CommentController@update')->name('admin-comment-update');
     });
 });
 

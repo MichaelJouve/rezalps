@@ -41,7 +41,11 @@
                     <th>{{ $post->user_id }}</th>
                     <td>{{ $post->id }}</td>
                     <td>{{ $post->created_at }}</td>
-                    <td>{{ $post->publication }}</td>
+                    <td>
+                        <a href="{{ route('admin-post-edit', ['id'=>$post->user->id]) }}">
+                            {{ $post->publication }}
+                        </a>
+                    </td>
                     <td>
                         {{--<button type="button" class="btn-secondary">
                             <a href="{{ URL::route('updateUsers', ['id' => $users->user->id]) }}">Modifier </a>

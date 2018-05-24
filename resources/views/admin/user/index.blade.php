@@ -48,7 +48,10 @@
                     <th scope="row">{{ $user->id }}</th>
                     <td><img class="img_contact" src="{{asset('storage/' .$user->avatar) }}" width="40" height="40"
                              alt="{{ $user->name }}"></td>
-                    <td>{{ $user->name }}</td>
+                    <td><a href="{{ route ('admin-user-edit', ['id' => $user->id]) }}">
+                            {{ $user->name }}
+                        </a>
+                    </td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->city }}</td>
                     <td>{{ $user->birthdate }}</td>

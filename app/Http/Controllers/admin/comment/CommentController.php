@@ -72,9 +72,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
-        //
+        return view('admin.comment.edit', ['comment'=>$comment]);
     }
 
     /**
@@ -84,9 +84,16 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
-        //
+
+
+        $validateData = $request->validate([
+            'content' => 'required',
+        ]);
+        $comment->update($validateData);
+        $request->session()->flash('status', 'Modification validée !');
+        return back();
     }
 
     /**
