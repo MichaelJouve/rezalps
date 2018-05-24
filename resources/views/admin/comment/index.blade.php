@@ -52,7 +52,7 @@
         </table>
         {{$posts->links()}}
 
-    </div>
+
 @endsection
 
 
