@@ -2,6 +2,7 @@
 
 
 @section('content')
+    @include('admin.dashboard.admin-nav')
     <h1 class="m-4"> Modifier un utilisateur</h1>
     <div class="container-fluid">
 

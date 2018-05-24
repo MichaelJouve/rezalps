@@ -31,6 +31,7 @@ class RelationshipController extends Controller
      */
     public function create(Request $request)
     {
+
         Relationship::create(array_merge([
             'receiver_id' => $request->input('receiver_id_invisible'),
             'sender_id' => Auth::id(),

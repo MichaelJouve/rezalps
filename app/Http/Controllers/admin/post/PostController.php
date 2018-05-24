@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::simplePaginate(1);
+        $posts = Post::simplePaginate(10);
         $comments = Comment::paginate(10);
         $users = User::all();
 
