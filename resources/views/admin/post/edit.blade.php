@@ -8,7 +8,7 @@
             @csrf
             <div class="card-body">
                 <div class="form-group">
-                    <label class="float-left" for="name">Nom</label>
+                    <label class="float-left" for="name">Post</label>
                     <input type="text" class="form-control"
                            aria-describedby=Publication name="publication" id="name" value="{{ $post['publication'] }}">
                 </div>
