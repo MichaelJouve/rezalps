@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Relationship;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,16 +30,18 @@ class RelationshipController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
 
-        Relationship::create(array_merge([
-            'receiver_id' => $request->input('receiver_id_invisible'),
+        $user = User::with('receiver_id', 'sender_id')->get();
+
+        Relationship::create([
+            'receiver_id' => $user->id,
             'sender_id' => Auth::id(),
-        ]));
+        ]);
 
 
-        return view('{id}/', ['id' => $request->input('receiver_id_invisible')]);
+        return back();
     }
 
     /**
@@ -94,13 +97,18 @@ class RelationshipController extends Controller
      */
     public function destroy(Request $request)
     {
-        $receiver = $request->input('receiver_id_invisible');
-        $sender = Auth::id();
-        $following = Relationship::where('receiver_id', $receiver)->where('sender_id', $sender)->firstOrFail();
 
-        Relationship::destroy([
-            $following->id]);
+        $user = User::with('receiver_id', 'sender_id')->first();
+        $validateData = $request->validate([
+            'receiver_id' => 'int',
+            'sender_id' => 'int',
+        ]);
+        Relationship::destroy(array_merge($validateData, [
+            'receiver_id' => $user->id,
+            'sender_id' => Auth::id(),
+        ]));
 
-        return view('{id}/', ['id' => $request->input('receiver_id_invisible')]);
+
+        return back();
     }
 }
