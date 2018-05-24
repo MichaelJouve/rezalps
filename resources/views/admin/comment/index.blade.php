@@ -3,6 +3,7 @@
 
 @section('content')
     @include('admin.dashboard.admin-nav')
+    <h1 class="m-4">Administration / Gestion des Commentaires</h1>
     <table class="table table-hover">
         <thead class="thead-dark">
         <tr>

@@ -2,7 +2,7 @@
 
 @section('content')
     @include('admin.dashboard.admin-nav')
-
+        <h1 class="m-4">Administration / Gestion des Publications</h1>
         <table class="table table-hover">
             <thead class="thead-dark">
             <tr>
@@ -23,12 +23,11 @@
                 <td>{{ $post->created_at }}</td>
                 <td>{{ $post->publication }}</td>
                 <td>
-                    {{--<button type="button" class="btn-secondary">
-                        <a href="{{ URL::route('updateUsers', ['id' => $users->user->id]) }}">Modifier </a>
-                    </button>--}}
+                    <a class="btn btn-secondary" href="{{ URL::route('admin-post-edit', ['id'=>$post->id]) }}">Modifier
+                    </a>
                 </td>
                 <td>
-                    <button type="button" class="btn-secondary">Supprimer</button>
+                    <button type="button" class="btn btn-secondary">Supprimer</button>
                 </td>
             </tr>
         @endforeach
