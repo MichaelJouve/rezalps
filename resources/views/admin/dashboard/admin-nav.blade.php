@@ -1,7 +1,6 @@
-<div class="container-fluid">
 <main>
-    <nav id="main-nav-profil">
 
+    <nav id="main-nav-profil">
             <div class="row">
                 <div class="col">
                     <ul class="nav nav-pills nav-fill">
@@ -28,7 +27,6 @@
                     </ul>
                 </div>
             </div>
-
     </nav>
+
 </main>
-</div>
