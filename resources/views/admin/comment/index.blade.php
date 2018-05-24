@@ -28,7 +28,7 @@
                         </a>
                     </th>
                     <td>
-                        <a href="{{ route('admin-comment-edit', ['id'=>$comment->id]) }}">
+                        <a href="{{ route('admin-post-edit', ['id'=>$comment->post_id]) }}">
                             {{ str_limit($comment->post->publication, $limit = 10, $end = '...') }}
                         </a>
                     </td>
@@ -51,7 +51,7 @@
         </table>
         {{$posts->links()}}
 
-    </div>
+
 @endsection
 
 
