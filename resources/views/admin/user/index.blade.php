@@ -2,24 +2,7 @@
 
 
 @section('content')
-    <ul>
-        <li>
-            <a href="{{route('admin-dashboard-index')}}">Dashboard</a>
-        </li>
-        <li>
-            <a href="{{route('admin-user-index')}}">Users</a>
-        </li>
-        <li>
-            <a href="{{route('admin-post-index')}}">
-                Posts
-            </a>
-        </li>
-        <li>
-            <a href="{{route('admin-comments-index')}}">
-                Commentaires
-            </a>
-        </li>
-    </ul>
+    @include('admin.dashboard.admin-nav')
     <h1 class="m-4"> Administration / Gestion des utilisateurs</h1>
     <div class="container-fluid">
 
@@ -48,7 +31,10 @@
                     <th scope="row">{{ $user->id }}</th>
                     <td><img class="img_contact" src="{{asset('storage/' .$user->avatar) }}" width="40" height="40"
                              alt="{{ $user->name }}"></td>
-                    <td>{{ $user->name }}</td>
+                    <td><a href="{{ route ('admin-user-edit', ['id' => $user->id]) }}">
+                            {{ $user->name }}
+                        </a>
+                    </td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->city }}</td>
                     <td>{{ $user->birthdate }}</td>
