@@ -63,13 +63,13 @@ class PostController extends Controller
         ]);
         $authUser = Auth::user();
 
-        Post::create(array_merge($validateData, ['authUser_id' => $authUser->id]));
-        /*
-                ou
+//        Post::create(array_merge($validateData, ['authUser_id' => $authUser->id]));
+
+               // ou
 
                 $post = new Post($validateData);
-                $post->user_id = $user->id;
-                $post->save();*/
+                $post->user_id = $authUser->id;
+                $post->save();
 
         return back();
     }
