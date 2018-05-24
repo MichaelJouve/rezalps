@@ -19,9 +19,10 @@ class CommentController extends Controller
     public function index()
     {
         if (Auth::user() != null and Auth::user()->roles == 2) {
-            $posts = Post::simplePaginate(1);
-            $comments = Comment::paginate(3);
+            $posts = Post::simplePaginate(3);
+            $comments = Comment::paginate(4);
             $users = User::all();
+
             return view('admin/comment/index', [
                     'posts' => $posts,
                     'users' => $users,
