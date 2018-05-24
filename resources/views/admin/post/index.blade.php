@@ -27,7 +27,8 @@
                     </a>
                 </td>
                 <td>
-                    <button type="button" class="btn btn-secondary">Supprimer</button>
+                    <a class="btn btn-secondary" href="{{ URL::route('admin-post-destroy', ['id'=>$post->id]) }}">Supprimer
+                    </a>
                 </td>
             </tr>
         @endforeach
