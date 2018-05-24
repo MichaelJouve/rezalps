@@ -17,7 +17,6 @@ Route::get('flux', 'PostController@flux')->name('flux');
 
 Route::prefix('admin123456')->group(function () {
     Route::get('/', 'admin\DashboardController@index')->name('admin-dashboard-index');
-
     // Users
     Route::prefix('users')->group(function () {
         Route::get('/', 'admin\UserController@index')->name('admin-user-index');
