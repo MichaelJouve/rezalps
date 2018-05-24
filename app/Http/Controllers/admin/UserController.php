@@ -125,8 +125,12 @@ class UserController extends Controller
      * @param  \App\Role $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        {
+            $user = User::findOrFail($id);
+            $user->delete();
+            return back();
+        }
     }
 }

@@ -44,7 +44,8 @@
                         </a>
                     </td>
                     <td>
-                        <a class="btn btn-secondary">Supprimer</a>
+                        <a class="btn btn-secondary" href="{{ URL::route('admin-comment-destroy', ['id'=>$comment->id]) }}">Supprimer
+                        </a>
                     </td>
                 </tr>
             @endforeach
