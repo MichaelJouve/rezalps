@@ -93,7 +93,7 @@ class PostController extends Controller
 
         $post->update($validateData);
         $request->session()->flash('status', 'Modification validée !');
-        return back();
+        return redirect()->route('admin-post-index');
     }
 
     /**
