@@ -4,7 +4,6 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Post;
-use App\Role;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -126,8 +125,12 @@ class UserController extends Controller
      * @param  \App\Role $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
+        {
+            $user = User::findOrFail($id);
+            $user->delete();
+            return back();
+        }
     }
 }

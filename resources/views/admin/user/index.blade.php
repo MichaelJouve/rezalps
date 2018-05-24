@@ -31,20 +31,31 @@
                     <th scope="row">{{ $user->id }}</th>
                     <td><img class="img_contact" src="{{asset('storage/' .$user->avatar) }}" width="40" height="40"
                              alt="{{ $user->name }}"></td>
-                    <td>{{ $user->name }}</td>
+                    <td><a href="{{ route ('admin-user-edit', ['id' => $user->id]) }}">
+                            {{ $user->name }}
+                        </a>
+                    </td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->city }}</td>
                     <td>{{ $user->birthdate }}</td>
                     <td>{{ $user->phone_number }}</td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->website }}</td>
-                    <td>{{ $user->roles }}</td>
+                    <td>
+                        @if ( $user->roles  === 2)
+                            Admin
+                            @elseif ( $user->roles === 1)
+                            Super Admin
+                            @else
+                            Simple User
+                        @endif
+                    </td>
                     <td>
                         <a class="btn btn-secondary" href="{{ URL::route('admin-user-edit', ['id' => $user->id]) }}">Modifier
                         </a>
                     </td>
                     <td>
-                        <button type="button" class="btn-secondary">Supprimer</button>
+                        <button type="button" class="btn btn-secondary">Supprimer</button>
                     </td>
                 </tr>
 

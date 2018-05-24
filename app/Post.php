@@ -3,11 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Post extends Model
 {
+    use SoftDeletes;
+
     //only thoses items can be filled.
     protected $fillable = ['publication', 'user_id'];
+    protected $dates = ['deleted_at'];
 
     /**
      * Link with model user

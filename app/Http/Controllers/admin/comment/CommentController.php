@@ -19,9 +19,10 @@ class CommentController extends Controller
     public function index()
     {
         if (Auth::user() != null and Auth::user()->roles == 2) {
-            $posts = Post::simplePaginate(1);
-            $comments = Comment::paginate(3);
+            $posts = Post::simplePaginate(3);
+            $comments = Comment::paginate(4);
             $users = User::all();
+
             return view('admin/comment/index', [
                     'posts' => $posts,
                     'users' => $users,
@@ -72,9 +73,9 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comment $comment)
     {
-        //
+        return view('admin.comment.edit', ['comment'=>$comment]);
     }
 
     /**
@@ -84,9 +85,16 @@ class CommentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comment $comment)
     {
-        //
+
+
+        $validateData = $request->validate([
+            'content' => 'required',
+        ]);
+        $comment->update($validateData);
+        $request->session()->flash('status', 'Modification validée !');
+        return back();
     }
 
     /**
@@ -97,6 +105,10 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        {
+            $comment = Comment::findOrFail($id);
+            $comment->delete();
+            return back();
+        }
     }
 }

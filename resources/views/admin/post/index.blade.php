@@ -2,18 +2,18 @@
 
 @section('content')
     @include('admin.dashboard.admin-nav')
-
-    <table class="table table-hover">
-        <thead class="thead-dark">
-        <tr>
-            <th scope="col">#user</th>
-            <th scope="col">#post</th>
-            <th scope="col">Création</th>
-            <th scope="col">Publications</th>
-            <th scope="col">Modifier</th>
-            <th scope="col">Supprimer</th>
-        </tr>
-        </thead>
+        <h1 class="m-4">Administration / Gestion des Publications</h1>
+        <table class="table table-hover">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#user</th>
+                <th scope="col">#post</th>
+                <th scope="col">Création</th>
+                <th scope="col">Publications</th>
+                <th scope="col">Modifier</th>
+                <th scope="col">Supprimer</th>
+            </tr>
+            </thead>
 
         <tbody>
         @foreach($posts as $post)
@@ -23,20 +23,18 @@
                 <td>{{ $post->created_at }}</td>
                 <td>{{ $post->publication }}</td>
                 <td>
-                    {{--<button type="button" class="btn-secondary">
-                        <a href="{{ URL::route('updateUsers', ['id' => $users->user->id]) }}">Modifier </a>
-                    </button>--}}
+                    <a class="btn btn-secondary" href="{{ URL::route('admin-post-edit', ['id'=>$post->id]) }}">Modifier
+                    </a>
                 </td>
                 <td>
-                    <button type="button" class="btn-secondary">Supprimer</button>
+                    <a class="btn btn-secondary" href="{{ URL::route('admin-post-destroy', ['id'=>$post->id]) }}">Supprimer
+                    </a>
                 </td>
             </tr>
         @endforeach
         </tbody>
     </table>
     {{$posts->links()}}
-
-    </div>
 @endsection
 
 
