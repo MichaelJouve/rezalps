@@ -116,7 +116,7 @@ class UserController extends Controller
 
         $user->update($validateData);
         $request->session()->flash('status', 'Modification validée !');
-        return back();
+        return redirect()->route('admin-user-index');
     }
 
     /**

@@ -94,7 +94,7 @@ class CommentController extends Controller
         ]);
         $comment->update($validateData);
         $request->session()->flash('status', 'Modification validée !');
-        return back();
+        return redirect()->route('admin-comments-index');
     }
 
     /**
