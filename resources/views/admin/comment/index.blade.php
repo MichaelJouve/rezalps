@@ -3,6 +3,7 @@
 
 @section('content')
     @include('admin.dashboard.admin-nav')
+    <h1 class="m-4">Administration / Gestion des Commentaires</h1>
     <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
@@ -28,7 +29,7 @@
                         </a>
                     </th>
                     <td>
-                        <a href="{{ route('admin-comment-edit', ['id'=>$comment->id]) }}">
+                        <a href="{{ route('admin-post-edit', ['id'=>$comment->post_id]) }}">
                             {{ str_limit($comment->post->publication, $limit = 10, $end = '...') }}
                         </a>
                     </td>
