@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     function __construct()
@@ -17,23 +18,35 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function flux()
     {
-        return view('flux');
+        $authUser = Auth::user();
+        $posts = Post::with('comments.user', 'user')->latest()->get();
+        return view('flux', ['posts' => $posts, 'authUser' => $authUser]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function publications()
     {
-        $posts = Post::all();
+        $allposts = Post::all();
+        $user = User::with('posts.comments', 'posts.user')->withCount('receiver')->find(Auth::id());
+        $authUser = Auth::user();
 
-        return view('publications', ['posts' => $posts]);
+        return view('publications', ['user' => $user, 'allposts' => $allposts, 'authUser' => $authUser]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index()
     {
         $posts = Post::all();
 
-        return view('publications', $posts);
+        return view('publications', ['posts' => $posts]);
     }
 
     /**
@@ -44,14 +57,19 @@ class PostController extends Controller
     public function create(Request $request)
     {
         $validateData = $request->validate([
-           //'title' => 'required|min:3|max:250',
             'publication' => 'required'
         ]);
+        $authUser = Auth::user();
 
-        $post = Post::create($validateData);
+//        Post::create(array_merge($validateData, ['authUser_id' => $authUser->id]));
 
-        return view('publications', ['post' => $post]);
+               // ou
 
+                $post = new Post($validateData);
+                $post->user_id = $authUser->id;
+                $post->save();
+
+        return back();
     }
 
     /**
@@ -84,7 +102,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::findOrFail($id);
+
+        return view('update-publications', ['post' => $post, 'user' => Auth::user()]);
     }
 
     /**
@@ -96,17 +116,29 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $authUser = Auth::user();
+        $post = Post::findOrFail($id);
+
+        $validateData = $this->validate($request, [
+            'publication' => 'required'
+        ]);
+
+        $post->publication = $validateData['publication'];
+
+        $post->save();
+
+        return view('publications', ['post' => $post, 'user' => $authUser]);
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect()->route('publications');
     }
 }

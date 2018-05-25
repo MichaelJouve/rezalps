@@ -1,4 +1,4 @@
-<?php
+git push<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,7 +15,7 @@ class CreateRelationshipsTable extends Migration
     {
         Schema::create('relationships', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('status'); //0 == not friend; 1 == waiting; 2 == friend
+            $table->tinyInteger('status');
             $table->timestamps();
             $table->unsignedInteger('sender_id');
             $table->unsignedInteger('receiver_id');

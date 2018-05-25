@@ -1,0 +1,51 @@
+/*Flux*/
+
+.card-title h4 {
+  font-family: "Montserrat", serif;
+  font-weight: bold;
+}
+
+.button-like { /*ATTENDRE PLUS TARD POUR GERER L'ANIMATION DES BOUTONS*/
+  width: 43px;
+  height: 34px;
+  border: 0px;
+  padding: 0px;
+  background: url('/img/like-off.png') no-repeat;
+}
+
+.button-like:hover {
+  background: url('/img/like-on.png');
+}
+
+.button-dislike { /*ATTENDRE PLUS TARD POUR GERER L'ANIMATION DES BOUTONS*/
+  width: 43px;
+  height: 34px;
+  border: 0px;
+  padding: 0px;
+  background: url('/img/dislike-off.png') no-repeat;
+}
+
+.button-dislike:hover {
+  background: url('/img/dislike-on.png');
+}
+
+textarea {
+  width: 100%;
+}
+
+/*PAGE FLUX_BOX_commentaire et page publication */
+
+#new_publications {
+  margin-top: 15px;
+}
+
+.postAvatar {
+  height: 40px;
+  margin-right: 5px;
+}
+
+.commentAvatar {
+  height: 30px;
+  margin-right: 5px;
+  padding-left: 5px;
+}

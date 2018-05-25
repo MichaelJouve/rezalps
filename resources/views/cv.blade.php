@@ -1,4 +1,4 @@
-@extends('layouts.layout-profil')
+@extends('layouts.profil')
 @section('content')
     <main>
         <section id="content" class="container">
@@ -8,34 +8,47 @@
                         <div id="apropos">
                             <h2>A propos</h2>
                             <div class="card">
-                                <p>
-                                    {{ $user->description }}
-                                </p>
-                                <form method="post" action="{{ ('update-apropos') }}">
-                                    @csrf
-                                    <img src="img/edit.png" title="modifier">
-                                </form>
+                                <div class="card-body">
+                                    @if($user->id == $authUser->id)
+                                        <form method="post"  action="{{ ('update-apropos') }}">
+                                            @csrf
+                                            <textarea title="A propos" name="description" class="form-control" rows="10">{{ $user->description }}</textarea>
+
+                                            <div class="card-footer text-right">
+                                                <button class="btn btn-secondary" type="submit">Modifier</button>
+                                            </div>
+
+                                        </form>
+                                    @else
+                                        <div class="card-deck">
+                                        {{ $user->description }}
+                                        </div>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>
+
                     <div class="col-md-6 col-sm-12">
                         <div id="experiences">
                             <h2>CV</h2>
                             <div class="card">
                                 <p>Pour afficher votre CV sur votre page veuillez l'importer ci-dessous.</p>
-                                <form method="post" action="" >
+                                <form method="post" action="{{ route('update-cv') }}" enctype="multipart/form-data">
+                                    @csrf
                                     <div class="upload-btn-wrapper">
                                         <button class="btn">Importer</button>
-                                        <input type="file" name="myfile" />
+                                        <input type="file" name="cv"/>
                                     </div>
+
                                     <div class="alignement_droite">
-                                        <input type="submit" class="btn" value="Soumettre" />
+                                        <input type="submit" class="btn" value="Soumettre"/>
                                     </div>
                                 </form>
                                 <!-- La div suivante permet de rajouter un viewer PDF -->
                                 <div id="pdf">
                                     <div class="pdfobject-com">
-                                        <embed class="pdfobject" src="img/PDF_test.pdf" type="application/pdf">
+                                        <embed class="pdfobject" src="{{ asset('storage/' .$authUser->cv) }}" name="cv" type="application/pdf">
                                     </div>
                                 </div>
                             </div>
@@ -52,7 +65,11 @@
                     <div id="hobby">
                         <h3>Mes hobbies</h3>
                         <p>
-                            Cyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris altera Veneris templo insignis. tanta autem tamque multiplici fertilitate abundat rerum omnium eadem Cyprus ut nullius externi indigens adminiculi indigenis viribus a fundamento ipso carinae ad supremos usque carbasos aedificet onerariam navem omnibusque armamentis instructam mari committat
+                            Cyprum itidem insulam procul a continenti discretam et portuosam inter municipia crebra
+                            urbes duae faciunt claram Salamis et Paphus, altera Iovis delubris altera Veneris templo
+                            insignis. tanta autem tamque multiplici fertilitate abundat rerum omnium eadem Cyprus ut
+                            nullius externi indigens adminiculi indigenis viribus a fundamento ipso carinae ad supremos
+                            usque carbasos aedificet onerariam navem omnibusque armamentis instructam mari committat
                         </p>
                     </div>
                 </div>
@@ -61,4 +78,4 @@
         </section>
 
     </main>
- @endsection
+@endsection
