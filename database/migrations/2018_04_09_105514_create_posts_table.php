@@ -15,9 +15,9 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_id');
+            $table->unsignedInteger('user_id')->nullable();
             $table->text('publication');
-            $table->boolean('is_offer');
+            $table->boolean('is_offer')->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
         });

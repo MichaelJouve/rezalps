@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
-use Barryvdh\Reflection\DocBlock\Tag\AuthorTag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Comment;
 class PostController extends Controller
 {
     function __construct()
@@ -104,11 +102,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $authUser = Auth::user();
         $post = Post::findOrFail($id);
 
-        return view('update-publications', ['post' => $post, 'authUser' => $authUser, 'user' => $authUser]);
-
+        return view('update-publications', ['post' => $post, 'user' => Auth::user()]);
     }
 
     /**
@@ -123,15 +119,15 @@ class PostController extends Controller
         $authUser = Auth::user();
         $post = Post::findOrFail($id);
 
-        $this->validate($request, [
+        $validateData = $this->validate($request, [
             'publication' => 'required'
         ]);
 
-        $validateData = $request->all();
+        $post->publication = $validateData['publication'];
 
-        $post->update($validateData);
+        $post->save();
 
-        return view('publications', ['post' => $post, 'authUser' => $authUser, 'user' => $authUser]);
+        return view('publications', ['post' => $post, 'user' => $authUser]);
     }
 
     /**

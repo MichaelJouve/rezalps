@@ -17,7 +17,7 @@ Route::get('flux', 'PostController@flux')->name('flux');
 
 Route::prefix('admin123456')->group(function () {
     Route::get('/', 'admin\DashboardController@index')->name('admin-dashboard-index');
-    // Users
+    // Admin-users
     Route::prefix('users')->group(function () {
         Route::get('/', 'admin\UserController@index')->name('admin-user-index');
         Route::get('{user}', 'admin\UserController@show')->name('admin-user-show');
@@ -25,7 +25,7 @@ Route::prefix('admin123456')->group(function () {
         Route::post('{user}/', 'admin\UserController@update')->name('admin-user-update');
         Route::post('{user}/delete', 'admin\UserController@destroy')->name('admin-user-destroy');
     });
-    // Posts
+    // Admin-posts
     Route::prefix('posts')->group(function () {
         Route::get('/', 'admin\post\PostController@index')->name('admin-post-index');
         Route::get('{id}', 'admin\post\PostController@show')->name('admin-post-show');
@@ -33,7 +33,7 @@ Route::prefix('admin123456')->group(function () {
         Route::post('{id}/', 'admin\post\PostController@update')->name('admin-post-update');
         Route::post('{id}/delete', 'admin\post\PostController@destroy')->name('admin-post-destroy');
     });
-    // Comments
+    // Admin-comments
     Route::prefix('comments')->group(function () {
         Route::get('/', 'admin\comment\CommentController@index')->name('admin-comments-index');
         Route::get('{comment}', 'admin\comment\CommentController@show')->name('admin-comment-show');
@@ -78,10 +78,12 @@ Route::post('send-message', 'MailController@create')->name('send-message');
 Route::post('add-post', 'PostController@create')->name('add-post');
 Route::get('delete-post/{id}', 'PostController@destroy')->name('delete-post');
 
+    // comment
 Route::prefix('comment')->group(function () {
     Route::post('/', 'CommentController@createComment')->name('add-comment');
-    Route::get('/{id}/delete', 'CommentController@destroy')->name('delete-comment');
-    Route::get('/{id}/update', 'CommentController@update')->name('update-comment');
+    Route::get('/delete/{id}', 'CommentController@destroy')->name('delete-comment');
+    Route::get('/edit/{id}', 'CommentController@edit')->name('edit-comment');
+    Route::get('/update/{id}', 'CommentController@update')->name('update-comment');
 });
 
 Route::get('cgu', 'HomeController@cgu')->name('cgu');

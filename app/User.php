@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
-    use SoftDeletes;
+    use HasApiTokens, Notifiable, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -82,10 +82,10 @@ class User extends Authenticatable
     }
 
 //          Try to find commonfollowed users for network page (not working)
-    public function commonFollowed()
-    {
-        return $this->BelongsToMany('App\User', 'relationships', 'sender_id', 'receiver_id');
-    }
+//    public function commonFollowed()
+//    {
+//        return $this->BelongsToMany('App\User', 'relationships', 'sender_id', 'receiver_id');
+//    }
 
 
 //    public function findFollowed($limit, $sort = array(), $queries = array())
