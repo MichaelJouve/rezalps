@@ -20,14 +20,14 @@
                         <div class="card border-dark">   <!-- PUBLICATION 1 -->
                             <div class="card-body">
                                 <div class="row">
-                                    <img src="{{ asset('storage/' .$post->user->avatar) }}" alt="..."
+                                    <img src="{{ asset('storage/' .$comment->user->avatar) }}" alt="..."
                                          class="rounded-circle postAvatar">
-                                    <p>{{ $post->user->name }}</p>
+                                    <p>{{ $comment->user->name }}</p>
                                 </div>
                                 <h5 class="card-title">
-                                    <form action="{{ route('update-post', ['post' => $post->id]) }}" method="POST">
+                                    <form action="{{route('update-comment', ['id' => $comment->id])}}" method="POST">
                                         @csrf
-                                        <input type="text" name="publication" value="{{$post->publication}}">
+                                        <input type="text" name="content" value="{{$comment->content}}">
                                         <div class="alignement_droite">
                                             <button type="submit" class="btn-secondary">Modifier</button>
                                         </div>
@@ -37,35 +37,10 @@
                                 <small class="text-muted">
                                     <button class="button-like"></button>
                                     <button class="button-dislike"></button>
-                                    Post publié le {{ $post->created_at }}
+                                    Post publié le {{ $comment->created_at }}
                                 </small>
                                 <div class="card-footer text-muted">
                                 </div>
-
-                            {{--contrôle de l'utilisateur, si c'est celui connecté alors on affiche le bouton delete--}}
-                            @if (Auth::id() == $post->user_id)
-                                    @include('shared.deleteinput')
-                                @endif
-
-                                @foreach($post->comments as $comment)
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <img src="{{asset('storage/' .$post->user->avatar)}}" alt="..."
-                                                 class="rounded-circle commentAvatar">
-                                            <p>{{ $post->user->name }}</p>
-                                        </div>
-                                        <p class="card-text">{{ $comment->content }}</p>
-                                    </div>
-
-                                    <small class="text-muted">
-                                        <button class="button-like"></button>
-                                        <button class="button-dislike"></button>
-                                        Commentaire publié le {{ $post->created_at }}
-                                    </small>
-                                    <div class="card-footer">
-                                    </div>
-                                @endforeach
-
                             </div>
                             <p></p>
                         </div>

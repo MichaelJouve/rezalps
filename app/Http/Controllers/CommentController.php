@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Post;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -68,14 +69,14 @@ class CommentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Comment  $comments
-     * @return \Illuminate\Http\Response
+     * @param Comment $comments
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Comment $comments)
+    public function edit($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        return view('update-comment', ['comment' => $comment, 'user' => Auth::user()]);
     }
 
     /**
@@ -87,18 +88,20 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $user = Auth::user();
         $comment = Comment::findOrFail($id);
 
         $this->validate($request, [
             'publication' => 'required'
         ]);
 
-        $validateData = $request->all();
+        $validateData = $this->validate($request, [
+            'content' => 'required'
+        ]);
 
-        $comment->update($validateData);
+        $comment->content = $validateData['content'];
+        $comment->save();
 
-        return view('publications', ['comment' => $comment, 'user' => $user]);
+        return redirect('publications');
     }
 
     /**
