@@ -32,16 +32,7 @@ class RelationshipController extends Controller
      */
     public function create()
     {
-
-        $user = User::with('receiver_id', 'sender_id')->get();
-
-        Relationship::create([
-            'receiver_id' => $user->id,
-            'sender_id' => Auth::id(),
-        ]);
-
-
-        return back();
+        //
     }
 
     /**
@@ -50,9 +41,14 @@ class RelationshipController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($id)
     {
-        //
+        Relationship::create([
+            'receiver_id' => $id,
+            'sender_id' => Auth::id(),
+        ]);
+
+        return back();
     }
 
     /**
@@ -95,19 +91,12 @@ class RelationshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-
-        $user = User::with('receiver_id', 'sender_id')->first();
-        $validateData = $request->validate([
-            'receiver_id' => 'int',
-            'sender_id' => 'int',
-        ]);
-        Relationship::destroy(array_merge($validateData, [
-            'receiver_id' => $user->id,
+        Relationship::destroy([
+            'receiver_id' => $id,
             'sender_id' => Auth::id(),
-        ]));
-
+        ]);
 
         return back();
     }
