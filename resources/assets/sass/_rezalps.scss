@@ -190,8 +190,19 @@ textarea {
   background-color: #444444;
 }
 
-#SAS {
-  margin: 15px 0;
+.footer {
+  margin-top: 15px;
+  font-size: 0.9em;
+}
+
+.footerlink {
+  text-decoration: none;
+  color: white;
+}
+
+.footerlink:hover {
+  text-decoration: none;
+  color: lightpink;
 }
 
 .fullsize {
@@ -392,10 +403,21 @@ textarea {
   border-radius: 1%;
 }
 
-/*PAGE FLUX_BOX_commentaire*/
+/*PAGE FLUX_BOX_commentaire et page publication */
 
 #new_publications {
   margin-top: 15px;
+}
+
+.postAvatar {
+  height: 40px;
+  margin-right: 5px;
+}
+
+.commentAvatar {
+  height: 30px;
+  margin-right: 5px;
+  padding-left: 5px;
 }
 
 /*CSS Page Paramètre */
@@ -440,4 +462,3 @@ footer {
   padding-top: 10px;
   border-bottom: 3px lightgrey;
 }
-

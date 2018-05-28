@@ -3,13 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Media;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class MediaController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function medias()
     {
-        return view('medias');
+        $authUser = Auth::user();
+        $user = $authUser;
+
+        return view('medias', ['authUser' => $authUser, 'user' => $user]);
     }
 
     /**

@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Post;
+use Auth;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
+    /**
+     * CommentController constructor.
+     */
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -22,10 +31,20 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+
+    public function createComment(Request $request)
     {
-        //
+        $validateData = $request->validate([
+            'content' => 'required',
+            'post_id' => 'required|int'
+        ]);
+
+        $user = Auth::user();
+        Comment::create(array_merge($validateData, ['user_id' => $user->id]));
+
+        return back();
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -50,14 +69,14 @@ class CommentController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Comment  $comments
-     * @return \Illuminate\Http\Response
+     * @param Comment $comments
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function edit(Comment $comments)
+    public function edit($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        return view('update-comment', ['comment' => $comment, 'user' => Auth::user()]);
     }
 
     /**
@@ -67,9 +86,22 @@ class CommentController extends Controller
      * @param  \App\Comment  $comments
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comments)
+    public function update(Request $request, $id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+
+        $this->validate($request, [
+            'publication' => 'required'
+        ]);
+
+        $validateData = $this->validate($request, [
+            'content' => 'required'
+        ]);
+
+        $comment->content = $validateData['content'];
+        $comment->save();
+
+        return redirect('publications');
     }
 
     /**
@@ -78,8 +110,10 @@ class CommentController extends Controller
      * @param  \App\Comment  $comments
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comments)
+    public function destroy($id)
     {
-        //
+        $comment = Comment::findOrFail($id);
+        $comment->delete();
+        return redirect()->route('flux');
     }
 }

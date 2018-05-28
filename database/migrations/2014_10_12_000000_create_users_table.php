@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable();
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('city')->nullable();
             $table->date('birthdate')->nullable();
             $table->string('phone_number')->nullable();
@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->string('pitch_video')->nullable();
             $table->string('cv')->nullable();
             $table->string('avatar')->nullable();
+            $table->string('job')->nullable();
             $table->rememberToken();
             $table->timestamps(); //created and update by it self
         });

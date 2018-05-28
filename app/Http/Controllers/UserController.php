@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Faker\Guesser\Name;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -16,21 +16,53 @@ class UserController extends Controller
 
     public function network()
     {
-        return view('network');
+        $user = Auth::user();
+//        $user->findFollowed(10, ['created_at', 'desc'], $queries = array());
+        $sugUser = User::doesntHave('sender')->get();
+
+        return view('network', ['user' => $user, 'sugUser' => $sugUser, 'authUser' => $user]);
+    }
+
+    public function userNetwork($id)
+    {
+        $authUser = Auth::user();
+        $user = User::findOrFail($id);
+        $sugUser = User::doesntHave('sender')->take(10)->get();
+
+//        $myFollowed = User::with('sender')->findOrFail($authUser->id);
+//        $hisFollowed = User::with('sender')->findOrFail($id);
+//        dd($myFollowed, $hisFollowed);
+
+        return view('network', [
+            'user' => $user,
+            'sugUser' => $sugUser,
+            'authUser' => $authUser,
+        ]);
     }
 
     public function settings()
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
 
-        return view('settings', ['user' => $user]);
+        return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function cv()
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
 
-        return view('cv', ['user' => $user]);
+        return view('cv', ['authUser' => $authUser, 'user' => $authUser]);
+    }
+
+    public function userCv($id)
+    {
+        $authUser = Auth::user();
+        $user = User::findOrFail($id);
+
+        return view('cv', ['authUser' => $authUser, 'user' => $user]);
     }
 
     /**
@@ -40,9 +72,23 @@ class UserController extends Controller
      */
     public function publications($id)
     {
-        $user = User::with('posts')->findOrFail($id);
+        $user = User::with('posts', 'relationships')->findOrFail($id);
+
 
         return view('publications', ['user' => $user]);
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function userPublications($id)
+    {
+        $user = User::with('posts.comments', 'posts.user', 'sender')->withCount('receiver')->findOrFail($id);
+        $authUser = Auth::user();
+        $following = Relationship::where('receiver_id', $user->id)->where('sender_id', $authUser->id)->first();
+
+        return view('publications', ['user' => $user, 'authUser' => $authUser, 'id' => $id, 'following' => $following]);
     }
 
     /**
@@ -50,7 +96,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
         //
     }
@@ -97,52 +143,91 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
 
         $validateData = $request->validate([
             'name' => 'min:3|max:250',
             'email' => 'email',
             'phone_number' => 'nullable|min:10|max:12',
             'birthdate' => 'nullable|date',
-            'city' => 'nullable|max:250'
+            'city' => 'nullable|max:250',
+            'website' => 'nullable|min:3|max:250',
+            'job' => 'nullable'
         ]);
 
-
-        $user->update($validateData);
-        return view('settings', ['user' => $user]);
+        $authUser->update($validateData);
+        return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
     public function updatePassword(Request $request)
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
+
+        if (!Hash::check($request->input('password'), $authUser->password)) {
+            return back()
+                ->withErrors(['password' => 'Mot de passe incorrect'])
+                ->withInput();
+        }
+
         $validateData = $request->validate([
-            'password' => 'required'|'min:8',
+            'password' => 'required|string',
+            'new_password' => 'required|string|min:6|confirmed',
         ]);
 
-        $user->update($validateData);
-        return view('settings', ['user' => $user]);
+
+        $authUser->password = $validateData['new-password'];
+        $authUser->save();
+        //$user->update($validateData);
+        return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function updateApropos(Request $request)
     {
-        $user = Auth::user();
+        $authUser = Auth::user();
         $validateData = $request->validate([
             'description' => 'max:16000',
         ]);
 
-        $user->update($validateData);
-        return view('cv', ['user' => $user]);
+        $authUser->update($validateData);
+        return view('cv', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function updateAvatar(Request $request)
     {
         $avatar = $request->avatar->store('useravatar', 'public');
 
-        $user = Auth::user();
-        $user->avatar = $avatar;
-        $user->save();
+        $authUser = Auth::user();
+        $authUser->avatar = $avatar;
+        $authUser->save();
 
-        return view('settings', ['user' => $user]);
+        return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function updateCV(Request $request)
+    {
+        $cv = $request->cv->store('usercv', 'public');
+
+        $authUser = Auth::user();
+        $authUser->cv = $cv;
+        $authUser->save();
+
+        return view('settings', ['authUser' => $authUser, 'user' => $authUser]);
     }
 
     /**
@@ -151,7 +236,7 @@ class UserController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
         //
     }
