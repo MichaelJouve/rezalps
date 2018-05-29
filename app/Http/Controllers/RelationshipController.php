@@ -59,7 +59,9 @@ class RelationshipController extends Controller
      */
     public function show($id)
     {
-        //
+        $following = Relationship::where('receiver_id', $id)->where('sender_id', Auth::id())->first();
+
+        return view('user-publications', ['following' => $following]);
     }
 
     /**
