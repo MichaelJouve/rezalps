@@ -105,15 +105,14 @@ class CommentController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Comment  $comments
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy($id)
     {
         $comment = Comment::findOrFail($id);
         $comment->delete();
-        return redirect()->route('flux');
+        return back();
     }
 }

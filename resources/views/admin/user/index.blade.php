@@ -55,7 +55,7 @@
                         </a>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-secondary">Supprimer</button>
+                        <a class="btn btn-secondary" href="{{ URL::route('admin-user-destroy', ['id' => $user->id]) }}">Supprimer</a>
                     </td>
                 </tr>
 
