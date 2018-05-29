@@ -71,8 +71,9 @@ class RegisterController extends Controller
         ]);
     }
 
-    protected function registered(Request $request, $user)
+    protected function registered(Request $request)
     {
+        $user = User::where('email', '===', $request->email)->where('password', '===', $request->password)->first();
         $user->generateToken();
 
         return response()->json(['data' => $user->toArray()], 201);
