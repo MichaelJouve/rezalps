@@ -67,7 +67,6 @@ Route::prefix('user')->group(function () {
         Route::get('/cv', 'UserController@userCv')->name('user.cv');
         Route::get('/network', 'UserController@userNetwork')->name('user.network');
         Route::get('/medias', 'UserController@medias')->name('user.medias');
-
     });
 });
 
