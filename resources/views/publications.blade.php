@@ -11,7 +11,26 @@
                         <li class="list-group-item">
                             <a href="{{ $user->website }}" target="blank_">{{ $user->website }}</a>
                         </li>
-                        <li class="list-group-item">Suivi par {{ $user->receiver_count }} membres</li>
+                        <li class="list-group-item">Suivi par {{ $user->receiver_count }} membre(s)</li>
+                        <li class="list-group-item">
+                            @if($user->id != Auth::user()->id)
+                                @if($following)
+                                    <form method="post" action="{{route('unfollow', ['id'=> $user->id] )}}">
+                                        @csrf
+                                        <input type="hidden" name="followed_id_invisible" value="{{$user->id}}">
+                                        <input class="btn btn-outline-danger" type="submit" value="Ne plus suivre">
+                                    </form>
+                                @else
+                                    <form method="post" action="{{route('follow', ['id'=> $user->id])}}">
+                                        @csrf
+                                        <input type="hidden" name="followed_id_invisible" value="{{$user->id}}">
+                                        <input class="btn btn-outline-success" type="submit"
+                                               value="Suivre">
+                                    </form>
+                                @endif
+                            @else
+                            @endif
+                        </li>
                     </ul>
                 </div>
             </div>

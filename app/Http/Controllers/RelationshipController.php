@@ -61,7 +61,7 @@ class RelationshipController extends Controller
     {
         $following = Relationship::where('receiver_id', $id)->where('sender_id', Auth::id())->first();
 
-        return view('user-publications', ['following' => $following]);
+        return view('layouts.profil', ['following' => $following]);
     }
 
     /**
@@ -95,11 +95,12 @@ class RelationshipController extends Controller
      */
     public function destroy($id)
     {
-        Relationship::destroy([
+        $relation = Relationship::where([
             'receiver_id' => $id,
             'sender_id' => Auth::id(),
         ]);
 
+        $relation->delete();
         return back();
     }
 }
