@@ -48,22 +48,7 @@
                         <a>
                             <img class="img-fluid rounded-circle" id="avatar" src="{{asset('storage/' .$user->avatar)}}"
                                  width="160" height="160" alt="avatar">
-                            @if($user->id != Auth::user()->id)
-                                @if($following)
-                                    <form method="post" action="{{route('unfollow', ['id'=> $user->id] )}}">
-                                        @csrf
-                                        <input type="hidden" name="followed_id_invisible" value="{{$user->id}}">
-                                        <input class="btn btn-outline-danger" type="submit" value="Ne plus suivre?">
-                                    </form>
-                                @else
-                                    <form method="post" action="{{route('follow', ['id'=> $user->id])}}">
-                                        @csrf
-                                        <input type="hidden" name="followed_id_invisible" value="{{$user->id}}">
-                                        <input class="btn btn-outline-success" type="submit" value="Suivre cette Personne?">
-                                    </form>
-                                @endif
-                            @else
-                            @endif
+
                         </a>
 
                     </div>

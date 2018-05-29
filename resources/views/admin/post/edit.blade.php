@@ -2,6 +2,7 @@
 
 
 @section('content')
+    @include('admin.dashboard.admin-nav')
     <h1 class="m-4"> Modifier un post</h1>
     <div class="card text-center col-6">
         <form method="post" action="{{route('admin-post-update', ['post'=>$post->id])}}" id="form">
