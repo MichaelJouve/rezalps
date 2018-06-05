@@ -19,7 +19,9 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function flux()
     {
         $posts = Post::with('comments.user', 'user')->latest()->get();
@@ -45,7 +47,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return view('publications', ['posts' => $posts]);
+        return back();   //before it was a view with posts =>$posts.
     }
 
     /**
