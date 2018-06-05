@@ -47,7 +47,7 @@ class PostController extends Controller
     {
         $posts = Post::all();
 
-        return back();   //before it was a view with posts =>$posts.
+        return view('publications', ['posts' => $posts]);
     }
 
     /**
