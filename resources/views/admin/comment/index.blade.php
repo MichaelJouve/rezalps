@@ -37,7 +37,7 @@
                     <td>{{ $comment->created_at }}</td>
                     <td>
                         <a href="{{ route('admin-post-edit', ['id'=>$comment->post_id]) }}">
-                            {{ str_limit($comment->post->publication, $limit = 10, $end = '...') }}
+                            {{ str_limit($comment->post->publication, $limit = 15, $end = '...') }}
                         </a>
                     </td>
                     <td>

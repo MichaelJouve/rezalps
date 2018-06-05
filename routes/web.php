@@ -23,7 +23,7 @@ Route::prefix('admin123456')->group(function () {
         Route::get('{user}', 'admin\UserController@show')->name('admin-user-show');
         Route::get('{user}/edit', 'admin\UserController@edit')->name('admin-user-edit');
         Route::post('{user}/', 'admin\UserController@update')->name('admin-user-update');
-        Route::post('{user}/delete', 'admin\UserController@destroy')->name('admin-user-destroy');
+        Route::get('{user}/delete', 'admin\UserController@destroy')->name('admin-user-destroy');
     });
     // Admin-posts
     Route::prefix('posts')->group(function () {
@@ -31,7 +31,7 @@ Route::prefix('admin123456')->group(function () {
         Route::get('{id}', 'admin\post\PostController@show')->name('admin-post-show');
         Route::get('{id}/edit', 'admin\post\PostController@edit')->name('admin-post-edit');
         Route::post('{id}/', 'admin\post\PostController@update')->name('admin-post-update');
-        Route::post('{id}/delete', 'admin\post\PostController@destroy')->name('admin-post-destroy');
+        Route::get('{id}/delete', 'admin\post\PostController@destroy')->name('admin-post-destroy');
     });
     // Admin-comments
     Route::prefix('comments')->group(function () {
@@ -39,7 +39,7 @@ Route::prefix('admin123456')->group(function () {
         Route::get('{comment}', 'admin\comment\CommentController@show')->name('admin-comment-show');
         Route::get('{comment}/edit', 'admin\comment\CommentController@edit')->name('admin-comment-edit');
         Route::post('{comment}/', 'admin\comment\CommentController@update')->name('admin-comment-update');
-        Route::post('{comment}/delete', 'admin\comment\CommentController@destroy')->name('admin-comment-destroy');
+        Route::get('{comment}/delete', 'admin\comment\CommentController@destroy')->name('admin-comment-destroy');
     });
 });
 
@@ -62,12 +62,11 @@ Route::prefix('user')->group(function () {
     Route::prefix('{id}')->group(function () {
         Route::get('/', 'UserController@show')->name('show-avatar');
         Route::get('/publications', 'UserController@userPublications')->name('user.publications');
-        Route::post('/update-follow', 'RelationshipController@create')->name('follow');
+        Route::post('/update-follow', 'RelationshipController@store')->name('follow');
         Route::post('/update-unfollow', 'RelationshipController@destroy')->name('unfollow');
         Route::get('/cv', 'UserController@userCv')->name('user.cv');
         Route::get('/network', 'UserController@userNetwork')->name('user.network');
         Route::get('/medias', 'UserController@medias')->name('user.medias');
-
     });
 });
 

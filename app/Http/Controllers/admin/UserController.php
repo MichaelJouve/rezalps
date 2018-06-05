@@ -120,17 +120,15 @@ class UserController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Role $role
-     * @return \Illuminate\Http\Response
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        {
             $user = User::findOrFail($id);
             $user->delete();
-            return back();
-        }
+
+        return back();
     }
 }

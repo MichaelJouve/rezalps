@@ -4,14 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Askedio\SoftCascade\Traits\SoftCascadeTrait;
 
 class Post extends Model
 {
     use SoftDeletes;
+    use SoftCascadeTrait;
 
     //only thoses items can be filled.
     protected $fillable = ['publication', 'user_id'];
     protected $dates = ['deleted_at'];
+    protected $softCascade = ['comments'];
 
     /**
      * Link with model user
