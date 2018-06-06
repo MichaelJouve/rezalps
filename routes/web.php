@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('index');
 
-Route::get('flux', 'PostController@flux')->name('flux');
+Route::get('/', 'HomeController@index')->name('index');
+Route::get('/flux', 'PostController@flux')->name('flux');
 
 Route::prefix('admin123456')->group(function () {
     Route::get('/', 'admin\DashboardController@index')->name('admin-dashboard-index');

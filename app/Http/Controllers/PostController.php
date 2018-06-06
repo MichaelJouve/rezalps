@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\User;
+use App\Relationship;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
@@ -11,21 +12,6 @@ class PostController extends Controller
     function __construct()
     {
         $this->middleware('auth');
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function flux()
-    {
-        $posts = Post::with('comments.user', 'user')->latest()->get();
-        return view('flux', ['posts' => $posts]);
     }
 
     /**
@@ -141,5 +127,14 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $post->delete();
         return redirect()->route('publications');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function flux()
+    {
+        $posts = Post::with('comments.user', 'user')->orderBy('created_at', 'desc')->get();
+        return view('flux', ['posts' => $posts]);
     }
 }

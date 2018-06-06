@@ -24,4 +24,3 @@ Route::middleware('auth:api')->group(function () {
     Route::put('posts/{post}', 'Api\PostController@update')->name('api-post-update');
     Route::delete('posts/{post}', 'Api\PostController@delete')->name('api-post-delete');
 });
-
